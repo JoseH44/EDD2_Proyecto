@@ -120,6 +120,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jLabel3.setText("Campos");
 
         jb_CrearCampo.setText("Crear Campos");
+        jb_CrearCampo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_CrearCampoMouseClicked(evt);
+            }
+        });
 
         jb_ModificarCampos.setText("Modificar Campos");
 
@@ -417,6 +422,10 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jd_Estandarizacion.setLocationRelativeTo(this);
         jd_Estandarizacion.setVisible(true);
     }//GEN-LAST:event_jb_EstandarizacionActionPerformed
+
+    private void jb_CrearCampoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_CrearCampoMouseClicked
+        
+    }//GEN-LAST:event_jb_CrearCampoMouseClicked
 
     /**
      * @param args the command line arguments
