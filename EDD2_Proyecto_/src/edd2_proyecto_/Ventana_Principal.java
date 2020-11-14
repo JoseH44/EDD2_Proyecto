@@ -16,6 +16,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
      */
     public Ventana_Principal() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -308,11 +309,6 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         jb_Registros.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jb_Registros.setText("Registros");
-        jb_Registros.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_RegistrosActionPerformed(evt);
-            }
-        });
 
         jb_Indices.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jb_Indices.setText("Índices");
@@ -405,14 +401,6 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jd_Campos.setLocationRelativeTo(this);
         jd_Campos.setVisible(true);
     }//GEN-LAST:event_jb_CamposActionPerformed
-
-    private void jb_RegistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_RegistrosActionPerformed
-        // TODO add your handling code here:
-        jd_Registros.pack();
-        jd_Registros.setModal(true);
-        jd_Registros.setLocationRelativeTo(this);
-        jd_Registros.setVisible(true);
-    }//GEN-LAST:event_jb_RegistrosActionPerformed
 
     private void jb_IndicesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_IndicesActionPerformed
         // TODO add your handling code here:

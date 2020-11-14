@@ -469,9 +469,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Registros"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_RegistrosActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jb_Indices">
       <Properties>
