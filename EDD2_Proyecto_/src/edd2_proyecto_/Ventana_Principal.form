@@ -258,9 +258,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                  <Component id="jButton20" min="-2" pref="121" max="-2" attributes="0"/>
+                  <Component id="jb_CrearIndice" min="-2" pref="121" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                  <Component id="jButton21" min="-2" pref="130" max="-2" attributes="0"/>
+                  <Component id="jb_ReIndexarArchivos" min="-2" pref="130" max="-2" attributes="0"/>
                   <EmptySpace pref="51" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
@@ -277,8 +277,8 @@
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButton20" alignment="0" pref="55" max="32767" attributes="0"/>
-                      <Component id="jButton21" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jb_CrearIndice" alignment="0" pref="55" max="32767" attributes="0"/>
+                      <Component id="jb_ReIndexarArchivos" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="52" max="32767" attributes="0"/>
               </Group>
@@ -294,12 +294,12 @@
             <Property name="text" type="java.lang.String" value="&#xcd;ndices"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton20">
+        <Component class="javax.swing.JButton" name="jb_CrearIndice">
           <Properties>
             <Property name="text" type="java.lang.String" value="Crear &#xcd;ndices"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton21">
+        <Component class="javax.swing.JButton" name="jb_ReIndexarArchivos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Re Indexar Archivos"/>
           </Properties>

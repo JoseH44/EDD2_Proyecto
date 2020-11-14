@@ -49,8 +49,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jButton19 = new javax.swing.JButton();
         jd_indices = new javax.swing.JDialog();
         jLabel5 = new javax.swing.JLabel();
-        jButton20 = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
+        jb_CrearIndice = new javax.swing.JButton();
+        jb_ReIndexarArchivos = new javax.swing.JButton();
         jd_Estandarizacion = new javax.swing.JDialog();
         jLabel6 = new javax.swing.JLabel();
         jButton22 = new javax.swing.JButton();
@@ -223,9 +223,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel5.setText("Índices");
 
-        jButton20.setText("Crear Índices");
+        jb_CrearIndice.setText("Crear Índices");
 
-        jButton21.setText("Re Indexar Archivos");
+        jb_ReIndexarArchivos.setText("Re Indexar Archivos");
 
         javax.swing.GroupLayout jd_indicesLayout = new javax.swing.GroupLayout(jd_indices.getContentPane());
         jd_indices.getContentPane().setLayout(jd_indicesLayout);
@@ -233,9 +233,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
             jd_indicesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_indicesLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jb_CrearIndice, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
-                .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jb_ReIndexarArchivos, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(51, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_indicesLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -249,8 +249,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addGap(28, 28, 28)
                 .addGroup(jd_indicesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton20, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
-                    .addComponent(jButton21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jb_CrearIndice, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                    .addComponent(jb_ReIndexarArchivos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
 
@@ -470,8 +470,6 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton7;
@@ -487,10 +485,12 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JButton jb_BorrarCampos;
     private javax.swing.JButton jb_Campos;
     private javax.swing.JButton jb_CrearCampo;
+    private javax.swing.JButton jb_CrearIndice;
     private javax.swing.JButton jb_Estandarizacion;
     private javax.swing.JButton jb_Indices;
     private javax.swing.JButton jb_ListarCampos;
     private javax.swing.JButton jb_ModificarCampos;
+    private javax.swing.JButton jb_ReIndexarArchivos;
     private javax.swing.JButton jb_Registros;
     private javax.swing.JButton jb_Salir1;
     private javax.swing.JDialog jd_Archivo;
