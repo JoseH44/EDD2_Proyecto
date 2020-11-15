@@ -40,6 +40,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jb_CrearCampo = new javax.swing.JButton();
         jb_ModificarCampos = new javax.swing.JButton();
         jb_ListarCampos = new javax.swing.JButton();
+        jb_SalirdeCampos = new javax.swing.JButton();
         jd_Registros = new javax.swing.JDialog();
         jLabel4 = new javax.swing.JLabel();
         jButton15 = new javax.swing.JButton();
@@ -47,6 +48,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jButton17 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
+        jb_SalirDeRegistros = new javax.swing.JButton();
         jd_indices = new javax.swing.JDialog();
         jLabel5 = new javax.swing.JLabel();
         jb_CrearIndice = new javax.swing.JButton();
@@ -130,6 +132,13 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         jb_ListarCampos.setText("Listar Campos");
 
+        jb_SalirdeCampos.setText("Salir");
+        jb_SalirdeCampos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_SalirdeCamposMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_CamposLayout = new javax.swing.GroupLayout(jd_Campos.getContentPane());
         jd_Campos.getContentPane().setLayout(jd_CamposLayout);
         jd_CamposLayout.setHorizontalGroup(
@@ -147,7 +156,10 @@ public class Ventana_Principal extends javax.swing.JFrame {
                             .addComponent(jb_BorrarCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jd_CamposLayout.createSequentialGroup()
                         .addGap(133, 133, 133)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_CamposLayout.createSequentialGroup()
+                        .addGap(161, 161, 161)
+                        .addComponent(jb_SalirdeCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
         jd_CamposLayout.setVerticalGroup(
@@ -163,7 +175,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addGroup(jd_CamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_ModificarCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jb_BorrarCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jb_SalirdeCampos)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -179,28 +193,33 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         jButton19.setText("Listar Registros");
 
+        jb_SalirDeRegistros.setText("Salir");
+        jb_SalirDeRegistros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_SalirDeRegistrosMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_RegistrosLayout = new javax.swing.GroupLayout(jd_Registros.getContentPane());
         jd_Registros.getContentPane().setLayout(jd_RegistrosLayout);
         jd_RegistrosLayout.setHorizontalGroup(
             jd_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_RegistrosLayout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jd_RegistrosLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(jd_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(jd_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jb_SalirDeRegistros, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_RegistrosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(126, 126, 126))
-            .addGroup(jd_RegistrosLayout.createSequentialGroup()
-                .addGap(115, 115, 115)
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jd_RegistrosLayout.setVerticalGroup(
             jd_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,9 +234,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addGroup(jd_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton17, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                     .addComponent(jButton18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton19, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(jb_SalirDeRegistros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -389,6 +410,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     private void jb_ArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_ArchivoActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
         jd_Archivo.pack();
         jd_Archivo.setModal(true);
         jd_Archivo.setLocationRelativeTo(this);
@@ -398,10 +420,12 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
         jd_Archivo.dispose();
+        this.setVisible(true);
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jb_CamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_CamposActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
         jd_Campos.pack();
         jd_Campos.setModal(true);
         jd_Campos.setLocationRelativeTo(this);
@@ -427,6 +451,16 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private void jb_CrearCampoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_CrearCampoMouseClicked
         
     }//GEN-LAST:event_jb_CrearCampoMouseClicked
+
+    private void jb_SalirdeCamposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_SalirdeCamposMouseClicked
+        jd_Campos.dispose();
+        this.setVisible(true);
+    }//GEN-LAST:event_jb_SalirdeCamposMouseClicked
+
+    private void jb_SalirDeRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_SalirDeRegistrosMouseClicked
+        jd_Registros.dispose();
+        this.setVisible(true);
+    }//GEN-LAST:event_jb_SalirDeRegistrosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -493,6 +527,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JButton jb_ReIndexarArchivos;
     private javax.swing.JButton jb_Registros;
     private javax.swing.JButton jb_Salir1;
+    private javax.swing.JButton jb_SalirDeRegistros;
+    private javax.swing.JButton jb_SalirdeCampos;
     private javax.swing.JDialog jd_Archivo;
     private javax.swing.JDialog jd_Campos;
     private javax.swing.JDialog jd_Estandarizacion;
