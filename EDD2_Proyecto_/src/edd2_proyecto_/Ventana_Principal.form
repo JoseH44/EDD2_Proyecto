@@ -469,6 +469,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Crear Campo"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jb_terminarcreacioncampoMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_tip_string">
           <Properties>

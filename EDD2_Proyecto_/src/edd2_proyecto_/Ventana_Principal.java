@@ -328,6 +328,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jl_tipodevariable.setText("Tipo de variable:");
 
         jb_terminarcreacioncampo.setText("Crear Campo");
+        jb_terminarcreacioncampo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_terminarcreacioncampoMouseClicked(evt);
+            }
+        });
 
         bg_TipoDeVariable.add(rb_tip_string);
         rb_tip_string.setSelected(true);
@@ -558,6 +563,10 @@ public class Ventana_Principal extends javax.swing.JFrame {
         this.setVisible(true);
     }//GEN-LAST:event_jb_SalirDeRegistrosMouseClicked
 
+    private void jb_terminarcreacioncampoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_terminarcreacioncampoMouseClicked
+        
+    }//GEN-LAST:event_jb_terminarcreacioncampoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -626,9 +635,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JButton jb_ReIndexarArchivos;
     private javax.swing.JButton jb_Registros;
     private javax.swing.JButton jb_Salir1;
-    private javax.swing.JButton jb_terminarcreacioncampo;
     private javax.swing.JButton jb_SalirDeRegistros;
     private javax.swing.JButton jb_SalirdeCampos;
+    private javax.swing.JButton jb_terminarcreacioncampo;
     private javax.swing.JDialog jd_Archivo;
     private javax.swing.JDialog jd_Campos;
     private javax.swing.JDialog jd_CrearCampo;
