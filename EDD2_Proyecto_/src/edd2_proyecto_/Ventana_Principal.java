@@ -55,6 +55,20 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jButton22 = new javax.swing.JButton();
         jButton23 = new javax.swing.JButton();
+        jd_CrearCampo = new javax.swing.JDialog();
+        jl_nameCampo = new javax.swing.JLabel();
+        tf_NombredelCampo = new javax.swing.JTextField();
+        jl_tipodevariable = new javax.swing.JLabel();
+        jb_terminarcreacioncampo = new javax.swing.JButton();
+        rb_tip_string = new javax.swing.JRadioButton();
+        rb_tip_integer = new javax.swing.JRadioButton();
+        jl_longitud = new javax.swing.JLabel();
+        tf_longitudelcampo = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        rb_key_si = new javax.swing.JRadioButton();
+        rb_key_no = new javax.swing.JRadioButton();
+        bg_TipoDeVariable = new javax.swing.ButtonGroup();
+        bg_LlavePrimaria = new javax.swing.ButtonGroup();
         jb_Archivo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jb_Campos = new javax.swing.JButton();
@@ -288,6 +302,85 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
+        jl_nameCampo.setText("Nombre del campo:");
+
+        jl_tipodevariable.setText("Tipo de variable:");
+
+        jb_terminarcreacioncampo.setText("Crear Campo");
+
+        bg_TipoDeVariable.add(rb_tip_string);
+        rb_tip_string.setSelected(true);
+        rb_tip_string.setText("String");
+
+        bg_TipoDeVariable.add(rb_tip_integer);
+        rb_tip_integer.setText("Integer");
+
+        jl_longitud.setText("Longitud del campo");
+
+        jLabel7.setText("Es llave primaria?");
+
+        bg_LlavePrimaria.add(rb_key_si);
+        rb_key_si.setText("Si");
+
+        bg_LlavePrimaria.add(rb_key_no);
+        rb_key_no.setSelected(true);
+        rb_key_no.setText("No");
+
+        javax.swing.GroupLayout jd_CrearCampoLayout = new javax.swing.GroupLayout(jd_CrearCampo.getContentPane());
+        jd_CrearCampo.getContentPane().setLayout(jd_CrearCampoLayout);
+        jd_CrearCampoLayout.setHorizontalGroup(
+            jd_CrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_CrearCampoLayout.createSequentialGroup()
+                .addGap(148, 148, 148)
+                .addComponent(jb_terminarcreacioncampo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jd_CrearCampoLayout.createSequentialGroup()
+                .addGroup(jd_CrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jl_nameCampo)
+                    .addComponent(tf_NombredelCampo)
+                    .addComponent(jl_tipodevariable, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jd_CrearCampoLayout.createSequentialGroup()
+                        .addComponent(rb_tip_string)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rb_tip_integer))
+                    .addComponent(jl_longitud)
+                    .addComponent(tf_longitudelcampo, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGroup(jd_CrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addGroup(jd_CrearCampoLayout.createSequentialGroup()
+                        .addComponent(rb_key_si)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rb_key_no)))
+                .addGap(70, 70, 70))
+        );
+        jd_CrearCampoLayout.setVerticalGroup(
+            jd_CrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_CrearCampoLayout.createSequentialGroup()
+                .addComponent(jl_nameCampo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tf_NombredelCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(jl_tipodevariable)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jd_CrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_CrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rb_tip_string)
+                        .addComponent(rb_tip_integer))
+                    .addGroup(jd_CrearCampoLayout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(10, 10, 10)
+                        .addGroup(jd_CrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rb_key_si)
+                            .addComponent(rb_key_no))))
+                .addGap(21, 21, 21)
+                .addComponent(jl_longitud)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tf_longitudelcampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addComponent(jb_terminarcreacioncampo))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Standard File Manager");
         setName("Standard File Manager"); // NOI18N
@@ -425,7 +518,10 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_EstandarizacionActionPerformed
 
     private void jb_CrearCampoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_CrearCampoMouseClicked
-        
+        jd_CrearCampo.pack();
+        jd_CrearCampo.setModal(true);
+        jd_CrearCampo.setLocationRelativeTo(this);
+        jd_CrearCampo.setVisible(true);
     }//GEN-LAST:event_jb_CrearCampoMouseClicked
 
     /**
@@ -464,6 +560,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup bg_LlavePrimaria;
+    private javax.swing.ButtonGroup bg_TipoDeVariable;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
@@ -481,6 +579,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JButton jb_Archivo;
     private javax.swing.JButton jb_BorrarCampos;
     private javax.swing.JButton jb_Campos;
@@ -493,10 +592,21 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JButton jb_ReIndexarArchivos;
     private javax.swing.JButton jb_Registros;
     private javax.swing.JButton jb_Salir1;
+    private javax.swing.JButton jb_terminarcreacioncampo;
     private javax.swing.JDialog jd_Archivo;
     private javax.swing.JDialog jd_Campos;
+    private javax.swing.JDialog jd_CrearCampo;
     private javax.swing.JDialog jd_Estandarizacion;
     private javax.swing.JDialog jd_Registros;
     private javax.swing.JDialog jd_indices;
+    private javax.swing.JLabel jl_longitud;
+    private javax.swing.JLabel jl_nameCampo;
+    private javax.swing.JLabel jl_tipodevariable;
+    private javax.swing.JRadioButton rb_key_no;
+    private javax.swing.JRadioButton rb_key_si;
+    private javax.swing.JRadioButton rb_tip_integer;
+    private javax.swing.JRadioButton rb_tip_string;
+    private javax.swing.JTextField tf_NombredelCampo;
+    private javax.swing.JTextField tf_longitudelcampo;
     // End of variables declaration//GEN-END:variables
 }
