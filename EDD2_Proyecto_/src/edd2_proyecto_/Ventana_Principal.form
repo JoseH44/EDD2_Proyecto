@@ -390,7 +390,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
-                  <Component id="jb_terminarcreacioncampo" min="-2" max="-2" attributes="0"/>
+                  <Component id="jb_TerminarCreacionCampo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
@@ -447,7 +447,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="tf_longitudelcampo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="64" max="32767" attributes="0"/>
-                  <Component id="jb_terminarcreacioncampo" min="-2" max="-2" attributes="0"/>
+                  <Component id="jb_TerminarCreacionCampo" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -465,12 +465,12 @@
             <Property name="text" type="java.lang.String" value="Tipo de variable:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jb_terminarcreacioncampo">
+        <Component class="javax.swing.JButton" name="jb_TerminarCreacionCampo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Crear Campo"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jb_terminarcreacioncampoMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jb_TerminarCreacionCampoMouseClicked"/>
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_tip_string">

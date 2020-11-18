@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edd2_proyecto_;
-
-/**
- *
- * @author jrdjh
- */
+import java.util.ArrayList;
 public class Ventana_Principal extends javax.swing.JFrame {
 
     /**
@@ -17,6 +8,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     public Ventana_Principal() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -61,7 +53,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jl_nameCampo = new javax.swing.JLabel();
         tf_NombredelCampo = new javax.swing.JTextField();
         jl_tipodevariable = new javax.swing.JLabel();
-        jb_terminarcreacioncampo = new javax.swing.JButton();
+        jb_TerminarCreacionCampo = new javax.swing.JButton();
         rb_tip_string = new javax.swing.JRadioButton();
         rb_tip_integer = new javax.swing.JRadioButton();
         jl_longitud = new javax.swing.JLabel();
@@ -327,10 +319,10 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         jl_tipodevariable.setText("Tipo de variable:");
 
-        jb_terminarcreacioncampo.setText("Crear Campo");
-        jb_terminarcreacioncampo.addMouseListener(new java.awt.event.MouseAdapter() {
+        jb_TerminarCreacionCampo.setText("Crear Campo");
+        jb_TerminarCreacionCampo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jb_terminarcreacioncampoMouseClicked(evt);
+                jb_TerminarCreacionCampoMouseClicked(evt);
             }
         });
 
@@ -358,7 +350,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             jd_CrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_CrearCampoLayout.createSequentialGroup()
                 .addGap(148, 148, 148)
-                .addComponent(jb_terminarcreacioncampo)
+                .addComponent(jb_TerminarCreacionCampo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jd_CrearCampoLayout.createSequentialGroup()
                 .addGroup(jd_CrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -404,7 +396,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tf_longitudelcampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                .addComponent(jb_terminarcreacioncampo))
+                .addComponent(jb_TerminarCreacionCampo))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -563,9 +555,24 @@ public class Ventana_Principal extends javax.swing.JFrame {
         this.setVisible(true);
     }//GEN-LAST:event_jb_SalirDeRegistrosMouseClicked
 
-    private void jb_terminarcreacioncampoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_terminarcreacioncampoMouseClicked
-        
-    }//GEN-LAST:event_jb_terminarcreacioncampoMouseClicked
+    private void jb_TerminarCreacionCampoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_TerminarCreacionCampoMouseClicked
+       String nombre = tf_NombredelCampo.toString();
+       int longitud = Integer.parseInt(tf_longitudelcampo.toString()) ;
+       boolean key;
+       
+       if(rb_key_no.isSelected()){
+           key = false;
+       }else{
+           key = true;
+       }
+          
+       if(rb_tip_integer.isSelected()){
+           campos.add(new Campo(nombre, "int", key, longitud));
+           
+       }else{
+           campos.add(new Campo(nombre, "String", key, longitud));
+       }
+    }//GEN-LAST:event_jb_TerminarCreacionCampoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -637,7 +644,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JButton jb_Salir1;
     private javax.swing.JButton jb_SalirDeRegistros;
     private javax.swing.JButton jb_SalirdeCampos;
-    private javax.swing.JButton jb_terminarcreacioncampo;
+    private javax.swing.JButton jb_TerminarCreacionCampo;
     private javax.swing.JDialog jd_Archivo;
     private javax.swing.JDialog jd_Campos;
     private javax.swing.JDialog jd_CrearCampo;
@@ -654,4 +661,5 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JTextField tf_NombredelCampo;
     private javax.swing.JTextField tf_longitudelcampo;
     // End of variables declaration//GEN-END:variables
+    ArrayList<Campo> campos = new ArrayList();
 }
