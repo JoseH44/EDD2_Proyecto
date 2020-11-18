@@ -91,18 +91,22 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jButton12" min="-2" pref="124" max="-2" attributes="0"/>
-                              <Component id="jButton13" min="-2" pref="124" max="-2" attributes="0"/>
+                              <Component id="jb_CrearCampo" min="-2" pref="124" max="-2" attributes="0"/>
+                              <Component id="jb_ModificarCampos" min="-2" pref="124" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jButton14" min="-2" pref="124" max="-2" attributes="0"/>
-                              <Component id="jButton11" min="-2" pref="124" max="-2" attributes="0"/>
+                              <Component id="jb_ListarCampos" min="-2" pref="124" max="-2" attributes="0"/>
+                              <Component id="jb_BorrarCampos" min="-2" pref="124" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" pref="134" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
+                          <Component id="jb_SalirdeCampos" min="-2" pref="67" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="48" max="32767" attributes="0"/>
@@ -116,21 +120,23 @@
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton14" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
-                      <Component id="jButton12" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
+                      <Component id="jb_ListarCampos" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
+                      <Component id="jb_CrearCampo" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton13" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
-                      <Component id="jButton11" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
+                      <Component id="jb_ModificarCampos" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
+                      <Component id="jb_BorrarCampos" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="64" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jb_SalirdeCampos" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="30" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jButton11">
+        <Component class="javax.swing.JButton" name="jb_BorrarCampos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Borrar Campos"/>
           </Properties>
@@ -143,20 +149,31 @@
             <Property name="text" type="java.lang.String" value="Campos"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton12">
+        <Component class="javax.swing.JButton" name="jb_CrearCampo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Crear Campos"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jb_CrearCampoMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton13">
+        <Component class="javax.swing.JButton" name="jb_ModificarCampos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Modificar Campos"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton14">
+        <Component class="javax.swing.JButton" name="jb_ListarCampos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Listar Campos"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jb_SalirdeCampos">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Salir"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jb_SalirdeCamposMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -166,8 +183,14 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
+                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jButton19" max="32767" attributes="0"/>
                       <Component id="jButton17" alignment="0" max="32767" attributes="0"/>
                       <Component id="jButton15" alignment="0" max="32767" attributes="0"/>
                   </Group>
@@ -175,18 +198,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jButton16" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
                       <Component id="jButton18" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
+                      <Component id="jb_SalirDeRegistros" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jButton19" min="-2" pref="122" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
-                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -205,9 +219,12 @@
                       <Component id="jButton17" pref="50" max="32767" attributes="0"/>
                       <Component id="jButton18" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton19" min="-2" pref="50" max="-2" attributes="0"/>
-                  <EmptySpace pref="30" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jButton19" pref="50" max="32767" attributes="0"/>
+                      <Component id="jb_SalirDeRegistros" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="37" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -246,6 +263,14 @@
             <Property name="text" type="java.lang.String" value="Listar Registros"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JButton" name="jb_SalirDeRegistros">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Salir"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jb_SalirDeRegistrosMouseClicked"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JDialog" name="jd_indices">
@@ -255,9 +280,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                  <Component id="jButton20" min="-2" pref="121" max="-2" attributes="0"/>
+                  <Component id="jb_CrearIndice" min="-2" pref="121" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                  <Component id="jButton21" min="-2" pref="130" max="-2" attributes="0"/>
+                  <Component id="jb_ReIndexarArchivos" min="-2" pref="130" max="-2" attributes="0"/>
                   <EmptySpace pref="51" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
@@ -274,8 +299,8 @@
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButton20" alignment="0" pref="55" max="32767" attributes="0"/>
-                      <Component id="jButton21" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jb_CrearIndice" alignment="0" pref="55" max="32767" attributes="0"/>
+                      <Component id="jb_ReIndexarArchivos" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="52" max="32767" attributes="0"/>
               </Group>
@@ -291,12 +316,12 @@
             <Property name="text" type="java.lang.String" value="&#xcd;ndices"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton20">
+        <Component class="javax.swing.JButton" name="jb_CrearIndice">
           <Properties>
             <Property name="text" type="java.lang.String" value="Crear &#xcd;ndices"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton21">
+        <Component class="javax.swing.JButton" name="jb_ReIndexarArchivos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Re Indexar Archivos"/>
           </Properties>
@@ -358,6 +383,148 @@
         </Component>
       </SubComponents>
     </Container>
+    <Container class="javax.swing.JDialog" name="jd_CrearCampo">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
+                  <Component id="jb_TerminarCreacionCampo" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jl_nameCampo" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_NombredelCampo" max="32767" attributes="0"/>
+                      <Component id="jl_tipodevariable" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="rb_tip_string" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="rb_tip_integer" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jl_longitud" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_longitudelcampo" alignment="0" pref="226" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="48" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="rb_key_si" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="rb_key_no" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="jl_nameCampo" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="tf_NombredelCampo" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="jl_tipodevariable" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="rb_tip_string" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rb_tip_integer" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="rb_key_si" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rb_key_no" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <Component id="jl_longitud" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="tf_longitudelcampo" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="64" max="32767" attributes="0"/>
+                  <Component id="jb_TerminarCreacionCampo" min="-2" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jl_nameCampo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nombre del campo:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tf_NombredelCampo">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jl_tipodevariable">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Tipo de variable:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jb_TerminarCreacionCampo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Crear Campo"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jb_TerminarCreacionCampoMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_tip_string">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="bg_TipoDeVariable"/>
+            </Property>
+            <Property name="selected" type="boolean" value="true"/>
+            <Property name="text" type="java.lang.String" value="String"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_tip_integer">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="bg_TipoDeVariable"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Integer"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jl_longitud">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Longitud del campo"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tf_longitudelcampo">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel7">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Es llave primaria?"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_key_si">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="bg_LlavePrimaria"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Si"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_key_no">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="bg_LlavePrimaria"/>
+            </Property>
+            <Property name="selected" type="boolean" value="true"/>
+            <Property name="text" type="java.lang.String" value="No"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.ButtonGroup" name="bg_TipoDeVariable">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="bg_LlavePrimaria">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -469,9 +636,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Registros"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_RegistrosActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jb_Indices">
       <Properties>

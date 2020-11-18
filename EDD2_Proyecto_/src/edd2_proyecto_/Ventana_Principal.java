@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edd2_proyecto_;
-
-/**
- *
- * @author jrdjh
- */
+import java.util.ArrayList;
 public class Ventana_Principal extends javax.swing.JFrame {
 
     /**
@@ -16,6 +7,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
      */
     public Ventana_Principal() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -34,11 +27,12 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jd_Campos = new javax.swing.JDialog();
-        jButton11 = new javax.swing.JButton();
+        jb_BorrarCampos = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
+        jb_CrearCampo = new javax.swing.JButton();
+        jb_ModificarCampos = new javax.swing.JButton();
+        jb_ListarCampos = new javax.swing.JButton();
+        jb_SalirdeCampos = new javax.swing.JButton();
         jd_Registros = new javax.swing.JDialog();
         jLabel4 = new javax.swing.JLabel();
         jButton15 = new javax.swing.JButton();
@@ -46,14 +40,29 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jButton17 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
+        jb_SalirDeRegistros = new javax.swing.JButton();
         jd_indices = new javax.swing.JDialog();
         jLabel5 = new javax.swing.JLabel();
-        jButton20 = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
+        jb_CrearIndice = new javax.swing.JButton();
+        jb_ReIndexarArchivos = new javax.swing.JButton();
         jd_Estandarizacion = new javax.swing.JDialog();
         jLabel6 = new javax.swing.JLabel();
         jButton22 = new javax.swing.JButton();
         jButton23 = new javax.swing.JButton();
+        jd_CrearCampo = new javax.swing.JDialog();
+        jl_nameCampo = new javax.swing.JLabel();
+        tf_NombredelCampo = new javax.swing.JTextField();
+        jl_tipodevariable = new javax.swing.JLabel();
+        jb_TerminarCreacionCampo = new javax.swing.JButton();
+        rb_tip_string = new javax.swing.JRadioButton();
+        rb_tip_integer = new javax.swing.JRadioButton();
+        jl_longitud = new javax.swing.JLabel();
+        tf_longitudelcampo = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        rb_key_si = new javax.swing.JRadioButton();
+        rb_key_no = new javax.swing.JRadioButton();
+        bg_TipoDeVariable = new javax.swing.ButtonGroup();
+        bg_LlavePrimaria = new javax.swing.ButtonGroup();
         jb_Archivo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jb_Campos = new javax.swing.JButton();
@@ -113,16 +122,28 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jButton11.setText("Borrar Campos");
+        jb_BorrarCampos.setText("Borrar Campos");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel3.setText("Campos");
 
-        jButton12.setText("Crear Campos");
+        jb_CrearCampo.setText("Crear Campos");
+        jb_CrearCampo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_CrearCampoMouseClicked(evt);
+            }
+        });
 
-        jButton13.setText("Modificar Campos");
+        jb_ModificarCampos.setText("Modificar Campos");
 
-        jButton14.setText("Listar Campos");
+        jb_ListarCampos.setText("Listar Campos");
+
+        jb_SalirdeCampos.setText("Salir");
+        jb_SalirdeCampos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_SalirdeCamposMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_CamposLayout = new javax.swing.GroupLayout(jd_Campos.getContentPane());
         jd_Campos.getContentPane().setLayout(jd_CamposLayout);
@@ -133,15 +154,18 @@ public class Ventana_Principal extends javax.swing.JFrame {
                     .addGroup(jd_CamposLayout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addGroup(jd_CamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jb_CrearCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_ModificarCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(68, 68, 68)
                         .addGroup(jd_CamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jb_ListarCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_BorrarCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jd_CamposLayout.createSequentialGroup()
                         .addGap(133, 133, 133)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_CamposLayout.createSequentialGroup()
+                        .addGap(161, 161, 161)
+                        .addComponent(jb_SalirdeCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
         jd_CamposLayout.setVerticalGroup(
@@ -151,13 +175,15 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addGroup(jd_CamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jb_ListarCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jb_CrearCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jd_CamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(64, Short.MAX_VALUE))
+                    .addComponent(jb_ModificarCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jb_BorrarCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jb_SalirdeCampos)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -173,28 +199,33 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         jButton19.setText("Listar Registros");
 
+        jb_SalirDeRegistros.setText("Salir");
+        jb_SalirDeRegistros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_SalirDeRegistrosMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_RegistrosLayout = new javax.swing.GroupLayout(jd_Registros.getContentPane());
         jd_Registros.getContentPane().setLayout(jd_RegistrosLayout);
         jd_RegistrosLayout.setHorizontalGroup(
             jd_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_RegistrosLayout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jd_RegistrosLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(jd_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(jd_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jb_SalirDeRegistros, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_RegistrosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(126, 126, 126))
-            .addGroup(jd_RegistrosLayout.createSequentialGroup()
-                .addGap(115, 115, 115)
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jd_RegistrosLayout.setVerticalGroup(
             jd_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,17 +240,19 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addGroup(jd_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton17, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                     .addComponent(jButton18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton19, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(jb_SalirDeRegistros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel5.setText("Índices");
 
-        jButton20.setText("Crear Índices");
+        jb_CrearIndice.setText("Crear Índices");
 
-        jButton21.setText("Re Indexar Archivos");
+        jb_ReIndexarArchivos.setText("Re Indexar Archivos");
 
         javax.swing.GroupLayout jd_indicesLayout = new javax.swing.GroupLayout(jd_indices.getContentPane());
         jd_indices.getContentPane().setLayout(jd_indicesLayout);
@@ -227,9 +260,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
             jd_indicesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_indicesLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jb_CrearIndice, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
-                .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jb_ReIndexarArchivos, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(51, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_indicesLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -243,8 +276,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addGap(28, 28, 28)
                 .addGroup(jd_indicesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton20, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
-                    .addComponent(jButton21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jb_CrearIndice, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                    .addComponent(jb_ReIndexarArchivos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
 
@@ -282,6 +315,90 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
+        jl_nameCampo.setText("Nombre del campo:");
+
+        jl_tipodevariable.setText("Tipo de variable:");
+
+        jb_TerminarCreacionCampo.setText("Crear Campo");
+        jb_TerminarCreacionCampo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_TerminarCreacionCampoMouseClicked(evt);
+            }
+        });
+
+        bg_TipoDeVariable.add(rb_tip_string);
+        rb_tip_string.setSelected(true);
+        rb_tip_string.setText("String");
+
+        bg_TipoDeVariable.add(rb_tip_integer);
+        rb_tip_integer.setText("Integer");
+
+        jl_longitud.setText("Longitud del campo");
+
+        jLabel7.setText("Es llave primaria?");
+
+        bg_LlavePrimaria.add(rb_key_si);
+        rb_key_si.setText("Si");
+
+        bg_LlavePrimaria.add(rb_key_no);
+        rb_key_no.setSelected(true);
+        rb_key_no.setText("No");
+
+        javax.swing.GroupLayout jd_CrearCampoLayout = new javax.swing.GroupLayout(jd_CrearCampo.getContentPane());
+        jd_CrearCampo.getContentPane().setLayout(jd_CrearCampoLayout);
+        jd_CrearCampoLayout.setHorizontalGroup(
+            jd_CrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_CrearCampoLayout.createSequentialGroup()
+                .addGap(148, 148, 148)
+                .addComponent(jb_TerminarCreacionCampo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jd_CrearCampoLayout.createSequentialGroup()
+                .addGroup(jd_CrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jl_nameCampo)
+                    .addComponent(tf_NombredelCampo)
+                    .addComponent(jl_tipodevariable, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jd_CrearCampoLayout.createSequentialGroup()
+                        .addComponent(rb_tip_string)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rb_tip_integer))
+                    .addComponent(jl_longitud)
+                    .addComponent(tf_longitudelcampo, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGroup(jd_CrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addGroup(jd_CrearCampoLayout.createSequentialGroup()
+                        .addComponent(rb_key_si)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rb_key_no)))
+                .addGap(70, 70, 70))
+        );
+        jd_CrearCampoLayout.setVerticalGroup(
+            jd_CrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_CrearCampoLayout.createSequentialGroup()
+                .addComponent(jl_nameCampo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tf_NombredelCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(jl_tipodevariable)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jd_CrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_CrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rb_tip_string)
+                        .addComponent(rb_tip_integer))
+                    .addGroup(jd_CrearCampoLayout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(10, 10, 10)
+                        .addGroup(jd_CrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rb_key_si)
+                            .addComponent(rb_key_no))))
+                .addGap(21, 21, 21)
+                .addComponent(jl_longitud)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tf_longitudelcampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addComponent(jb_TerminarCreacionCampo))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Standard File Manager");
         setName("Standard File Manager"); // NOI18N
@@ -308,11 +425,6 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         jb_Registros.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jb_Registros.setText("Registros");
-        jb_Registros.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_RegistrosActionPerformed(evt);
-            }
-        });
 
         jb_Indices.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jb_Indices.setText("Índices");
@@ -388,6 +500,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     private void jb_ArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_ArchivoActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
         jd_Archivo.pack();
         jd_Archivo.setModal(true);
         jd_Archivo.setLocationRelativeTo(this);
@@ -396,23 +509,18 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
+        jd_Archivo.dispose();
+        this.setVisible(true);
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jb_CamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_CamposActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
         jd_Campos.pack();
         jd_Campos.setModal(true);
         jd_Campos.setLocationRelativeTo(this);
         jd_Campos.setVisible(true);
     }//GEN-LAST:event_jb_CamposActionPerformed
-
-    private void jb_RegistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_RegistrosActionPerformed
-        // TODO add your handling code here:
-        jd_Registros.pack();
-        jd_Registros.setModal(true);
-        jd_Registros.setLocationRelativeTo(this);
-        jd_Registros.setVisible(true);
-    }//GEN-LAST:event_jb_RegistrosActionPerformed
 
     private void jb_IndicesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_IndicesActionPerformed
         // TODO add your handling code here:
@@ -429,6 +537,42 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jd_Estandarizacion.setLocationRelativeTo(this);
         jd_Estandarizacion.setVisible(true);
     }//GEN-LAST:event_jb_EstandarizacionActionPerformed
+
+    private void jb_CrearCampoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_CrearCampoMouseClicked
+        jd_CrearCampo.pack();
+        jd_CrearCampo.setModal(true);
+        jd_CrearCampo.setLocationRelativeTo(this);
+        jd_CrearCampo.setVisible(true);
+    }//GEN-LAST:event_jb_CrearCampoMouseClicked
+
+    private void jb_SalirdeCamposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_SalirdeCamposMouseClicked
+        jd_Campos.dispose();
+        this.setVisible(true);
+    }//GEN-LAST:event_jb_SalirdeCamposMouseClicked
+
+    private void jb_SalirDeRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_SalirDeRegistrosMouseClicked
+        jd_Registros.dispose();
+        this.setVisible(true);
+    }//GEN-LAST:event_jb_SalirDeRegistrosMouseClicked
+
+    private void jb_TerminarCreacionCampoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_TerminarCreacionCampoMouseClicked
+       String nombre = tf_NombredelCampo.toString();
+       int longitud = Integer.parseInt(tf_longitudelcampo.toString()) ;
+       boolean key;
+       
+       if(rb_key_no.isSelected()){
+           key = false;
+       }else{
+           key = true;
+       }
+          
+       if(rb_tip_integer.isSelected()){
+           campos.add(new Campo(nombre, "int", key, longitud));
+           
+       }else{
+           campos.add(new Campo(nombre, "String", key, longitud));
+       }
+    }//GEN-LAST:event_jb_TerminarCreacionCampoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -466,18 +610,14 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup bg_LlavePrimaria;
+    private javax.swing.ButtonGroup bg_TipoDeVariable;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton7;
@@ -489,16 +629,37 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JButton jb_Archivo;
+    private javax.swing.JButton jb_BorrarCampos;
     private javax.swing.JButton jb_Campos;
+    private javax.swing.JButton jb_CrearCampo;
+    private javax.swing.JButton jb_CrearIndice;
     private javax.swing.JButton jb_Estandarizacion;
     private javax.swing.JButton jb_Indices;
+    private javax.swing.JButton jb_ListarCampos;
+    private javax.swing.JButton jb_ModificarCampos;
+    private javax.swing.JButton jb_ReIndexarArchivos;
     private javax.swing.JButton jb_Registros;
     private javax.swing.JButton jb_Salir1;
+    private javax.swing.JButton jb_SalirDeRegistros;
+    private javax.swing.JButton jb_SalirdeCampos;
+    private javax.swing.JButton jb_TerminarCreacionCampo;
     private javax.swing.JDialog jd_Archivo;
     private javax.swing.JDialog jd_Campos;
+    private javax.swing.JDialog jd_CrearCampo;
     private javax.swing.JDialog jd_Estandarizacion;
     private javax.swing.JDialog jd_Registros;
     private javax.swing.JDialog jd_indices;
+    private javax.swing.JLabel jl_longitud;
+    private javax.swing.JLabel jl_nameCampo;
+    private javax.swing.JLabel jl_tipodevariable;
+    private javax.swing.JRadioButton rb_key_no;
+    private javax.swing.JRadioButton rb_key_si;
+    private javax.swing.JRadioButton rb_tip_integer;
+    private javax.swing.JRadioButton rb_tip_string;
+    private javax.swing.JTextField tf_NombredelCampo;
+    private javax.swing.JTextField tf_longitudelcampo;
     // End of variables declaration//GEN-END:variables
+    ArrayList<Campo> campos = new ArrayList();
 }
