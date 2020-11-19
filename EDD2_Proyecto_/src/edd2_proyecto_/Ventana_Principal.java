@@ -78,6 +78,13 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jt_ListaDeCampos = new javax.swing.JTable();
         jLabel10 = new javax.swing.JLabel();
+        jd_EliminarCampos = new javax.swing.JDialog();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jt_EliminarCampos = new javax.swing.JTable();
+        jb_RegresaDeEliminarCampos = new javax.swing.JButton();
+        jb_EliminarCampoSelec = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
         jb_Archivo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jb_Campos = new javax.swing.JButton();
@@ -138,6 +145,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
         );
 
         jb_BorrarCampos.setText("Borrar Campos");
+        jb_BorrarCampos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_BorrarCamposMouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel3.setText("Campos");
@@ -591,6 +603,83 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel11.setText("Campos Creados");
+
+        jt_EliminarCampos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Longitud", "Tipo", "Es Llave Primaria[s/n]"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jt_EliminarCampos);
+
+        jb_RegresaDeEliminarCampos.setText("Regresar");
+        jb_RegresaDeEliminarCampos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_RegresaDeEliminarCamposMouseClicked(evt);
+            }
+        });
+
+        jb_EliminarCampoSelec.setText("Eliminar");
+        jb_EliminarCampoSelec.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_EliminarCampoSelecMouseClicked(evt);
+            }
+        });
+
+        jLabel12.setText("Seleccion que campo quiere eliminar");
+
+        javax.swing.GroupLayout jd_EliminarCamposLayout = new javax.swing.GroupLayout(jd_EliminarCampos.getContentPane());
+        jd_EliminarCampos.getContentPane().setLayout(jd_EliminarCamposLayout);
+        jd_EliminarCamposLayout.setHorizontalGroup(
+            jd_EliminarCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_EliminarCamposLayout.createSequentialGroup()
+                .addComponent(jb_RegresaDeEliminarCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jb_EliminarCampoSelec, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_EliminarCamposLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addGap(201, 201, 201))
+            .addGroup(jd_EliminarCamposLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(jd_EliminarCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+        jd_EliminarCamposLayout.setVerticalGroup(
+            jd_EliminarCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_EliminarCamposLayout.createSequentialGroup()
+                .addComponent(jLabel11)
+                .addGap(8, 8, 8)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jd_EliminarCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jb_EliminarCampoSelec, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jb_RegresaDeEliminarCampos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Standard File Manager");
         setName("Standard File Manager"); // NOI18N
@@ -881,7 +970,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     private void jb_ListarCamposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ListarCamposMouseClicked
         DefaultTableModel model = (DefaultTableModel)jt_ListaDeCampos.getModel();
-        jt_Campos.setModel(new javax.swing.table.DefaultTableModel(
+        jt_ListaDeCampos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -925,6 +1014,92 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jd_ListarCampos.dispose();
         jd_Campos.setVisible(true);
     }//GEN-LAST:event_jb_RegresarDeListarCMouseClicked
+
+    private void jb_BorrarCamposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_BorrarCamposMouseClicked
+        DefaultTableModel model = (DefaultTableModel)jt_EliminarCampos.getModel();
+        jt_EliminarCampos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Longitud", "Tipo", "Es Llave Primaria[s/n]"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        for (int i = 0; i < campos.size(); i++) {
+            String type = campos.get(i).getTipo();
+            Object[] newRow = {campos.get(i).getNombre(), campos.get(i).getLongitud(),campos.get(i).getTipo(),type
+            
+            };
+            model.addRow(newRow);
+        }
+        
+        jt_EliminarCampos.setModel(model);
+        
+        jd_Campos.setVisible(false);
+        jd_EliminarCampos.pack();
+        jd_EliminarCampos.setModal(true);
+        jd_EliminarCampos.setLocationRelativeTo(this);
+        jd_EliminarCampos.setVisible(true);
+    }//GEN-LAST:event_jb_BorrarCamposMouseClicked
+
+    private void jb_EliminarCampoSelecMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_EliminarCampoSelecMouseClicked
+        int selected = jt_EliminarCampos.getSelectedRow();
+        campos.remove(selected);
+        
+        DefaultTableModel model = (DefaultTableModel)jt_EliminarCampos.getModel();
+        jt_EliminarCampos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Longitud", "Tipo", "Es Llave Primaria[s/n]"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        for (int i = 0; i < campos.size(); i++) {
+            String type = campos.get(i).getTipo();
+            Object[] newRow = {campos.get(i).getNombre(), campos.get(i).getLongitud(),campos.get(i).getTipo(),type
+            
+            };
+            model.addRow(newRow);
+        }
+        
+        jt_EliminarCampos.setModel(model);
+    }//GEN-LAST:event_jb_EliminarCampoSelecMouseClicked
+
+    private void jb_RegresaDeEliminarCamposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_RegresaDeEliminarCamposMouseClicked
+        jd_EliminarCampos.dispose();
+        jd_Campos.setVisible(true);
+    }//GEN-LAST:event_jb_RegresaDeEliminarCamposMouseClicked
 
     /**
      * @param args the command line arguments
@@ -977,6 +1152,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -987,18 +1164,21 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JButton jb_Archivo;
     private javax.swing.JButton jb_BorrarCampos;
     private javax.swing.JButton jb_CampoModificar;
     private javax.swing.JButton jb_Campos;
     private javax.swing.JButton jb_CrearCampo;
     private javax.swing.JButton jb_CrearIndice;
+    private javax.swing.JButton jb_EliminarCampoSelec;
     private javax.swing.JButton jb_Estandarizacion;
     private javax.swing.JButton jb_Indices;
     private javax.swing.JButton jb_ListarCampos;
     private javax.swing.JButton jb_ModificarCampos;
     private javax.swing.JButton jb_ReIndexarArchivos;
     private javax.swing.JButton jb_Registros;
+    private javax.swing.JButton jb_RegresaDeEliminarCampos;
     private javax.swing.JButton jb_RegresarDeCampos;
     private javax.swing.JButton jb_RegresarDeCrearCampo;
     private javax.swing.JButton jb_RegresarDeListarC;
@@ -1009,6 +1189,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_Archivo;
     private javax.swing.JDialog jd_Campos;
     private javax.swing.JDialog jd_CrearCampo;
+    private javax.swing.JDialog jd_EliminarCampos;
     private javax.swing.JDialog jd_Estandarizacion;
     private javax.swing.JDialog jd_ListarCampos;
     private javax.swing.JDialog jd_ModificarCampo;
@@ -1018,6 +1199,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jl_nameCampo;
     private javax.swing.JLabel jl_tipodevariable;
     private javax.swing.JTable jt_Campos;
+    private javax.swing.JTable jt_EliminarCampos;
     private javax.swing.JTable jt_ListaDeCampos;
     private javax.swing.JRadioButton rb_key_no;
     private javax.swing.JRadioButton rb_key_si;
