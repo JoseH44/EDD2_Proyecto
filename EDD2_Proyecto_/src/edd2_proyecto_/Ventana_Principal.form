@@ -10,12 +10,12 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButton7" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
-                      <Component id="jButton9" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
+                      <Component id="bt_Nuevo" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
+                      <Component id="bt_Cerrar" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="45" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButton8" alignment="0" pref="135" max="32767" attributes="0"/>
+                      <Component id="bt_Salvar" alignment="0" pref="135" max="32767" attributes="0"/>
                       <Component id="jButton10" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="49" max="32767" attributes="0"/>
@@ -34,13 +34,13 @@
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton7" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
-                      <Component id="jButton8" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
+                      <Component id="bt_Nuevo" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
+                      <Component id="bt_Salvar" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton10" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
-                      <Component id="jButton9" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
+                      <Component id="bt_Cerrar" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="40" max="32767" attributes="0"/>
               </Group>
@@ -56,20 +56,31 @@
             <Property name="text" type="java.lang.String" value="Archivo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton7">
+        <Component class="javax.swing.JButton" name="bt_Nuevo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nuevo Archivo"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_NuevoActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton8">
+        <Component class="javax.swing.JButton" name="bt_Salvar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Salvar Archivo"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_SalvarActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton9">
+        <Component class="javax.swing.JButton" name="bt_Cerrar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cerrar Archivo"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_CerrarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton10">
           <Properties>
@@ -158,6 +169,7 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jb_CrearCampoMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_CrearCampoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jb_ModificarCampos">
@@ -508,6 +520,7 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jb_TerminarCreacionCampoMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_TerminarCreacionCampoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_tip_string">
@@ -578,12 +591,17 @@
     </Component>
     <Component class="javax.swing.ButtonGroup" name="bg_LlavePrimaria">
     </Component>
+<<<<<<< HEAD
     <Container class="javax.swing.JDialog" name="jd_ModificarCampo">
+=======
+    <Container class="javax.swing.JDialog" name="jd_nombre">
+>>>>>>> 598e48cc8fde7261657725b48d1ed941e2e77f91
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
+<<<<<<< HEAD
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" pref="610" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
@@ -682,11 +700,24 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+=======
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="tf_nombreArchivo" min="-2" pref="205" max="-2" attributes="0"/>
+                  <EmptySpace pref="72" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
+>>>>>>> 598e48cc8fde7261657725b48d1ed941e2e77f91
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jb_RegresarDeListarC" min="-2" max="-2" attributes="0"/>
@@ -780,11 +811,23 @@
                       <Component id="jb_EliminarCampoSelec" max="32767" attributes="0"/>
                       <Component id="jb_RegresaDeEliminarCampos" max="32767" attributes="0"/>
                   </Group>
+=======
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_nombreArchivo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+>>>>>>> 598e48cc8fde7261657725b48d1ed941e2e77f91
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
+<<<<<<< HEAD
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -862,6 +905,23 @@
             <Property name="text" type="java.lang.String" value="Seleccion que campo quiere eliminar"/>
           </Properties>
         </Component>
+=======
+        <Component class="javax.swing.JLabel" name="jLabel8">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nombre del Archivo: "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tf_nombreArchivo">
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Aceptar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
+        </Component>
+>>>>>>> 598e48cc8fde7261657725b48d1ed941e2e77f91
       </SubComponents>
     </Container>
   </NonVisualComponents>
@@ -901,7 +961,7 @@
                   <Component id="jb_Registros" max="32767" attributes="0"/>
                   <Component id="jb_Estandarizacion" min="-2" pref="170" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jb_Indices" max="32767" attributes="0"/>
                   <Component id="jb_Campos" max="32767" attributes="0"/>
