@@ -1,9 +1,10 @@
 package edd2_proyecto_;
 import java.util.ArrayList;
-<<<<<<< HEAD
+import javax.swing.table.DefaultTableModel;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-=======
+
 import  java.io.BufferedWriter ;
 import  java.io.File ;
 import  java.io.FileNotFoundException ;
@@ -14,7 +15,7 @@ import  java.util.Scanner ;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
->>>>>>> 598e48cc8fde7261657725b48d1ed941e2e77f91
+
 public class Ventana_Principal extends javax.swing.JFrame {
 
     /**
@@ -80,7 +81,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jb_RegresarDeCrearCampo = new javax.swing.JButton();
         bg_TipoDeVariable = new javax.swing.ButtonGroup();
         bg_LlavePrimaria = new javax.swing.ButtonGroup();
-<<<<<<< HEAD
+
         jd_ModificarCampo = new javax.swing.JDialog();
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_Campos = new javax.swing.JTable();
@@ -99,12 +100,12 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jb_RegresaDeEliminarCampos = new javax.swing.JButton();
         jb_EliminarCampoSelec = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-=======
+
         jd_nombre = new javax.swing.JDialog();
         jLabel8 = new javax.swing.JLabel();
         tf_nombreArchivo = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
->>>>>>> 598e48cc8fde7261657725b48d1ed941e2e77f91
+
         jb_Archivo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jb_Campos = new javax.swing.JButton();
@@ -943,7 +944,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
        rb_tip_string.setSelected(true);
     }//GEN-LAST:event_jb_TerminarCreacionCampoMouseClicked
 
-<<<<<<< HEAD
+
     private void jb_ModificarCamposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ModificarCamposMouseClicked
         DefaultTableModel model = (DefaultTableModel)jt_Campos.getModel();
         jt_Campos.setModel(new javax.swing.table.DefaultTableModel(
@@ -1184,7 +1185,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jd_EliminarCampos.dispose();
         jd_Campos.setVisible(true);
     }//GEN-LAST:event_jb_RegresaDeEliminarCamposMouseClicked
-=======
+
     private void bt_NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_NuevoActionPerformed
         // TODO add your handling code here:
         jd_nombre.pack();
@@ -1242,7 +1243,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private void jb_TerminarCreacionCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_TerminarCreacionCampoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jb_TerminarCreacionCampoActionPerformed
->>>>>>> 598e48cc8fde7261657725b48d1ed941e2e77f91
+
 
     /**
      * @param args the command line arguments
@@ -1305,13 +1306,13 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-<<<<<<< HEAD
+
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-=======
->>>>>>> 598e48cc8fde7261657725b48d1ed941e2e77f91
+
+
     private javax.swing.JButton jb_Archivo;
     private javax.swing.JButton jb_BorrarCampos;
     private javax.swing.JButton jb_CampoModificar;
