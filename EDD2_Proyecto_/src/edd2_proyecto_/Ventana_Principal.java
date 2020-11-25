@@ -101,6 +101,10 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jd_DatosDelCampo = new javax.swing.JDialog();
         jLabel13 = new javax.swing.JLabel();
+        jd_nombre = new javax.swing.JDialog();
+        jButton1 = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        tf_nombreArchivo = new javax.swing.JTextField();
         jb_Archivo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jb_Campos = new javax.swing.JButton();
@@ -113,6 +117,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jLabel2.setText("Archivo");
 
         bt_Nuevo.setText("Nuevo Archivo");
+        bt_Nuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_NuevoActionPerformed(evt);
+            }
+        });
 
         bt_Salvar.setText("Salvar Archivo");
 
@@ -716,6 +725,43 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addContainerGap(297, Short.MAX_VALUE))
         );
 
+        jButton1.setText("Crear");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setText("Nombre del Archivo");
+
+        javax.swing.GroupLayout jd_nombreLayout = new javax.swing.GroupLayout(jd_nombre.getContentPane());
+        jd_nombre.getContentPane().setLayout(jd_nombreLayout);
+        jd_nombreLayout.setHorizontalGroup(
+            jd_nombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_nombreLayout.createSequentialGroup()
+                .addGroup(jd_nombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_nombreLayout.createSequentialGroup()
+                        .addGap(218, 218, 218)
+                        .addComponent(jButton1))
+                    .addGroup(jd_nombreLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel14)
+                        .addGap(30, 30, 30)
+                        .addComponent(tf_nombreArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(131, Short.MAX_VALUE))
+        );
+        jd_nombreLayout.setVerticalGroup(
+            jd_nombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_nombreLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jd_nombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(tf_nombreArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(22, 22, 22))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Standard File Manager");
         setName("Standard File Manager"); // NOI18N
@@ -1249,6 +1295,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_Cerrar;
     private javax.swing.JButton bt_Nuevo;
     private javax.swing.JButton bt_Salvar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
@@ -1262,6 +1309,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1304,6 +1352,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_ModificarCampo;
     private javax.swing.JDialog jd_Registros;
     private javax.swing.JDialog jd_indices;
+    private javax.swing.JDialog jd_nombre;
     private javax.swing.JLabel jl_longitud;
     private javax.swing.JLabel jl_nameCampo;
     private javax.swing.JLabel jl_tipodevariable;
@@ -1316,6 +1365,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JRadioButton rb_tip_string;
     private javax.swing.JTextField tf_NombredelCampo;
     private javax.swing.JTextField tf_longitudelcampo;
+    private javax.swing.JTextField tf_nombreArchivo;
     // End of variables declaration//GEN-END:variables
     ArrayList<Campo> campos = new ArrayList();
     Archivo currentFile;
