@@ -1,0 +1,1 @@
+{identidad:int[5],nombre:String[10],}
