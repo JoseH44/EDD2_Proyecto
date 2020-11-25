@@ -1166,29 +1166,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     private void jb_BorrarCamposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_BorrarCamposMouseClicked
         DefaultTableModel model = (DefaultTableModel)jt_EliminarCampos.getModel();
-        jt_EliminarCampos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nombre", "Longitud", "Tipo", "Es Llave Primaria[s/n]"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        
         for (int i = 0; i < campos.size(); i++) {
             String type = campos.get(i).getTipo();
             Object[] newRow = {campos.get(i).getNombre(), campos.get(i).getLongitud(),campos.get(i).getTipo(),type
@@ -1246,6 +1224,30 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_EliminarCampoSelecMouseClicked
 
     private void jb_RegresaDeEliminarCamposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_RegresaDeEliminarCamposMouseClicked
+        jt_EliminarCampos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Longitud", "Tipo", "Es Llave Primaria[s/n]"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        
         jd_EliminarCampos.dispose();
         jd_Campos.setVisible(true);
     }//GEN-LAST:event_jb_RegresaDeEliminarCamposMouseClicked
