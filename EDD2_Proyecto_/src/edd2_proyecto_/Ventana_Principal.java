@@ -51,11 +51,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jb_SalirdeCampos = new javax.swing.JButton();
         jd_Registros = new javax.swing.JDialog();
         jLabel4 = new javax.swing.JLabel();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
+        jb_IntroducirRegistros = new javax.swing.JButton();
+        jb_ModificarRegistros = new javax.swing.JButton();
+        jb_BuscarRegistros = new javax.swing.JButton();
+        jb_BorrarRegistros = new javax.swing.JButton();
+        jb_ListarRegistros = new javax.swing.JButton();
         jb_SalirDeRegistros = new javax.swing.JButton();
         jd_indices = new javax.swing.JDialog();
         jLabel5 = new javax.swing.JLabel();
@@ -63,8 +63,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jb_ReIndexarArchivos = new javax.swing.JButton();
         jd_Estandarizacion = new javax.swing.JDialog();
         jLabel6 = new javax.swing.JLabel();
-        jButton22 = new javax.swing.JButton();
-        jButton23 = new javax.swing.JButton();
+        jb_ExportarExcel = new javax.swing.JButton();
+        jb_ExportarlXMLconSch = new javax.swing.JButton();
         jd_CrearCampo = new javax.swing.JDialog();
         jl_nameCampo = new javax.swing.JLabel();
         tf_NombredelCampo = new javax.swing.JTextField();
@@ -115,6 +115,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         tf_nombreArchivo = new javax.swing.JTextField();
         bg_InfoTipoDatos = new javax.swing.ButtonGroup();
+        jd_IntroducirRegistros = new javax.swing.JDialog();
+        jd_ModificarRegistros = new javax.swing.JDialog();
+        jd_BuscarRegistros = new javax.swing.JDialog();
+        jd_BorrarRegistros = new javax.swing.JDialog();
+        jd_ListarRegistros = new javax.swing.JDialog();
         jb_Archivo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jb_Campos = new javax.swing.JButton();
@@ -261,15 +266,15 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel4.setText("Registros");
 
-        jButton15.setText("Introducir Registros");
+        jb_IntroducirRegistros.setText("Introducir Registros");
 
-        jButton16.setText("Modificar Registros");
+        jb_ModificarRegistros.setText("Modificar Registros");
 
-        jButton17.setText("Buscar Registros");
+        jb_BuscarRegistros.setText("Buscar Registros");
 
-        jButton18.setText("Borrar Registros");
+        jb_BorrarRegistros.setText("Borrar Registros");
 
-        jButton19.setText("Listar Registros");
+        jb_ListarRegistros.setText("Listar Registros");
 
         jb_SalirDeRegistros.setText("Salir");
         jb_SalirDeRegistros.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -289,13 +294,13 @@ public class Ventana_Principal extends javax.swing.JFrame {
             .addGroup(jd_RegistrosLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(jd_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jb_ListarRegistros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jb_BuscarRegistros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jb_IntroducirRegistros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(jd_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jb_ModificarRegistros, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jb_BorrarRegistros, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jb_SalirDeRegistros, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40))
         );
@@ -306,15 +311,15 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jd_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
-                    .addComponent(jButton16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jb_IntroducirRegistros, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                    .addComponent(jb_ModificarRegistros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jd_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton17, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                    .addComponent(jButton18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jb_BuscarRegistros, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(jb_BorrarRegistros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jd_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton19, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(jb_ListarRegistros, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                     .addComponent(jb_SalirDeRegistros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
@@ -356,9 +361,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel6.setText("Estandarización");
 
-        jButton22.setText("Exportar Excel");
+        jb_ExportarExcel.setText("Exportar Excel");
 
-        jButton23.setText("Exportar XML con Schema");
+        jb_ExportarlXMLconSch.setText("Exportar XML con Schema");
 
         javax.swing.GroupLayout jd_EstandarizacionLayout = new javax.swing.GroupLayout(jd_Estandarizacion.getContentPane());
         jd_Estandarizacion.getContentPane().setLayout(jd_EstandarizacionLayout);
@@ -366,9 +371,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
             jd_EstandarizacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_EstandarizacionLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jb_ExportarExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(jButton23)
+                .addComponent(jb_ExportarlXMLconSch)
                 .addGap(28, 28, 28))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_EstandarizacionLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -382,8 +387,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addGroup(jd_EstandarizacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jb_ExportarlXMLconSch, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jb_ExportarExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
@@ -836,6 +841,61 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(22, 22, 22))
+        );
+
+        javax.swing.GroupLayout jd_IntroducirRegistrosLayout = new javax.swing.GroupLayout(jd_IntroducirRegistros.getContentPane());
+        jd_IntroducirRegistros.getContentPane().setLayout(jd_IntroducirRegistrosLayout);
+        jd_IntroducirRegistrosLayout.setHorizontalGroup(
+            jd_IntroducirRegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jd_IntroducirRegistrosLayout.setVerticalGroup(
+            jd_IntroducirRegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jd_ModificarRegistrosLayout = new javax.swing.GroupLayout(jd_ModificarRegistros.getContentPane());
+        jd_ModificarRegistros.getContentPane().setLayout(jd_ModificarRegistrosLayout);
+        jd_ModificarRegistrosLayout.setHorizontalGroup(
+            jd_ModificarRegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jd_ModificarRegistrosLayout.setVerticalGroup(
+            jd_ModificarRegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jd_BuscarRegistrosLayout = new javax.swing.GroupLayout(jd_BuscarRegistros.getContentPane());
+        jd_BuscarRegistros.getContentPane().setLayout(jd_BuscarRegistrosLayout);
+        jd_BuscarRegistrosLayout.setHorizontalGroup(
+            jd_BuscarRegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jd_BuscarRegistrosLayout.setVerticalGroup(
+            jd_BuscarRegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jd_BorrarRegistrosLayout = new javax.swing.GroupLayout(jd_BorrarRegistros.getContentPane());
+        jd_BorrarRegistros.getContentPane().setLayout(jd_BorrarRegistrosLayout);
+        jd_BorrarRegistrosLayout.setHorizontalGroup(
+            jd_BorrarRegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jd_BorrarRegistrosLayout.setVerticalGroup(
+            jd_BorrarRegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jd_ListarRegistrosLayout = new javax.swing.GroupLayout(jd_ListarRegistros.getContentPane());
+        jd_ListarRegistros.getContentPane().setLayout(jd_ListarRegistrosLayout);
+        jd_ListarRegistrosLayout.setHorizontalGroup(
+            jd_ListarRegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jd_ListarRegistrosLayout.setVerticalGroup(
+            jd_ListarRegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1407,13 +1467,6 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_Salvar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1437,16 +1490,23 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JButton jb_Archivo;
     private javax.swing.JButton jb_BorrarCampos;
+    private javax.swing.JButton jb_BorrarRegistros;
+    private javax.swing.JButton jb_BuscarRegistros;
     private javax.swing.JButton jb_CampoModificar;
     private javax.swing.JButton jb_Campos;
     private javax.swing.JButton jb_CrearCampo;
     private javax.swing.JButton jb_CrearIndice;
     private javax.swing.JButton jb_EliminarCampoSelec;
     private javax.swing.JButton jb_Estandarizacion;
+    private javax.swing.JButton jb_ExportarExcel;
+    private javax.swing.JButton jb_ExportarlXMLconSch;
     private javax.swing.JButton jb_Indices;
     private javax.swing.JButton jb_InfoAceptarCambiosDatos;
+    private javax.swing.JButton jb_IntroducirRegistros;
     private javax.swing.JButton jb_ListarCampos;
+    private javax.swing.JButton jb_ListarRegistros;
     private javax.swing.JButton jb_ModificarCampos;
+    private javax.swing.JButton jb_ModificarRegistros;
     private javax.swing.JButton jb_ReIndexarArchivos;
     private javax.swing.JButton jb_Registros;
     private javax.swing.JButton jb_RegresaDeEliminarCampos;
@@ -1458,13 +1518,18 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JButton jb_SalirdeCampos;
     private javax.swing.JButton jb_TerminarCreacionCampo;
     private javax.swing.JDialog jd_Archivo;
+    private javax.swing.JDialog jd_BorrarRegistros;
+    private javax.swing.JDialog jd_BuscarRegistros;
     private javax.swing.JDialog jd_Campos;
     private javax.swing.JDialog jd_CrearCampo;
     private javax.swing.JDialog jd_DatosDelCampo;
     private javax.swing.JDialog jd_EliminarCampos;
     private javax.swing.JDialog jd_Estandarizacion;
+    private javax.swing.JDialog jd_IntroducirRegistros;
     private javax.swing.JDialog jd_ListarCampos;
+    private javax.swing.JDialog jd_ListarRegistros;
     private javax.swing.JDialog jd_ModificarCampo;
+    private javax.swing.JDialog jd_ModificarRegistros;
     private javax.swing.JDialog jd_Registros;
     private javax.swing.JDialog jd_indices;
     private javax.swing.JDialog jd_nombre;

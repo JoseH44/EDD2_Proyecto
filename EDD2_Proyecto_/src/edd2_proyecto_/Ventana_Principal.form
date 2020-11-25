@@ -202,14 +202,14 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButton19" max="32767" attributes="0"/>
-                      <Component id="jButton17" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jButton15" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jb_ListarRegistros" max="32767" attributes="0"/>
+                      <Component id="jb_BuscarRegistros" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jb_IntroducirRegistros" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="51" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButton16" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
-                      <Component id="jButton18" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
+                      <Component id="jb_ModificarRegistros" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
+                      <Component id="jb_BorrarRegistros" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
                       <Component id="jb_SalirDeRegistros" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
@@ -223,17 +223,17 @@
                   <Component id="jLabel4" min="-2" pref="44" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButton15" pref="53" max="32767" attributes="0"/>
-                      <Component id="jButton16" max="32767" attributes="0"/>
+                      <Component id="jb_IntroducirRegistros" pref="53" max="32767" attributes="0"/>
+                      <Component id="jb_ModificarRegistros" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButton17" pref="50" max="32767" attributes="0"/>
-                      <Component id="jButton18" max="32767" attributes="0"/>
+                      <Component id="jb_BuscarRegistros" pref="50" max="32767" attributes="0"/>
+                      <Component id="jb_BorrarRegistros" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButton19" pref="50" max="32767" attributes="0"/>
+                      <Component id="jb_ListarRegistros" pref="50" max="32767" attributes="0"/>
                       <Component id="jb_SalirDeRegistros" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="37" max="32767" attributes="0"/>
@@ -250,27 +250,27 @@
             <Property name="text" type="java.lang.String" value="Registros"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton15">
+        <Component class="javax.swing.JButton" name="jb_IntroducirRegistros">
           <Properties>
             <Property name="text" type="java.lang.String" value="Introducir Registros"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton16">
+        <Component class="javax.swing.JButton" name="jb_ModificarRegistros">
           <Properties>
             <Property name="text" type="java.lang.String" value="Modificar Registros"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton17">
+        <Component class="javax.swing.JButton" name="jb_BuscarRegistros">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar Registros"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton18">
+        <Component class="javax.swing.JButton" name="jb_BorrarRegistros">
           <Properties>
             <Property name="text" type="java.lang.String" value="Borrar Registros"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton19">
+        <Component class="javax.swing.JButton" name="jb_ListarRegistros">
           <Properties>
             <Property name="text" type="java.lang.String" value="Listar Registros"/>
           </Properties>
@@ -347,9 +347,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                  <Component id="jButton22" min="-2" pref="160" max="-2" attributes="0"/>
+                  <Component id="jb_ExportarExcel" min="-2" pref="160" max="-2" attributes="0"/>
                   <EmptySpace pref="55" max="32767" attributes="0"/>
-                  <Component id="jButton23" min="-2" max="-2" attributes="0"/>
+                  <Component id="jb_ExportarlXMLconSch" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
@@ -366,8 +366,8 @@
                   <Component id="jLabel6" min="-2" pref="31" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton23" alignment="3" min="-2" pref="61" max="-2" attributes="0"/>
-                      <Component id="jButton22" alignment="3" min="-2" pref="61" max="-2" attributes="0"/>
+                      <Component id="jb_ExportarlXMLconSch" alignment="3" min="-2" pref="61" max="-2" attributes="0"/>
+                      <Component id="jb_ExportarExcel" alignment="3" min="-2" pref="61" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="41" max="32767" attributes="0"/>
               </Group>
@@ -383,12 +383,12 @@
             <Property name="text" type="java.lang.String" value="Estandarizaci&#xf3;n"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton22">
+        <Component class="javax.swing.JButton" name="jb_ExportarExcel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Exportar Excel"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton23">
+        <Component class="javax.swing.JButton" name="jb_ExportarlXMLconSch">
           <Properties>
             <Property name="text" type="java.lang.String" value="Exportar XML con Schema"/>
           </Properties>
@@ -1060,6 +1060,81 @@
     </Container>
     <Component class="javax.swing.ButtonGroup" name="bg_InfoTipoDatos">
     </Component>
+    <Container class="javax.swing.JDialog" name="jd_IntroducirRegistros">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
+    <Container class="javax.swing.JDialog" name="jd_ModificarRegistros">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
+    <Container class="javax.swing.JDialog" name="jd_BuscarRegistros">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
+    <Container class="javax.swing.JDialog" name="jd_BorrarRegistros">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
+    <Container class="javax.swing.JDialog" name="jd_ListarRegistros">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
