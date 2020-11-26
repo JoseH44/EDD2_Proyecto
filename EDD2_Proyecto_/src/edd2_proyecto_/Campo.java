@@ -4,17 +4,19 @@
  * and open the template in the editor.
  */
 package edd2_proyecto_;
-
+import java.io.Serializable;
 /**
  *
  * @author jrdjh
  */
-public class Campo {
+public class Campo implements Serializable{
     String nombre;
     String tipo;
     boolean llave_primaria;
     int longitud;
 
+     private static final long SerialVersionUID=777L;
+    
     public Campo() {
     }
 
