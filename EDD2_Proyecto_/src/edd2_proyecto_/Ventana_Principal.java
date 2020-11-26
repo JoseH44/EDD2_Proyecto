@@ -75,12 +75,12 @@ public class Ventana_Principal extends javax.swing.JFrame {
         rb_tip_string = new javax.swing.JRadioButton();
         rb_tip_integer = new javax.swing.JRadioButton();
         jl_longitud = new javax.swing.JLabel();
-        tf_longitudelcampo = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         rb_key_si = new javax.swing.JRadioButton();
         rb_key_no = new javax.swing.JRadioButton();
         jLabel9 = new javax.swing.JLabel();
         jb_RegresarDeCrearCampo = new javax.swing.JButton();
+        sp_LongitudCampo = new javax.swing.JSpinner();
         bg_TipoDeVariable = new javax.swing.ButtonGroup();
         bg_LlavePrimaria = new javax.swing.ButtonGroup();
         jd_ModificarCampo = new javax.swing.JDialog();
@@ -111,7 +111,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         rb_InfoIntegerCampo = new javax.swing.JRadioButton();
         js_InfoLongitudCampo = new javax.swing.JSpinner();
         jb_InfoAceptarCambiosDatos = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jb_RegresarDeDatosCampo = new javax.swing.JButton();
         jd_nombre = new javax.swing.JDialog();
         jButton1 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
@@ -471,9 +471,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jd_CrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_CrearCampoLayout.createSequentialGroup()
-                        .addGroup(jd_CrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_longitudelcampo, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_NombredelCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tf_NombredelCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                         .addGroup(jd_CrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jd_CrearCampoLayout.createSequentialGroup()
@@ -483,8 +481,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
                             .addComponent(jLabel7))
                         .addGap(78, 78, 78))
                     .addGroup(jd_CrearCampoLayout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(jLabel9)
+                        .addGroup(jd_CrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jd_CrearCampoLayout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addComponent(jLabel9))
+                            .addComponent(sp_LongitudCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jd_CrearCampoLayout.createSequentialGroup()
                 .addGap(104, 104, 104)
@@ -521,7 +522,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                         .addGap(127, 127, 127)
                         .addGroup(jd_CrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jl_longitud)
-                            .addComponent(tf_longitudelcampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(sp_LongitudCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(31, 31, 31)
                 .addGroup(jd_CrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jl_tipodevariable)
@@ -770,10 +771,10 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Regresar");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jb_RegresarDeDatosCampo.setText("Regresar");
+        jb_RegresarDeDatosCampo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+                jb_RegresarDeDatosCampoMouseClicked(evt);
             }
         });
 
@@ -806,7 +807,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rb_InfoIntegerCampo))
                             .addComponent(jLabel17)
-                            .addComponent(jButton3))))
+                            .addComponent(jb_RegresarDeDatosCampo))))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         jd_DatosDelCampoLayout.setVerticalGroup(
@@ -830,7 +831,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(jd_DatosDelCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_InfoAceptarCambiosDatos)
-                    .addComponent(jButton3))
+                    .addComponent(jb_RegresarDeDatosCampo))
                 .addContainerGap())
         );
 
@@ -1084,7 +1085,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     private void jb_TerminarCreacionCampoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_TerminarCreacionCampoMouseClicked
        String nombre = tf_NombredelCampo.getText();
-       int longitud = Integer.parseInt(tf_longitudelcampo.getText()) ;
+       int longitud;
+       //newLongitud = (int) js_InfoLongitudCampo.getValue();
        boolean key;
        
        if(rb_key_no.isSelected()){
@@ -1092,6 +1094,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
        }else{
            key = true;
        }
+       
+       longitud = (int) sp_LongitudCampo.getValue();
           
        if(rb_tip_integer.isSelected()){
            campos.add(new Campo(nombre, "int", key, longitud));
@@ -1101,7 +1105,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
        }
        
        tf_NombredelCampo.setText("");
-       tf_longitudelcampo.setText("");
+       sp_LongitudCampo.setValue(0);
        rb_key_no.setSelected(true);
        rb_tip_string.setSelected(true);
     }//GEN-LAST:event_jb_TerminarCreacionCampoMouseClicked
@@ -1339,64 +1343,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jd_EliminarCampos.dispose();
         jd_Campos.setVisible(true);
     }//GEN-LAST:event_jb_RegresaDeEliminarCamposMouseClicked
-
-    private void jb_TerminarCreacionCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_TerminarCreacionCampoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jb_TerminarCreacionCampoActionPerformed
-
-
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        jd_DatosDelCampo.dispose();
-        jd_ModificarCampo.setVisible(true);
-    }//GEN-LAST:event_jButton3MouseClicked
-
-    private void jb_InfoAceptarCambiosDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_InfoAceptarCambiosDatosMouseClicked
-  /*      DefaultTableModel model = (DefaultTableModel) jt_Campos.getModel();
-        int indice = jt_Campos.getSelectedRow();
-        int cont = 0;
-        
-        String newNombre, newTipo;
-        int newLongitud;
-        
-       newNombre = tf_InfoNombreCampo.getText();
-        newLongitud = (int) js_InfoLongitudCampo.getValue();
-        
-        if(rb_InfoStringCampo.isSelected())
-            newTipo = "String";
-        else
-            newTipo = "int";
-        
-        
-        if(!newNombre.equals(campos.get(indice).getNombre())){
-            campos.get(indice).setNombre(newNombre);
-            jt_Campos.setValueAt(newNombre, indice, 0);
-            cont++;
-        }
-            
-        if(!newTipo.equals(campos.get(indice).getTipo())){
-            campos.get(indice).setTipo(newTipo);
-            jt_Campos.setValueAt(newTipo, indice, 2);
-            cont++;
-            
-        }
-        
-        if(newLongitud != campos.get(indice).getLongitud()){
-            campos.get(indice).setLongitud(newLongitud);
-            jt_Campos.setValueAt(newLongitud, indice, 1);
-            cont++;
-        }
-        
-        
-        if(cont > 0)
-            JOptionPane.showMessageDialog(jd_DatosDelCampo, "Datos Modificados Correctamente");
-        else
-            JOptionPane.showMessageDialog(jd_DatosDelCampo, "No se ha Modificado Ningún Dato");
-            
-        jd_DatosDelCampo.dispose();
-        jd_ModificarCampo.setVisible(true);
-        */
-    }//GEN-LAST:event_jb_InfoAceptarCambiosDatosMouseClicked
-
+                                     
     private void bt_NuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_NuevoMouseClicked
         // TODO add your handling code here:
         jd_nombre.pack();
@@ -1470,14 +1417,12 @@ public class Ventana_Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_bt_CargarMouseClicked
 
-
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+    private void jb_RegresarDeDatosCampoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_RegresarDeDatosCampoMouseClicked
         jd_DatosDelCampo.dispose();
         jd_ModificarCampo.setVisible(true);
-    }//GEN-LAST:event_jButton3MouseClicked
+    }//GEN-LAST:event_jb_RegresarDeDatosCampoMouseClicked
 
     private void jb_InfoAceptarCambiosDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_InfoAceptarCambiosDatosMouseClicked
-        DefaultTableModel model = (DefaultTableModel) jt_Campos.getModel();
         int indice = jt_Campos.getSelectedRow();
         int cont = 0;
         
@@ -1520,10 +1465,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             
         jd_DatosDelCampo.dispose();
         jd_ModificarCampo.setVisible(true);
-        
     }//GEN-LAST:event_jb_InfoAceptarCambiosDatosMouseClicked
-
-
     /**
      * @param args the command line arguments
      */
@@ -1569,7 +1511,6 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_Salvar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1614,6 +1555,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JButton jb_RegresaDeEliminarCampos;
     private javax.swing.JButton jb_RegresarDeCampos;
     private javax.swing.JButton jb_RegresarDeCrearCampo;
+    private javax.swing.JButton jb_RegresarDeDatosCampo;
     private javax.swing.JButton jb_RegresarDeListarC;
     private javax.swing.JButton jb_Salir1;
     private javax.swing.JButton jb_SalirDeRegistros;
@@ -1648,9 +1590,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JRadioButton rb_key_si;
     private javax.swing.JRadioButton rb_tip_integer;
     private javax.swing.JRadioButton rb_tip_string;
+    private javax.swing.JSpinner sp_LongitudCampo;
     private javax.swing.JTextField tf_InfoNombreCampo;
     private javax.swing.JTextField tf_NombredelCampo;
-    private javax.swing.JTextField tf_longitudelcampo;
     private javax.swing.JTextField tf_nombreArchivo;
     // End of variables declaration//GEN-END:variables
     ArrayList<Campo> campos = new ArrayList();
