@@ -14,6 +14,7 @@ import  java.text.ParseException ;
 import  java.util.Scanner ;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 public class Ventana_Principal extends javax.swing.JFrame {
@@ -42,6 +43,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         bt_Salvar = new javax.swing.JButton();
         bt_Cerrar = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
+        bt_Cargar = new javax.swing.JButton();
         jd_Campos = new javax.swing.JDialog();
         jb_BorrarCampos = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -132,20 +134,39 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jLabel2.setText("Archivo");
 
         bt_Nuevo.setText("Nuevo Archivo");
-        bt_Nuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_NuevoActionPerformed(evt);
+        bt_Nuevo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_NuevoMouseClicked(evt);
             }
         });
 
         bt_Salvar.setText("Salvar Archivo");
+        bt_Salvar.setEnabled(false);
+        bt_Salvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_SalvarMouseClicked(evt);
+            }
+        });
 
         bt_Cerrar.setText("Cerrar Archivo");
+        bt_Cerrar.setEnabled(false);
+        bt_Cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_CerrarMouseClicked(evt);
+            }
+        });
 
-        jButton10.setText("Salir");
+        jButton10.setText("Regresar");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
+            }
+        });
+
+        bt_Cargar.setText("Cargar Archivo");
+        bt_Cargar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_CargarMouseClicked(evt);
             }
         });
 
@@ -153,20 +174,25 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jd_Archivo.getContentPane().setLayout(jd_ArchivoLayout);
         jd_ArchivoLayout.setHorizontalGroup(
             jd_ArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jd_ArchivoLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(jd_ArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bt_Nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_Cerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addGroup(jd_ArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(bt_Salvar, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(49, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_ArchivoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(132, 132, 132))
+            .addGroup(jd_ArchivoLayout.createSequentialGroup()
+                .addGroup(jd_ArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_ArchivoLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(jd_ArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bt_Nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bt_Cerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43)
+                        .addGroup(jd_ArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bt_Cargar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bt_Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jd_ArchivoLayout.createSequentialGroup()
+                        .addGap(154, 154, 154)
+                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         jd_ArchivoLayout.setVerticalGroup(
             jd_ArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,12 +202,14 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jd_ArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bt_Nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bt_Cargar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jd_ArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_Cerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                    .addComponent(bt_Cerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jb_BorrarCampos.setText("Borrar Campos");
@@ -807,9 +835,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
         );
 
         jButton1.setText("Crear");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
             }
         });
 
@@ -1312,15 +1340,90 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jd_Campos.setVisible(true);
     }//GEN-LAST:event_jb_RegresaDeEliminarCamposMouseClicked
 
-    private void bt_NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_NuevoActionPerformed
+    private void jb_TerminarCreacionCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_TerminarCreacionCampoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_TerminarCreacionCampoActionPerformed
+
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        jd_DatosDelCampo.dispose();
+        jd_ModificarCampo.setVisible(true);
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jb_InfoAceptarCambiosDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_InfoAceptarCambiosDatosMouseClicked
+  /*      DefaultTableModel model = (DefaultTableModel) jt_Campos.getModel();
+        int indice = jt_Campos.getSelectedRow();
+        int cont = 0;
+        
+        String newNombre, newTipo;
+        int newLongitud;
+        
+       newNombre = tf_InfoNombreCampo.getText();
+        newLongitud = (int) js_InfoLongitudCampo.getValue();
+        
+        if(rb_InfoStringCampo.isSelected())
+            newTipo = "String";
+        else
+            newTipo = "int";
+        
+        
+        if(!newNombre.equals(campos.get(indice).getNombre())){
+            campos.get(indice).setNombre(newNombre);
+            jt_Campos.setValueAt(newNombre, indice, 0);
+            cont++;
+        }
+            
+        if(!newTipo.equals(campos.get(indice).getTipo())){
+            campos.get(indice).setTipo(newTipo);
+            jt_Campos.setValueAt(newTipo, indice, 2);
+            cont++;
+            
+        }
+        
+        if(newLongitud != campos.get(indice).getLongitud()){
+            campos.get(indice).setLongitud(newLongitud);
+            jt_Campos.setValueAt(newLongitud, indice, 1);
+            cont++;
+        }
+        
+        
+        if(cont > 0)
+            JOptionPane.showMessageDialog(jd_DatosDelCampo, "Datos Modificados Correctamente");
+        else
+            JOptionPane.showMessageDialog(jd_DatosDelCampo, "No se ha Modificado Ningún Dato");
+            
+        jd_DatosDelCampo.dispose();
+        jd_ModificarCampo.setVisible(true);
+        */
+    }//GEN-LAST:event_jb_InfoAceptarCambiosDatosMouseClicked
+
+    private void bt_NuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_NuevoMouseClicked
         // TODO add your handling code here:
         jd_nombre.pack();
         jd_nombre.setModal(true);
         jd_nombre.setLocationRelativeTo(this);
         jd_nombre.setVisible(true);
-    }//GEN-LAST:event_bt_NuevoActionPerformed
+    }//GEN-LAST:event_bt_NuevoMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bt_SalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_SalvarMouseClicked
+        // TODO add your handling code here:
+        currentFile.setlistaCampo(campos);
+        currentFile.escribirArchivo();
+        JOptionPane.showMessageDialog(this, "El archivo se guardo exitosamente!");
+        
+    }//GEN-LAST:event_bt_SalvarMouseClicked
+
+    private void bt_CerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_CerrarMouseClicked
+        // TODO add your handling code here:
+        currentFile = null;
+        campos.clear();
+        bt_Cerrar.setEnabled(false);
+        bt_Salvar.setEnabled(false);
+        bt_Nuevo.setEnabled(true);
+        bt_Cargar.setEnabled(true);
+    }//GEN-LAST:event_bt_CerrarMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         
         if(tf_nombreArchivo.getText().equals(""))
@@ -1331,44 +1434,42 @@ public class Ventana_Principal extends javax.swing.JFrame {
         {
             String nombre = tf_nombreArchivo.getText();
             try {
-                currentFile = new Archivo("./" + nombre + ".txt");
+                currentFile = new Archivo("./" + nombre + ".aajs");
             } catch (IOException ex) {
             }
             bt_Cerrar.setEnabled(true);
             bt_Salvar.setEnabled(true);
             bt_Nuevo.setEnabled(false);
+            bt_Cargar.setEnabled(false);
             JOptionPane.showMessageDialog(this, "El Archivo se creo exitosamente");
             jd_nombre.dispose();
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton1MouseClicked
 
-    private void bt_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_SalvarActionPerformed
+    private void bt_CargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_CargarMouseClicked
         // TODO add your handling code here:
-        currentFile.setlistaCampo(campos);
-        try {
-            currentFile.escribirArchivo();
-        } catch (IOException ex) {
-            
-        }
-        JOptionPane.showMessageDialog(this, "El archivo se guardo exitosamente!");
+        JFileChooser fc = new JFileChooser();
         
-    }//GEN-LAST:event_bt_SalvarActionPerformed
+        int seleccion = fc.showOpenDialog(this);
+        
+        if(seleccion == JFileChooser.APPROVE_OPTION)
+        {
+            File file = fc.getSelectedFile();
+            currentFile = new Archivo(file);
+            try {
+                currentFile.cargarArchivo();
+            } catch (IOException ex) {
+                Logger.getLogger(Ventana_Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            campos = currentFile.getListaCampo();
+            bt_Cerrar.setEnabled(true);
+            bt_Salvar.setEnabled(true);
+            bt_Nuevo.setEnabled(false);
+            bt_Cargar.setEnabled(false);
+        }
+        
+    }//GEN-LAST:event_bt_CargarMouseClicked
 
-    private void bt_CerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_CerrarActionPerformed
-        // TODO add your handling code here:
-        currentFile = null;
-        bt_Cerrar.setEnabled(false);
-        bt_Salvar.setEnabled(false);
-        bt_Nuevo.setEnabled(true);
-    }//GEN-LAST:event_bt_CerrarActionPerformed
-
-    private void jb_CrearCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_CrearCampoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jb_CrearCampoActionPerformed
-
-    private void jb_TerminarCreacionCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_TerminarCreacionCampoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jb_TerminarCreacionCampoActionPerformed
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         jd_DatosDelCampo.dispose();
@@ -1462,6 +1563,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.ButtonGroup bg_InfoTipoDatos;
     private javax.swing.ButtonGroup bg_LlavePrimaria;
     private javax.swing.ButtonGroup bg_TipoDeVariable;
+    private javax.swing.JButton bt_Cargar;
     private javax.swing.JButton bt_Cerrar;
     private javax.swing.JButton bt_Nuevo;
     private javax.swing.JButton bt_Salvar;
