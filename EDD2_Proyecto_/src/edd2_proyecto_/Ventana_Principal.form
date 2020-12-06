@@ -228,14 +228,14 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButton19" max="32767" attributes="0"/>
-                      <Component id="jButton17" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jButton15" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jb_ListarRegistros" max="32767" attributes="0"/>
+                      <Component id="jb_BuscarRegistros" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jb_IntroducirRegistros" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="51" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButton16" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
-                      <Component id="jButton18" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
+                      <Component id="jb_ModificarRegistros" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
+                      <Component id="jb_BorrarRegistros" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
                       <Component id="jb_SalirDeRegistros" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
@@ -249,17 +249,17 @@
                   <Component id="jLabel4" min="-2" pref="44" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButton15" pref="53" max="32767" attributes="0"/>
-                      <Component id="jButton16" max="32767" attributes="0"/>
+                      <Component id="jb_IntroducirRegistros" pref="53" max="32767" attributes="0"/>
+                      <Component id="jb_ModificarRegistros" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButton17" pref="50" max="32767" attributes="0"/>
-                      <Component id="jButton18" max="32767" attributes="0"/>
+                      <Component id="jb_BuscarRegistros" pref="50" max="32767" attributes="0"/>
+                      <Component id="jb_BorrarRegistros" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButton19" pref="50" max="32767" attributes="0"/>
+                      <Component id="jb_ListarRegistros" pref="50" max="32767" attributes="0"/>
                       <Component id="jb_SalirDeRegistros" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="37" max="32767" attributes="0"/>
@@ -276,27 +276,27 @@
             <Property name="text" type="java.lang.String" value="Registros"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton15">
+        <Component class="javax.swing.JButton" name="jb_IntroducirRegistros">
           <Properties>
             <Property name="text" type="java.lang.String" value="Introducir Registros"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton16">
+        <Component class="javax.swing.JButton" name="jb_ModificarRegistros">
           <Properties>
             <Property name="text" type="java.lang.String" value="Modificar Registros"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton17">
+        <Component class="javax.swing.JButton" name="jb_BuscarRegistros">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar Registros"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton18">
+        <Component class="javax.swing.JButton" name="jb_BorrarRegistros">
           <Properties>
             <Property name="text" type="java.lang.String" value="Borrar Registros"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton19">
+        <Component class="javax.swing.JButton" name="jb_ListarRegistros">
           <Properties>
             <Property name="text" type="java.lang.String" value="Listar Registros"/>
           </Properties>
@@ -373,9 +373,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                  <Component id="jButton22" min="-2" pref="160" max="-2" attributes="0"/>
+                  <Component id="jb_ExportarExcel" min="-2" pref="160" max="-2" attributes="0"/>
                   <EmptySpace pref="55" max="32767" attributes="0"/>
-                  <Component id="jButton23" min="-2" max="-2" attributes="0"/>
+                  <Component id="jb_ExportarlXMLconSch" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
@@ -392,8 +392,8 @@
                   <Component id="jLabel6" min="-2" pref="31" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton23" alignment="3" min="-2" pref="61" max="-2" attributes="0"/>
-                      <Component id="jButton22" alignment="3" min="-2" pref="61" max="-2" attributes="0"/>
+                      <Component id="jb_ExportarlXMLconSch" alignment="3" min="-2" pref="61" max="-2" attributes="0"/>
+                      <Component id="jb_ExportarExcel" alignment="3" min="-2" pref="61" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="41" max="32767" attributes="0"/>
               </Group>
@@ -409,12 +409,12 @@
             <Property name="text" type="java.lang.String" value="Estandarizaci&#xf3;n"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton22">
+        <Component class="javax.swing.JButton" name="jb_ExportarExcel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Exportar Excel"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton23">
+        <Component class="javax.swing.JButton" name="jb_ExportarlXMLconSch">
           <Properties>
             <Property name="text" type="java.lang.String" value="Exportar XML con Schema"/>
           </Properties>
@@ -435,10 +435,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tf_longitudelcampo" min="-2" pref="96" max="-2" attributes="0"/>
-                              <Component id="tf_NombredelCampo" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="tf_NombredelCampo" min="-2" pref="168" max="-2" attributes="0"/>
                           <EmptySpace pref="98" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
@@ -450,9 +447,14 @@
                           </Group>
                           <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="sp_LongitudCampo" alignment="0" min="-2" pref="57" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -498,7 +500,7 @@
                           <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jl_longitud" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tf_longitudelcampo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="sp_LongitudCampo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -561,8 +563,6 @@
             <Property name="text" type="java.lang.String" value="Longitud del campo:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_longitudelcampo">
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
             <Property name="text" type="java.lang.String" value="Es llave primaria?"/>
@@ -600,6 +600,8 @@
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jb_RegresarDeCrearCampoMouseClicked"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="sp_LongitudCampo">
         </Component>
       </SubComponents>
     </Container>
@@ -898,10 +900,41 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="183" max="-2" attributes="0"/>
-                  <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="198" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="js_InfoLongitudCampo" min="-2" pref="51" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
+                          <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jb_InfoAceptarCambiosDatos" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="tf_InfoNombreCampo" min="-2" pref="127" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="rb_InfoStringCampo" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="rb_InfoIntegerCampo" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                              <Component id="jb_RegresarDeDatosCampo" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="62" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -910,7 +943,28 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="297" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_InfoNombreCampo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="rb_InfoStringCampo" min="-2" max="-2" attributes="0"/>
+                      <Component id="rb_InfoIntegerCampo" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="js_InfoLongitudCampo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="28" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jb_InfoAceptarCambiosDatos" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jb_RegresarDeDatosCampo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -923,6 +977,57 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Datos del Campo"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel15">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nombre:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel16">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Longitud:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel17">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Tipo:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tf_InfoNombreCampo">
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_InfoStringCampo">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="bg_InfoTipoDatos"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="String"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_InfoIntegerCampo">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="bg_InfoTipoDatos"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Integer"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="js_InfoLongitudCampo">
+        </Component>
+        <Component class="javax.swing.JButton" name="jb_InfoAceptarCambiosDatos">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Aceptar Cambios"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jb_InfoAceptarCambiosDatosMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jb_RegresarDeDatosCampo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Regresar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jb_RegresarDeDatosCampoMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -980,6 +1085,83 @@
         <Component class="javax.swing.JTextField" name="tf_nombreArchivo">
         </Component>
       </SubComponents>
+    </Container>
+    <Component class="javax.swing.ButtonGroup" name="bg_InfoTipoDatos">
+    </Component>
+    <Container class="javax.swing.JDialog" name="jd_IntroducirRegistros">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
+    <Container class="javax.swing.JDialog" name="jd_ModificarRegistros">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
+    <Container class="javax.swing.JDialog" name="jd_BuscarRegistros">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
+    <Container class="javax.swing.JDialog" name="jd_BorrarRegistros">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
+    <Container class="javax.swing.JDialog" name="jd_ListarRegistros">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
     </Container>
   </NonVisualComponents>
   <Properties>
