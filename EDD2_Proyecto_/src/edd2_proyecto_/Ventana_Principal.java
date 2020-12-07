@@ -130,6 +130,10 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jb_Estandarizacion = new javax.swing.JButton();
         jb_Salir1 = new javax.swing.JButton();
 
+        jd_Archivo.setBackground(new java.awt.Color(0, 0, 204));
+        jd_Archivo.setForeground(new java.awt.Color(0, 0, 204));
+        jd_Archivo.setUndecorated(true);
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel2.setText("Archivo");
 
@@ -212,6 +216,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jd_Campos.setUndecorated(true);
+
         jb_BorrarCampos.setText("Borrar Campos");
         jb_BorrarCampos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -291,6 +297,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
+        jd_Registros.setUndecorated(true);
+
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel4.setText("Registros");
 
@@ -352,6 +360,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
+        jd_indices.setUndecorated(true);
+
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel5.setText("Índices");
 
@@ -386,6 +396,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addContainerGap(52, Short.MAX_VALUE))
         );
 
+        jd_Estandarizacion.setUndecorated(true);
+
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel6.setText("Estandarización");
 
@@ -419,6 +431,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
                     .addComponent(jb_ExportarExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
+
+        jd_CrearCampo.setBackground(new java.awt.Color(0, 0, 255));
+        jd_CrearCampo.setUndecorated(true);
 
         jl_nameCampo.setText("Nombre del campo:");
 
@@ -535,6 +550,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addGap(21, 21, 21))
         );
 
+        jd_ModificarCampo.setUndecorated(true);
+
         jt_Campos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -610,6 +627,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jd_ListarCampos.setUndecorated(true);
+
         jb_RegresarDeListarC.setText("Regresar");
         jb_RegresarDeListarC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -671,6 +690,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        jd_EliminarCampos.setUndecorated(true);
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel11.setText("Campos Creados");
@@ -748,6 +769,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                     .addComponent(jb_EliminarCampoSelec, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jb_RegresaDeEliminarCampos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
+
+        jd_DatosDelCampo.setUndecorated(true);
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel13.setText("Datos del Campo");
@@ -835,6 +858,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jd_nombre.setUndecorated(true);
+
         jButton1.setText("Crear");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -872,6 +897,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addGap(22, 22, 22))
         );
 
+        jd_IntroducirRegistros.setUndecorated(true);
+
         javax.swing.GroupLayout jd_IntroducirRegistrosLayout = new javax.swing.GroupLayout(jd_IntroducirRegistros.getContentPane());
         jd_IntroducirRegistros.getContentPane().setLayout(jd_IntroducirRegistrosLayout);
         jd_IntroducirRegistrosLayout.setHorizontalGroup(
@@ -882,6 +909,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
             jd_IntroducirRegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
+
+        jd_ModificarRegistros.setUndecorated(true);
 
         javax.swing.GroupLayout jd_ModificarRegistrosLayout = new javax.swing.GroupLayout(jd_ModificarRegistros.getContentPane());
         jd_ModificarRegistros.getContentPane().setLayout(jd_ModificarRegistrosLayout);
@@ -894,6 +923,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
+        jd_BuscarRegistros.setUndecorated(true);
+
         javax.swing.GroupLayout jd_BuscarRegistrosLayout = new javax.swing.GroupLayout(jd_BuscarRegistros.getContentPane());
         jd_BuscarRegistros.getContentPane().setLayout(jd_BuscarRegistrosLayout);
         jd_BuscarRegistrosLayout.setHorizontalGroup(
@@ -905,6 +936,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
+        jd_BorrarRegistros.setUndecorated(true);
+
         javax.swing.GroupLayout jd_BorrarRegistrosLayout = new javax.swing.GroupLayout(jd_BorrarRegistros.getContentPane());
         jd_BorrarRegistros.getContentPane().setLayout(jd_BorrarRegistrosLayout);
         jd_BorrarRegistrosLayout.setHorizontalGroup(
@@ -915,6 +948,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
             jd_BorrarRegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
+
+        jd_ListarRegistros.setUndecorated(true);
 
         javax.swing.GroupLayout jd_ListarRegistrosLayout = new javax.swing.GroupLayout(jd_ListarRegistros.getContentPane());
         jd_ListarRegistros.getContentPane().setLayout(jd_ListarRegistrosLayout);
@@ -929,6 +964,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Standard File Manager");
+        setBackground(new java.awt.Color(0, 0, 255));
+        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setForeground(java.awt.Color.blue);
         setName("Standard File Manager"); // NOI18N
 
         jb_Archivo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -1200,6 +1238,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_CampoModificarMouseClicked
 
     private void jb_RegresarDeCrearCampoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_RegresarDeCrearCampoMouseClicked
+        tf_NombredelCampo.setText("");
+        sp_LongitudCampo.setValue(0);
         jd_CrearCampo.dispose();
         jd_Campos.setVisible(true);
     }//GEN-LAST:event_jb_RegresarDeCrearCampoMouseClicked
