@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edd2_proyecto_;
 
 /**
@@ -109,15 +104,14 @@ public class AVL {
 
         } else {
             if (new_size < final_.size_byte) {
-                //si es menor
-
+                
                 nuevo_nodo.anterior = final_.anterior;
                 nuevo_nodo.siguiente = final_;
                 final_.anterior = nuevo_nodo;
                 head = nuevo_nodo;
                 insertado = true;
             } else {
-                //last=last.next;
+                
                 while (final_.siguiente != null) {
 
                     if (new_size < final_.siguiente.size_byte) {
@@ -143,3 +137,4 @@ public class AVL {
         }//fin else if superior
     }
 }
+
