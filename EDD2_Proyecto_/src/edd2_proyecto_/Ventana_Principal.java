@@ -1123,6 +1123,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         jb_Campos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jb_Campos.setText("Campos");
+        jb_Campos.setEnabled(false);
         jb_Campos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jb_CamposActionPerformed(evt);
@@ -1131,6 +1132,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         jb_Registros.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jb_Registros.setText("Registros");
+        jb_Registros.setEnabled(false);
         jb_Registros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jb_RegistrosActionPerformed(evt);
@@ -1139,6 +1141,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         jb_Indices.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jb_Indices.setText("Índices");
+        jb_Indices.setEnabled(false);
         jb_Indices.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jb_IndicesActionPerformed(evt);
@@ -1147,6 +1150,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         jb_Estandarizacion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jb_Estandarizacion.setText("Estandarización");
+        jb_Estandarizacion.setEnabled(false);
         jb_Estandarizacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jb_EstandarizacionActionPerformed(evt);
@@ -1574,7 +1578,6 @@ public class Ventana_Principal extends javax.swing.JFrame {
         currentFile.setlistaCampo(campos);
         currentFile.escribirArchivo();
         JOptionPane.showMessageDialog(this, "El archivo se guardo exitosamente!");
-        
     }//GEN-LAST:event_bt_SalvarMouseClicked
 
     private void bt_CerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_CerrarMouseClicked
@@ -1605,7 +1608,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
             bt_Salvar.setEnabled(true);
             bt_Nuevo.setEnabled(false);
             bt_Cargar.setEnabled(false);
-            JOptionPane.showMessageDialog(this, "El Archivo se creo exitosamente");
+            jb_Campos.setEnabled(true);
+            jb_Registros.setEnabled(true);
+            jb_Indices.setEnabled(true);
+            jb_Estandarizacion.setEnabled(true);
+                JOptionPane.showMessageDialog(this, "El Archivo se creo exitosamente");
             jd_nombre.dispose();
         }
     }//GEN-LAST:event_jButton1MouseClicked
@@ -1630,6 +1637,10 @@ public class Ventana_Principal extends javax.swing.JFrame {
             bt_Salvar.setEnabled(true);
             bt_Nuevo.setEnabled(false);
             bt_Cargar.setEnabled(false);
+            jb_Campos.setEnabled(true);
+            jb_Registros.setEnabled(true);
+            jb_Indices.setEnabled(true);
+            jb_Estandarizacion.setEnabled(true);
         }
         
     }//GEN-LAST:event_bt_CargarMouseClicked
@@ -1740,6 +1751,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 jd_IntroducirString.setLocationRelativeTo(this);
                 jd_IntroducirString.setVisible(true);
             }
+            jt_String.setText("");
+            js_Interger.setValue(0);
         }
         jd_Registros.setVisible(true);
     }//GEN-LAST:event_jb_IntroducirRegistrosMouseClicked
