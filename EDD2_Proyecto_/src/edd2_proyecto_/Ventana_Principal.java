@@ -134,9 +134,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
         bg_LlaveCandidata = new javax.swing.ButtonGroup();
         jd_IntroducirInteger = new javax.swing.JDialog();
         jl_Integer = new javax.swing.JLabel();
-        js_Interger = new javax.swing.JSpinner();
         jp_Integer = new javax.swing.JProgressBar();
         jButton5 = new javax.swing.JButton();
+        jf_Integer = new javax.swing.JFormattedTextField();
         jb_Archivo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jb_Campos = new javax.swing.JButton();
@@ -1070,6 +1070,12 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
+        try {
+            jf_Integer.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#######")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout jd_IntroducirIntegerLayout = new javax.swing.GroupLayout(jd_IntroducirInteger.getContentPane());
         jd_IntroducirInteger.getContentPane().setLayout(jd_IntroducirIntegerLayout);
         jd_IntroducirIntegerLayout.setHorizontalGroup(
@@ -1079,23 +1085,23 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addGroup(jd_IntroducirIntegerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_IntroducirIntegerLayout.createSequentialGroup()
                         .addComponent(jl_Integer, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(js_Interger, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(88, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jf_Integer, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jd_IntroducirIntegerLayout.createSequentialGroup()
                         .addComponent(jp_Integer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                         .addComponent(jButton5)
                         .addGap(28, 28, 28))))
         );
         jd_IntroducirIntegerLayout.setVerticalGroup(
             jd_IntroducirIntegerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_IntroducirIntegerLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(jd_IntroducirIntegerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(36, 36, 36)
+                .addGroup(jd_IntroducirIntegerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jl_Integer)
-                    .addComponent(js_Interger, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                    .addComponent(jf_Integer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jd_IntroducirIntegerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jp_Integer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5))
@@ -1737,6 +1743,15 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jd_Registros.setVisible(false);
         for (int i = 0; i < campos.size(); i++) {
             if (campos.get(i).getTipo().equals("int")) {
+                String formato = "";
+                for (int j = 0; j < campos.get(i).getLongitud(); j++) {
+                    formato+="#";
+                }
+                try {
+                    jf_Integer.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(formato)));
+                } catch (java.text.ParseException ex) {
+                    ex.printStackTrace();
+                }
                 jl_Integer.setText(campos.get(i).getNombre());
                 jp_Integer.setValue(i);
                 jd_IntroducirInteger.pack();
@@ -1752,7 +1767,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 jd_IntroducirString.setVisible(true);
             }
             jt_String.setText("");
-            js_Interger.setValue(0);
+            jf_Integer.setText("");
         }
         jd_Registros.setVisible(true);
     }//GEN-LAST:event_jb_IntroducirRegistrosMouseClicked
@@ -1872,6 +1887,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_Registros;
     private javax.swing.JDialog jd_indices;
     private javax.swing.JDialog jd_nombre;
+    private javax.swing.JFormattedTextField jf_Integer;
     private javax.swing.JLabel jl_Integer;
     private javax.swing.JLabel jl_longitud;
     private javax.swing.JLabel jl_nameCampo;
@@ -1880,7 +1896,6 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JProgressBar jp_Integer;
     private javax.swing.JProgressBar jp_progreso;
     private javax.swing.JSpinner js_InfoLongitudCampo;
-    private javax.swing.JSpinner js_Interger;
     private javax.swing.JTable jt_Campos;
     private javax.swing.JTable jt_EliminarCampos;
     private javax.swing.JTable jt_ListaDeCampos;
