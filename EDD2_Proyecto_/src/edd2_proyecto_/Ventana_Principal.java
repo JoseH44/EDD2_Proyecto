@@ -164,11 +164,12 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jd_Archivo.setUndecorated(true);
 
         jPanel6.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel2.setText("Archivo");
 
-        bt_Nuevo.setBackground(new java.awt.Color(0, 0, 0));
+        bt_Nuevo.setBackground(new java.awt.Color(204, 255, 255));
         bt_Nuevo.setText("Nuevo Archivo");
         bt_Nuevo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -176,7 +177,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
-        bt_Cargar.setBackground(new java.awt.Color(0, 0, 0));
+        bt_Cargar.setBackground(new java.awt.Color(204, 255, 255));
         bt_Cargar.setText("Cargar Archivo");
         bt_Cargar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -184,7 +185,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
-        bt_Cerrar.setBackground(new java.awt.Color(0, 0, 0));
+        bt_Cerrar.setBackground(new java.awt.Color(204, 255, 255));
         bt_Cerrar.setText("Cerrar Archivo");
         bt_Cerrar.setEnabled(false);
         bt_Cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -193,7 +194,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
-        bt_Salvar.setBackground(new java.awt.Color(0, 0, 0));
+        bt_Salvar.setBackground(new java.awt.Color(204, 255, 255));
         bt_Salvar.setText("Salvar Archivo");
         bt_Salvar.setEnabled(false);
         bt_Salvar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -202,7 +203,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton10.setBackground(new java.awt.Color(0, 0, 0));
+        jButton10.setBackground(new java.awt.Color(204, 255, 255));
         jButton10.setText("Regresar");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -270,7 +271,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel3.setText("Campos");
 
-        jb_CrearCampo.setBackground(new java.awt.Color(0, 0, 0));
+        jb_CrearCampo.setBackground(new java.awt.Color(204, 255, 255));
         jb_CrearCampo.setText("Crear Campos");
         jb_CrearCampo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -278,7 +279,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
-        jb_ListarCampos.setBackground(new java.awt.Color(0, 0, 0));
+        jb_ListarCampos.setBackground(new java.awt.Color(204, 255, 255));
         jb_ListarCampos.setText("Listar Campos");
         jb_ListarCampos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -286,7 +287,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
-        jb_ModificarCampos.setBackground(new java.awt.Color(0, 0, 0));
+        jb_ModificarCampos.setBackground(new java.awt.Color(204, 255, 255));
         jb_ModificarCampos.setText("Modificar Campos");
         jb_ModificarCampos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -294,7 +295,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
-        jb_BorrarCampos.setBackground(new java.awt.Color(0, 0, 0));
+        jb_BorrarCampos.setBackground(new java.awt.Color(204, 255, 255));
         jb_BorrarCampos.setText("Borrar Campos");
         jb_BorrarCampos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -302,7 +303,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
-        jb_SalirdeCampos.setBackground(new java.awt.Color(0, 0, 0));
+        jb_SalirdeCampos.setBackground(new java.awt.Color(204, 255, 255));
         jb_SalirdeCampos.setText("Salir");
         jb_SalirdeCampos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -370,10 +371,10 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel4.setText("Registros");
 
-        jb_ModificarRegistros.setBackground(new java.awt.Color(0, 0, 0));
+        jb_ModificarRegistros.setBackground(new java.awt.Color(204, 255, 255));
         jb_ModificarRegistros.setText("Modificar Registros");
 
-        jb_IntroducirRegistros.setBackground(new java.awt.Color(0, 0, 0));
+        jb_IntroducirRegistros.setBackground(new java.awt.Color(204, 255, 255));
         jb_IntroducirRegistros.setText("Introducir Registros");
         jb_IntroducirRegistros.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -381,16 +382,16 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
-        jb_BuscarRegistros.setBackground(new java.awt.Color(0, 0, 0));
+        jb_BuscarRegistros.setBackground(new java.awt.Color(204, 255, 255));
         jb_BuscarRegistros.setText("Buscar Registros");
 
-        jb_BorrarRegistros.setBackground(new java.awt.Color(0, 0, 0));
+        jb_BorrarRegistros.setBackground(new java.awt.Color(204, 255, 255));
         jb_BorrarRegistros.setText("Borrar Registros");
 
-        jb_ListarRegistros.setBackground(new java.awt.Color(0, 0, 0));
+        jb_ListarRegistros.setBackground(new java.awt.Color(204, 255, 255));
         jb_ListarRegistros.setText("Listar Registros");
 
-        jb_SalirDeRegistros.setBackground(new java.awt.Color(0, 0, 0));
+        jb_SalirDeRegistros.setBackground(new java.awt.Color(204, 255, 255));
         jb_SalirDeRegistros.setText("Salir");
         jb_SalirDeRegistros.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -465,13 +466,13 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel5.setText("Índices");
 
-        jb_CrearIndice.setBackground(new java.awt.Color(0, 0, 0));
+        jb_CrearIndice.setBackground(new java.awt.Color(204, 255, 255));
         jb_CrearIndice.setText("Crear Índices");
 
-        jb_ReIndexarArchivos.setBackground(new java.awt.Color(0, 0, 0));
+        jb_ReIndexarArchivos.setBackground(new java.awt.Color(204, 255, 255));
         jb_ReIndexarArchivos.setText("Re Indexar Archivos");
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
+        jButton2.setBackground(new java.awt.Color(204, 255, 255));
         jButton2.setText("Regresar");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -528,13 +529,13 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel6.setText("Estandarización");
 
-        jb_ExportarExcel.setBackground(new java.awt.Color(0, 0, 0));
+        jb_ExportarExcel.setBackground(new java.awt.Color(204, 255, 255));
         jb_ExportarExcel.setText("Exportar Excel");
 
-        jb_ExportarlXMLconSch.setBackground(new java.awt.Color(0, 0, 0));
+        jb_ExportarlXMLconSch.setBackground(new java.awt.Color(204, 255, 255));
         jb_ExportarlXMLconSch.setText("Exportar XML con Schema");
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
+        jButton3.setBackground(new java.awt.Color(204, 255, 255));
         jButton3.setText("Regresar");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1357,7 +1358,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel1.setForeground(new java.awt.Color(51, 51, 255));
 
-        jb_Salir1.setBackground(new java.awt.Color(0, 0, 0));
+        jb_Salir1.setBackground(new java.awt.Color(204, 255, 255));
         jb_Salir1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jb_Salir1.setText("Salir");
         jb_Salir1.addActionListener(new java.awt.event.ActionListener() {
@@ -1366,7 +1367,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
-        jb_Indices.setBackground(new java.awt.Color(0, 0, 0));
+        jb_Indices.setBackground(new java.awt.Color(204, 255, 255));
         jb_Indices.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jb_Indices.setText("Índices");
         jb_Indices.setEnabled(false);
@@ -1376,7 +1377,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
-        jb_Campos.setBackground(new java.awt.Color(0, 0, 0));
+        jb_Campos.setBackground(new java.awt.Color(204, 255, 255));
         jb_Campos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jb_Campos.setText("Campos");
         jb_Campos.setEnabled(false);
@@ -1386,7 +1387,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
-        jb_Archivo.setBackground(new java.awt.Color(0, 0, 0));
+        jb_Archivo.setBackground(new java.awt.Color(204, 255, 255));
         jb_Archivo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jb_Archivo.setText("Archivo");
         jb_Archivo.addActionListener(new java.awt.event.ActionListener() {
@@ -1395,7 +1396,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
-        jb_Registros.setBackground(new java.awt.Color(0, 0, 0));
+        jb_Registros.setBackground(new java.awt.Color(204, 255, 255));
         jb_Registros.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jb_Registros.setText("Registros");
         jb_Registros.setEnabled(false);
@@ -1405,7 +1406,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
-        jb_Estandarizacion.setBackground(new java.awt.Color(0, 0, 0));
+        jb_Estandarizacion.setBackground(new java.awt.Color(204, 255, 255));
         jb_Estandarizacion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jb_Estandarizacion.setText("Estandarización");
         jb_Estandarizacion.setEnabled(false);
