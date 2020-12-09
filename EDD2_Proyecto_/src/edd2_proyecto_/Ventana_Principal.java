@@ -63,10 +63,12 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jb_CrearIndice = new javax.swing.JButton();
         jb_ReIndexarArchivos = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jd_Estandarizacion = new javax.swing.JDialog();
         jLabel6 = new javax.swing.JLabel();
         jb_ExportarExcel = new javax.swing.JButton();
         jb_ExportarlXMLconSch = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jd_CrearCampo = new javax.swing.JDialog();
         jl_nameCampo = new javax.swing.JLabel();
         tf_NombredelCampo = new javax.swing.JTextField();
@@ -373,6 +375,13 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         jb_ReIndexarArchivos.setText("Re Indexar Archivos");
 
+        jButton2.setText("Regresar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_indicesLayout = new javax.swing.GroupLayout(jd_indices.getContentPane());
         jd_indices.getContentPane().setLayout(jd_indicesLayout);
         jd_indicesLayout.setHorizontalGroup(
@@ -385,8 +394,13 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addContainerGap(51, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_indicesLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addGap(139, 139, 139))
+                .addGroup(jd_indicesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_indicesLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(139, 139, 139))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_indicesLayout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(161, 161, 161))))
         );
         jd_indicesLayout.setVerticalGroup(
             jd_indicesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -397,7 +411,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addGroup(jd_indicesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jb_CrearIndice, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
                     .addComponent(jb_ReIndexarArchivos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         jd_Estandarizacion.setUndecorated(true);
@@ -408,6 +424,13 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jb_ExportarExcel.setText("Exportar Excel");
 
         jb_ExportarlXMLconSch.setText("Exportar XML con Schema");
+
+        jButton3.setText("Regresar");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_EstandarizacionLayout = new javax.swing.GroupLayout(jd_Estandarizacion.getContentPane());
         jd_Estandarizacion.getContentPane().setLayout(jd_EstandarizacionLayout);
@@ -421,8 +444,13 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addGap(28, 28, 28))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_EstandarizacionLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80))
+                .addGroup(jd_EstandarizacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_EstandarizacionLayout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_EstandarizacionLayout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addGap(169, 169, 169))))
         );
         jd_EstandarizacionLayout.setVerticalGroup(
             jd_EstandarizacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -433,7 +461,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addGroup(jd_EstandarizacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_ExportarlXMLconSch, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jb_ExportarExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         jd_CrearCampo.setBackground(new java.awt.Color(0, 0, 255));
@@ -1011,6 +1041,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         jb_Registros.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jb_Registros.setText("Registros");
+        jb_Registros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_RegistrosActionPerformed(evt);
+            }
+        });
 
         jb_Indices.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jb_Indices.setText("Índices");
@@ -1110,6 +1145,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     private void jb_IndicesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_IndicesActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
         jd_indices.pack();
         jd_indices.setModal(true);
         jd_indices.setLocationRelativeTo(this);
@@ -1118,6 +1154,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     private void jb_EstandarizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_EstandarizacionActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
         jd_Estandarizacion.pack();
         jd_Estandarizacion.setModal(true);
         jd_Estandarizacion.setLocationRelativeTo(this);
@@ -1556,6 +1593,27 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jd_DatosDelCampo.dispose();
         jd_ModificarCampo.setVisible(true);
     }//GEN-LAST:event_jb_InfoAceptarCambiosDatosMouseClicked
+
+    private void jb_RegistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_RegistrosActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        jd_Registros.pack();
+        jd_Registros.setModal(true);
+        jd_Registros.setLocationRelativeTo(this);
+        jd_Registros.setVisible(true);
+    }//GEN-LAST:event_jb_RegistrosActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        jd_indices.dispose();
+        this.setVisible(true);
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        jd_Estandarizacion.dispose();
+        this.setVisible(true);
+    }//GEN-LAST:event_jButton3MouseClicked
     /**
      * @param args the command line arguments
      */
@@ -1602,6 +1660,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_Salvar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
