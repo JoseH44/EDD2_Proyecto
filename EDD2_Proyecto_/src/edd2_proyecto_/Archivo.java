@@ -168,8 +168,7 @@ public class Archivo {
                     int ubicacion = searchEnNodo(tmp, temp.getKey());
                     tmp.key[ubicacion].byteOffset = byteOffset;
 
-                    System.out.println("LLamar metodo del AvailList...");
-                    avl.BestFit(size_act, temporal.byteOffset);
+                    System.out.println("LLamar metodo del AvailList...");                    avl.BestFit(size_act, temporal.byteOffset);
                     avl.PrintList(avl.head);
                     System.out.println("Antes de Borrar el Registro...." + arbol.search(temporal));
                     System.out.println("Despues de Borrar el Registro...." + arbol.search(temporal));
