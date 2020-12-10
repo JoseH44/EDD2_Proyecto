@@ -154,6 +154,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jl_Integer = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jp_Integer = new javax.swing.JProgressBar();
+        jd_IntroducirRegistros = new javax.swing.JDialog();
+        jPanel19 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jb_Salir1 = new javax.swing.JButton();
         jb_Indices = new javax.swing.JButton();
@@ -1414,6 +1416,33 @@ public class Ventana_Principal extends javax.swing.JFrame {
             .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jd_IntroducirRegistros.setUndecorated(true);
+
+        jPanel19.setBackground(new java.awt.Color(0, 255, 153));
+        jPanel19.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
+        jPanel19.setLayout(jPanel19Layout);
+        jPanel19Layout.setHorizontalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 396, Short.MAX_VALUE)
+        );
+        jPanel19Layout.setVerticalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 296, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jd_IntroducirRegistrosLayout = new javax.swing.GroupLayout(jd_IntroducirRegistros.getContentPane());
+        jd_IntroducirRegistros.getContentPane().setLayout(jd_IntroducirRegistrosLayout);
+        jd_IntroducirRegistrosLayout.setHorizontalGroup(
+            jd_IntroducirRegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_IntroducirRegistrosLayout.setVerticalGroup(
+            jd_IntroducirRegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Standard File Manager");
         setBackground(new java.awt.Color(0, 0, 255));
@@ -2178,6 +2207,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -2228,6 +2258,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_EliminarCampos;
     private javax.swing.JDialog jd_Estandarizacion;
     private javax.swing.JDialog jd_IntroducirInteger;
+    private javax.swing.JDialog jd_IntroducirRegistros;
     private javax.swing.JDialog jd_IntroducirString;
     private javax.swing.JDialog jd_ListarCampos;
     private javax.swing.JDialog jd_ListarRegistros;
