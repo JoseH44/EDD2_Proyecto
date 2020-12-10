@@ -413,6 +413,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Modificar Registros"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jb_ModificarRegistrosMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jb_IntroducirRegistros">
               <Properties>
@@ -432,6 +435,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Buscar Registros"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jb_BuscarRegistrosMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jb_BorrarRegistros">
               <Properties>
@@ -440,6 +446,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Borrar Registros"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jb_BorrarRegistrosMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jb_ListarRegistros">
               <Properties>
@@ -448,6 +457,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Listar Registros"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jb_ListarRegistrosMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jb_SalirDeRegistros">
               <Properties>

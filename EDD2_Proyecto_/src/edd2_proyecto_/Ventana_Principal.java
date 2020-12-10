@@ -379,6 +379,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         jb_ModificarRegistros.setBackground(new java.awt.Color(204, 255, 255));
         jb_ModificarRegistros.setText("Modificar Registros");
+        jb_ModificarRegistros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_ModificarRegistrosMouseClicked(evt);
+            }
+        });
 
         jb_IntroducirRegistros.setBackground(new java.awt.Color(204, 255, 255));
         jb_IntroducirRegistros.setText("Introducir Registros");
@@ -390,12 +395,27 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         jb_BuscarRegistros.setBackground(new java.awt.Color(204, 255, 255));
         jb_BuscarRegistros.setText("Buscar Registros");
+        jb_BuscarRegistros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_BuscarRegistrosMouseClicked(evt);
+            }
+        });
 
         jb_BorrarRegistros.setBackground(new java.awt.Color(204, 255, 255));
         jb_BorrarRegistros.setText("Borrar Registros");
+        jb_BorrarRegistros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_BorrarRegistrosMouseClicked(evt);
+            }
+        });
 
         jb_ListarRegistros.setBackground(new java.awt.Color(204, 255, 255));
         jb_ListarRegistros.setText("Listar Registros");
+        jb_ListarRegistros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_ListarRegistrosMouseClicked(evt);
+            }
+        });
 
         jb_SalirDeRegistros.setBackground(new java.awt.Color(204, 255, 255));
         jb_SalirDeRegistros.setText("Salir");
@@ -2131,6 +2151,34 @@ public class Ventana_Principal extends javax.swing.JFrame {
         }
         jd_Registros.setVisible(true);
     }//GEN-LAST:event_jb_IntroducirRegistrosMouseClicked
+
+    private void jb_ModificarRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ModificarRegistrosMouseClicked
+        jd_ModificarRegistros.pack();
+        jd_ModificarRegistros.setModal(true);
+        jd_ModificarRegistros.setLocationRelativeTo(this);
+        jd_ModificarRegistros.setVisible(true);
+    }//GEN-LAST:event_jb_ModificarRegistrosMouseClicked
+
+    private void jb_BuscarRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_BuscarRegistrosMouseClicked
+        jd_BuscarRegistros.pack();
+        jd_BuscarRegistros.setModal(true);
+        jd_BuscarRegistros.setLocationRelativeTo(this);
+        jd_BuscarRegistros.setVisible(true);
+    }//GEN-LAST:event_jb_BuscarRegistrosMouseClicked
+
+    private void jb_BorrarRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_BorrarRegistrosMouseClicked
+        jd_BorrarRegistros.pack();
+        jd_BorrarRegistros.setModal(true);
+        jd_BorrarRegistros.setLocationRelativeTo(this);
+        jd_BorrarRegistros.setVisible(true);
+    }//GEN-LAST:event_jb_BorrarRegistrosMouseClicked
+
+    private void jb_ListarRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ListarRegistrosMouseClicked
+        jd_ListarRegistros.pack();
+        jd_ListarRegistros.setModal(true);
+        jd_ListarRegistros.setLocationRelativeTo(this);
+        jd_ListarRegistros.setVisible(true);
+    }//GEN-LAST:event_jb_ListarRegistrosMouseClicked
     /**
      * @param args the command line arguments
      */
