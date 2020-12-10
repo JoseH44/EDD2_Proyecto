@@ -91,7 +91,7 @@ public class AVL {
     }
     
     
-    public void BestFit(int new_size, int posicion){
+    public void BestFit(int new_size, long posicion){
         boolean insertado = false;
         Node nuevo_nodo = new Node(new_size,posicion);
         Node final_ = head;
@@ -137,4 +137,5 @@ public class AVL {
         }//fin else if superior
     }
 }
+
 
