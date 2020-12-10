@@ -780,7 +780,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jt_Campos);
 
-        jb_RegresarDeCampos.setBackground(new java.awt.Color(0, 0, 0));
+        jb_RegresarDeCampos.setBackground(new java.awt.Color(204, 255, 255));
         jb_RegresarDeCampos.setText("Regresar");
         jb_RegresarDeCampos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -788,7 +788,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
-        jb_CampoModificar.setBackground(new java.awt.Color(0, 0, 0));
+        jb_CampoModificar.setBackground(new java.awt.Color(204, 255, 255));
         jb_CampoModificar.setText("Modificar");
         jb_CampoModificar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -872,7 +872,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 19)); // NOI18N
         jLabel10.setText("Campos Creados");
 
-        jb_RegresarDeListarC.setBackground(new java.awt.Color(0, 0, 0));
+        jb_RegresarDeListarC.setBackground(new java.awt.Color(204, 255, 255));
         jb_RegresarDeListarC.setText("Regresar");
         jb_RegresarDeListarC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
