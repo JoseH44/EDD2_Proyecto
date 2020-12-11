@@ -20,6 +20,7 @@ import java.util.Scanner;
 public class Archivo {
     private ArrayList <Campo> listaCampo = new ArrayList();
     private File archivo = null;
+    private int numregistros = 0;
 
     public Archivo(String path) throws IOException {
         archivo = new File(path);
@@ -40,6 +41,13 @@ public class Archivo {
         archivo = file;
     }
     
+    public int getNumregistros() {
+        return numregistros;
+    }
+
+    public void setNumregistros(int numregistros) {
+        this.numregistros = numregistros;
+    }
 
     public ArrayList<Campo> getListaCampo() {
         return listaCampo;
@@ -407,3 +415,4 @@ public class Archivo {
         return pos;
     }
 }
+

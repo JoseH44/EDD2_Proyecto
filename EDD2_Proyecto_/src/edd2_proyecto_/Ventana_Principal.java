@@ -16,6 +16,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.DOMImplementation;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Text;
 
 public class Ventana_Principal extends javax.swing.JFrame {
 
@@ -156,6 +166,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jp_Integer = new javax.swing.JProgressBar();
         jd_IntroducirRegistros = new javax.swing.JDialog();
         jPanel19 = new javax.swing.JPanel();
+        jd_NameParaXML = new javax.swing.JDialog();
+        jPanel20 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jt_NombreXML = new javax.swing.JTextField();
+        jb_CrearArchivoXML = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jb_Salir1 = new javax.swing.JButton();
         jb_Indices = new javax.swing.JButton();
@@ -560,6 +575,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         jb_ExportarlXMLconSch.setBackground(new java.awt.Color(204, 255, 255));
         jb_ExportarlXMLconSch.setText("Exportar XML con Schema");
+        jb_ExportarlXMLconSch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_ExportarlXMLconSchMouseClicked(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(204, 255, 255));
         jButton3.setText("Regresar");
@@ -1463,6 +1483,57 @@ public class Ventana_Principal extends javax.swing.JFrame {
             .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jPanel20.setBackground(new java.awt.Color(0, 204, 153));
+        jPanel20.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel7.setText("Ingrese el Nombre del archvio XML:");
+
+        jb_CrearArchivoXML.setBackground(new java.awt.Color(204, 255, 255));
+        jb_CrearArchivoXML.setText("Aceptar y crear archvio XML");
+        jb_CrearArchivoXML.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_CrearArchivoXMLMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
+        jPanel20.setLayout(jPanel20Layout);
+        jPanel20Layout.setHorizontalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jt_NombreXML)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
+                .addContainerGap(113, Short.MAX_VALUE)
+                .addComponent(jb_CrearArchivoXML)
+                .addGap(109, 109, 109))
+        );
+        jPanel20Layout.setVerticalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jt_NombreXML, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(jb_CrearArchivoXML, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
+        );
+
+        javax.swing.GroupLayout jd_NameParaXMLLayout = new javax.swing.GroupLayout(jd_NameParaXML.getContentPane());
+        jd_NameParaXML.getContentPane().setLayout(jd_NameParaXMLLayout);
+        jd_NameParaXMLLayout.setHorizontalGroup(
+            jd_NameParaXMLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_NameParaXMLLayout.setVerticalGroup(
+            jd_NameParaXMLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Standard File Manager");
         setBackground(new java.awt.Color(0, 0, 255));
@@ -2179,6 +2250,97 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jd_ListarRegistros.setLocationRelativeTo(this);
         jd_ListarRegistros.setVisible(true);
     }//GEN-LAST:event_jb_ListarRegistrosMouseClicked
+
+    private void jb_ExportarlXMLconSchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ExportarlXMLconSchMouseClicked
+        jd_NameParaXML.pack();
+        jd_NameParaXML.setModal(true);
+        jd_NameParaXML.setLocationRelativeTo(this);
+        jd_NameParaXML.setVisible(true);
+    }//GEN-LAST:event_jb_ExportarlXMLconSchMouseClicked
+
+    private void jb_CrearArchivoXMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_CrearArchivoXMLMouseClicked
+        try {
+            if(jt_NombreXML.getText() != null){
+                String name = jt_NombreXML.getText();
+                
+                if (currentFile == null || currentFile.getListaCampo().isEmpty() || currentFile.getNumregistros() == 0) {
+                    JOptionPane.showMessageDialog(null, "No hay informacion cargada");
+                } else {
+                    ArrayList registrost = new ArrayList();//van los registros
+                    /* FALTA AGREGAR LA TABLA CON LA QUE TRABAJAREMOS
+                    for (int i = 0; i < Table.getRowCount(); i++) {
+                        ArrayList row = new ArrayList();
+                        for (int j = 0; j < Table.getColumnCount(); j++) {
+                            row.add(Table.getValueAt(i, j));
+                        }
+                        registrost.add(row);
+                    }
+                    */
+                    exportXML(currentFile.getListaCampo(), registrost, name);
+                    System.out.println("SE EXPORTO CON EXITO");//tirarlo con un joptionpane?
+                    jt_NombreXML.setText("");
+                    
+                    jd_NameParaXML.dispose();
+                    
+                }
+            }else{
+                System.out.println("No ingreso nombre para exportar el archivo XML intente de nuevo");
+            } 
+           
+
+        } catch (Exception e) {
+            System.out.println("Could not export successfully");
+        }
+    }//GEN-LAST:event_jb_CrearArchivoXMLMouseClicked
+    public static void exportXML(ArrayList Campos, ArrayList Regs, String Direccion) {
+        Document document = null;
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        try {
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            DOMImplementation implementation = builder.getDOMImplementation();
+            document = implementation.createDocument(null, "xml", null);
+            //Arraylist de campos
+
+            for (int i = 0; i < Regs.size(); i++) {
+                Element registro = document.createElement("Registro" + i);
+                document.getDocumentElement().appendChild(registro);
+                ArrayList<Element> elementos = new ArrayList();
+
+                for (int j = 0; j < Campos.size(); j++) { //Llenando arraylist de elementos campos
+                    Element campos = document.createElement(Campos.get(j).toString());
+                    elementos.add(campos);
+                }
+
+                for (int h = 0; h < elementos.size(); h++) {
+                    registro.appendChild(elementos.get(h));
+                    Text valorCampo = document.createTextNode(Regs.get(h).toString());
+                    elementos.get(h).appendChild(valorCampo);
+                    document.setXmlVersion("1.0");
+
+                }
+            }
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+
+            // Archivo donde almacenaremos el XML
+            File archivo = new File(Direccion + ".xml");
+
+            // Fuente de datos, en este caso el documento XML
+            DOMSource source = new DOMSource(document);
+            // Resultado, el cual almacena en el archivo indicado
+            StreamResult result = new StreamResult(archivo);
+            // Transformamos de ña fuente DOM a el resultado, lo que almacena todo en el archivo
+            transformer.transform(source, result);
+            //System.out.println("Ended");
+        } catch (Exception e) {
+            // Logger.getLogger(TreeTest2.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("COULD NOT EXPORT PROBABLY DIRTY EXPORTER STRING.");
+
+        }
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -2243,6 +2405,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -2257,6 +2420,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -2273,6 +2437,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JButton jb_BuscarRegistros;
     private javax.swing.JButton jb_CampoModificar;
     private javax.swing.JButton jb_Campos;
+    private javax.swing.JButton jb_CrearArchivoXML;
     private javax.swing.JButton jb_CrearCampo;
     private javax.swing.JButton jb_CrearIndice;
     private javax.swing.JButton jb_EliminarCampoSelec;
@@ -2312,6 +2477,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_ListarRegistros;
     private javax.swing.JDialog jd_ModificarCampo;
     private javax.swing.JDialog jd_ModificarRegistros;
+    private javax.swing.JDialog jd_NameParaXML;
     private javax.swing.JDialog jd_Registros;
     private javax.swing.JDialog jd_indices;
     private javax.swing.JDialog jd_nombre;
@@ -2327,6 +2493,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JTable jt_Campos;
     private javax.swing.JTable jt_EliminarCampos;
     private javax.swing.JTable jt_ListaDeCampos;
+    private javax.swing.JTextField jt_NombreXML;
     private javax.swing.JTextField jt_String;
     private javax.swing.JLabel label_llaveCandi;
     private javax.swing.JLabel label_llavePrim;
