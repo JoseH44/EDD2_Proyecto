@@ -2277,6 +2277,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
                     }
                     */
                     exportXML(currentFile.getListaCampo(), registrost, name);
+                    System.out.println("SE EXPORTO CON EXITO");//tirarlo con un joptionpane?
+                    jt_NombreXML.setText("");
+                    
+                    jd_NameParaXML.dispose();
+                    
                 }
             }else{
                 System.out.println("No ingreso nombre para exportar el archivo XML intente de nuevo");
