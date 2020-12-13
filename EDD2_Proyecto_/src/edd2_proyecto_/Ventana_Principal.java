@@ -6,10 +6,13 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import  java.io.BufferedWriter ;
+import java.io.ByteArrayInputStream;
 import  java.io.File ;
 import  java.io.FileNotFoundException ;
 import  java.io.FileWriter ;
 import  java.io.IOException ;
+import java.io.ObjectInputStream;
+import java.io.RandomAccessFile;
 import  java.text.ParseException ;
 import  java.util.Scanner ;
 import java.util.logging.Level;
@@ -2203,6 +2206,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     private void jb_ModificarRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ModificarRegistrosMouseClicked
         jd_Registros.setVisible(false);
+        jb_modificarRegistro.setVisible(true);
+        jb_eliminarRegistro.setVisible(false);
         jd_MBL.pack();
         jd_MBL.setModal(true);
         jd_MBL.setLocationRelativeTo(this);
@@ -2218,6 +2223,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     private void jb_BorrarRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_BorrarRegistrosMouseClicked
         jd_Registros.setVisible(false);
+        jb_modificarRegistro.setVisible(false);
+        jb_eliminarRegistro.setVisible(true);
         jd_MBL.pack();
         jd_MBL.setModal(true);
         jd_MBL.setLocationRelativeTo(this);
@@ -2226,6 +2233,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     private void jb_ListarRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ListarRegistrosMouseClicked
         jd_Registros.setVisible(false);
+        jb_modificarRegistro.setVisible(false);
+        jb_eliminarRegistro.setVisible(false);
         jd_MBL.pack();
         jd_MBL.setModal(true);
         jd_MBL.setLocationRelativeTo(this);
@@ -2380,6 +2389,69 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         }
     }
+    
+    public void InsertarRegistroTabla(RandomAccessFile RAFile) throws IOException, ClassNotFoundException {
+        /*TableModel model = Table.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) model;
+        metadata.addnumregistros();
+
+        Object insertArray[] = KennethExport2.toArray();
+
+        modelo.addRow(insertArray);
+
+        Table.setModel(model);*/
+        ArrayList<Object> objects = new ArrayList();
+        DefaultTableModel modelT = (DefaultTableModel)jt_Registros.getModel();
+        RAFile = new RandomAccessFile(currentFile.getArchivo(), "rw");
+        RAFile.seek(0);
+        int tamaño = RAFile.readInt();
+        RAFile.seek(tamaño + 4);
+        boolean eliminado = false;//boolen que marca que el registro leido esta eliminado
+        while (RAFile.getFilePointer() < RAFile.length()) {
+            System.out.println("----------------------------------------------");
+            eliminado = false;
+            tamaño = RAFile.readInt();
+            System.out.println("New Tamaño: " + tamaño);
+            byte[] data = new byte[tamaño];
+            RAFile.read(data);
+            ByteArrayInputStream in = new ByteArrayInputStream(data);
+            ObjectInputStream read = new ObjectInputStream(in);
+            Data d = (Data) read.readObject();//guardo el array de bytes en una variable temporal
+            if (d.getMarcado().contains("*")) {//If que verifica que si el registro esta eliminado
+                    //registro eliminado
+
+            } else {//entra al else cuando NO ESTA ELIMINADO
+                    
+                    
+                for (int i = 0; i < d.getDatos().size(); i++) {
+                        objects.add(d.getDatos().get(i));
+
+                }
+
+            }
+            Object row[] = objects.toArray();
+            modelT.addRow(row);
+
+        }
+        jt_Registros.setModel(modelT);
+            
+        
+    }
+    
+    /*public void BuildTable(Metadata metadata, int funcion) {
+        if (funcion == 0) { //Instruction 0 lets the Table Builder know it should only change headers.
+            Object[] campos = metadata.getCampos().toArray();
+            DefaultTableModel tabla = new DefaultTableModel();
+            tabla.setColumnCount(campos.length);
+
+            tabla.setColumnIdentifiers(campos);
+            Table.setModel(tabla);
+            //Table.updateUI();
+        } else if (funcion == 1) { //Instruction 1 lets the Table Builder clean all models loaded.
+            Table.setModel(cleanTable);
+        }
+
+    }*/
     
     
     
@@ -2557,4 +2629,5 @@ public class Ventana_Principal extends javax.swing.JFrame {
     ArrayList<Campo> campos = new ArrayList();
     Archivo currentFile;
     Btree arbol_keys;
+    AVL AvailList = new AVL();
 }

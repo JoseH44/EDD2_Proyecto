@@ -296,7 +296,7 @@ public class Archivo {
                         //KennethExport2.add(d.getDatos().get(i));
 
                     }
-                    //TableInsertRegistro();//Inserto en la tabla
+                    
 
 //Agrego un registro con el mismo formato que me fue enviado para implementarlo en la table
                     //Arraylist Lista para agarrar Registros
