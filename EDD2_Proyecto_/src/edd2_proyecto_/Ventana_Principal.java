@@ -2189,39 +2189,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void jb_IntroducirRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_IntroducirRegistrosMouseClicked
-        // TODO add your handling code here:
-        /*jp_Integer.setMaximum(campos.size());
-        jp_progreso.setMaximum(campos.size());
-        jd_Registros.setVisible(false);
-        for (int i = 0; i < campos.size(); i++) {
-            if (campos.get(i).getTipo().equals("int")) {
-                String formato = "";
-                for (int j = 0; j < campos.get(i).getLongitud(); j++) {
-                    formato+="#";
-                }
-                try {
-                    jf_Integer.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(formato)));
-                } catch (java.text.ParseException ex) {
-                    ex.printStackTrace();
-                }
-                jl_Integer.setText(campos.get(i).getNombre());
-                jp_Integer.setValue(i);
-                jd_IntroducirInteger.pack();
-                jd_IntroducirInteger.setModal(true);
-                jd_IntroducirInteger.setLocationRelativeTo(this);
-                jd_IntroducirInteger.setVisible(true);
-            }else{
-                jl_string.setText(campos.get(i).getNombre());
-                jp_progreso.setValue(i);
-                jd_IntroducirString.pack();
-                jd_IntroducirString.setModal(true);
-                jd_IntroducirString.setLocationRelativeTo(this);
-                jd_IntroducirString.setVisible(true);
-            }
-            jt_String.setText("");
-            jf_Integer.setText("");
-        }
-        jd_Registros.setVisible(true);*/
+        
         if (currentFile != null) {
             if (currentFile.getListaCampo().size() > 0) {
                 CrearRegistro();
