@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
@@ -2189,7 +2190,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     private void jb_IntroducirRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_IntroducirRegistrosMouseClicked
         // TODO add your handling code here:
-        jp_Integer.setMaximum(campos.size());
+        /*jp_Integer.setMaximum(campos.size());
         jp_progreso.setMaximum(campos.size());
         jd_Registros.setVisible(false);
         for (int i = 0; i < campos.size(); i++) {
@@ -2220,7 +2221,14 @@ public class Ventana_Principal extends javax.swing.JFrame {
             jt_String.setText("");
             jf_Integer.setText("");
         }
-        jd_Registros.setVisible(true);
+        jd_Registros.setVisible(true);*/
+        if (currentFile != null) {
+            if (currentFile.getListaCampo().size() > 0) {
+                CrearRegistro();
+            }
+        }else{
+            JOptionPane.showInputDialog("No hay Campos creados");
+        }
     }//GEN-LAST:event_jb_IntroducirRegistrosMouseClicked
 
     private void jb_ModificarRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ModificarRegistrosMouseClicked
@@ -2292,6 +2300,66 @@ public class Ventana_Principal extends javax.swing.JFrame {
             System.out.println("Could not export successfully");
         }
     }//GEN-LAST:event_jb_CrearArchivoXMLMouseClicked
+    private void CrearRegistro() {
+        Object[] insertarray = new Object[currentFile.getListaCampo().size()];
+        for (int i = 0; i < currentFile.getListaCampo().size(); i++) {
+            if (currentFile.getListaCampo().get(i).getTipo().equals("int")) {
+                String formato = "";
+                for (int j = 0; j < campos.get(i).getLongitud(); j++) {
+                    formato+="#";
+                }
+                try {
+                    jf_Integer.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(formato)));
+                } catch (java.text.ParseException ex) {
+                    ex.printStackTrace();
+                }
+                jl_Integer.setText(campos.get(i).getNombre());
+                jp_Integer.setValue(i);
+                jd_IntroducirInteger.pack();
+                jd_IntroducirInteger.setModal(true);
+                jd_IntroducirInteger.setLocationRelativeTo(this);
+                jd_IntroducirInteger.setVisible(true);
+                insertarray[i] = Integer.parseInt(jf_Integer.getText());
+            }else{
+                jl_string.setText(campos.get(i).getNombre());
+                jp_progreso.setValue(i);
+                jd_IntroducirString.pack();
+                jd_IntroducirString.setModal(true);
+                jd_IntroducirString.setLocationRelativeTo(this);
+                jd_IntroducirString.setVisible(true);
+                insertarray[i] = jt_String.getText();
+            }
+            jt_String.setText("");
+            jf_Integer.setText("");
+        }
+        jd_Registros.setVisible(true);
+        ArrayList Nuevo_Registro = new ArrayList();
+
+        for (int i = 0; i < insertarray.length; i++) {
+            Nuevo_Registro.add(insertarray[i]);
+        }
+        //Export to Trima in this line.
+        Registro temporal = new Registro(Integer.parseInt(insertarray[0].toString()));
+
+        if (arbol_keys.search(temporal) == null) {
+           
+                arbol_keys.insert(temporal);
+                System.out.println(temporal);
+                currentFile.addnumregistros();
+                try {
+                  //  currentFile.EscribirDatosRegistro(Nuevo_Registro);//Send Array to Trima
+                    //currentFile.BuscarDatoArchivo(temporal);
+                } catch (Exception ex) {
+                    //Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                    // System.out.println(ex);
+                    //ex.printStackTrace();
+                }
+        } else {
+            JOptionPane.showMessageDialog(null, "Una Instancia del Registro ya existe.");
+        }
+
+        //Temp();
+    }
     public static void exportXML(ArrayList Campos, ArrayList Regs, String Direccion) {
         Document document = null;
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();

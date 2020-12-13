@@ -414,5 +414,9 @@ public class Archivo {
         }
         return pos;
     }
+    public void addnumregistros() {
+        System.out.println("ADDING ON METADATA!");
+        this.numregistros++;
+    }
 }
 
