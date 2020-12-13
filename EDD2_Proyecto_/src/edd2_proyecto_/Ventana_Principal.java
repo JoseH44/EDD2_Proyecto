@@ -2184,17 +2184,17 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_BuscarRegistrosMouseClicked
 
     private void jb_BorrarRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_BorrarRegistrosMouseClicked
-        jd_BorrarRegistros.pack();
-        jd_BorrarRegistros.setModal(true);
-        jd_BorrarRegistros.setLocationRelativeTo(this);
-        jd_BorrarRegistros.setVisible(true);
+        jd_MBL.pack();
+        jd_MBL.setModal(true);
+        jd_MBL.setLocationRelativeTo(this);
+        jd_MBL.setVisible(true);
     }//GEN-LAST:event_jb_BorrarRegistrosMouseClicked
 
     private void jb_ListarRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ListarRegistrosMouseClicked
-        jd_ListarRegistros.pack();
-        jd_ListarRegistros.setModal(true);
-        jd_ListarRegistros.setLocationRelativeTo(this);
-        jd_ListarRegistros.setVisible(true);
+        jd_MBL.pack();
+        jd_MBL.setModal(true);
+        jd_MBL.setLocationRelativeTo(this);
+        jd_MBL.setVisible(true);
     }//GEN-LAST:event_jb_ListarRegistrosMouseClicked
 
     private void jb_ExportarlXMLconSchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ExportarlXMLconSchMouseClicked
