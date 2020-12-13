@@ -2227,6 +2227,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jd_MBL.setModal(true);
         jd_MBL.setLocationRelativeTo(this);
         jd_MBL.setVisible(true);
+        jd_Registros.setVisible(false);
     }//GEN-LAST:event_jb_ListarRegistrosMouseClicked
 
     private void jb_ExportarlXMLconSchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ExportarlXMLconSchMouseClicked
