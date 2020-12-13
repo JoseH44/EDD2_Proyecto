@@ -2202,6 +2202,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_IntroducirRegistrosMouseClicked
 
     private void jb_ModificarRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ModificarRegistrosMouseClicked
+        jd_Registros.setVisible(false);
         jd_MBL.pack();
         jd_MBL.setModal(true);
         jd_MBL.setLocationRelativeTo(this);
@@ -2216,6 +2217,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_BuscarRegistrosMouseClicked
 
     private void jb_BorrarRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_BorrarRegistrosMouseClicked
+        jd_Registros.setVisible(false);
         jd_MBL.pack();
         jd_MBL.setModal(true);
         jd_MBL.setLocationRelativeTo(this);
@@ -2223,11 +2225,12 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_BorrarRegistrosMouseClicked
 
     private void jb_ListarRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ListarRegistrosMouseClicked
+        jd_Registros.setVisible(false);
         jd_MBL.pack();
         jd_MBL.setModal(true);
         jd_MBL.setLocationRelativeTo(this);
         jd_MBL.setVisible(true);
-        jd_Registros.setVisible(false);
+        
     }//GEN-LAST:event_jb_ListarRegistrosMouseClicked
 
     private void jb_ExportarlXMLconSchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ExportarlXMLconSchMouseClicked
