@@ -1315,6 +1315,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jt_Registros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_RegistrosMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(jt_Registros);
 
         jb_RegresardeTablaRegistro.setText("Regresar");
@@ -1330,6 +1335,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jb_modificarRegistro.setText("Modificar");
 
         jb_eliminarRegistro.setText("Eliminar");
+        jb_eliminarRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_eliminarRegistroMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -2325,6 +2335,40 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jd_MBL.dispose();
         jd_Registros.setVisible(true);
     }//GEN-LAST:event_jb_RegresardeTablaRegistroMouseClicked
+
+    private void jb_eliminarRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_eliminarRegistroMouseClicked
+        if (mode == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione un Registro para borrar.");
+        } else {
+            try {
+                System.out.println("Se eliminara el registro: " + rowRemoval);
+                ArrayList ExportTrima3 = new ArrayList();
+                for (int i = 0; i < currentFile.getListaCampo().size(); i++) {
+                    ExportTrima3.add(jt_Registros.getValueAt(rowRemoval, i));
+                }
+                mode = -1;
+                //Exportar a Trima Aqui.
+                currentFile.EliminarDatoArchivo(ExportTrima3, AvailList, arbol_keys, raFile);
+                System.out.println(currentFile.getNumregistros());
+                currentFile.subtractnumregistros();
+                System.out.println("Metadata Registry after deleting: " + currentFile.getNumregistros());
+                TableModel modelo = jt_Registros.getModel();
+                DefaultTableModel model = (DefaultTableModel) modelo;
+                model.removeRow(rowRemoval);
+                jt_Registros.setModel(modelo);
+            } catch (Exception e) {
+                System.out.println("Problem deleting file");
+            }
+
+        }
+    }//GEN-LAST:event_jb_eliminarRegistroMouseClicked
+
+    private void jt_RegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_RegistrosMouseClicked
+        System.out.println("TOUCHING AUFHAKJDFA;KDHFA;DHFKAJHSDFKAHDFKJAHDFAJDFH");
+        rowRemoval = jt_Registros.getSelectedRow();
+        mode = 0;
+        System.out.println("Removal on:" + rowRemoval);
+    }//GEN-LAST:event_jt_RegistrosMouseClicked
     private void CrearRegistro() {
         Object[] insertarray = new Object[currentFile.getListaCampo().size()];
         for (int i = 0; i < currentFile.getListaCampo().size(); i++) {
@@ -2678,4 +2722,6 @@ public class Ventana_Principal extends javax.swing.JFrame {
     JTable Tabla;
     RandomAccessFile raFile;
     TableModel modeloLimpio;
+    int mode = -1;
+    int rowRemoval;
 }
