@@ -1318,6 +1318,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jt_Registros);
 
         jb_RegresardeTablaRegistro.setText("Regresar");
+        jb_RegresardeTablaRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_RegresardeTablaRegistroMouseClicked(evt);
+            }
+        });
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel18.setText("Registros en el archivo");
@@ -2315,6 +2320,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jb_ExportarExcelMouseClicked
+
+    private void jb_RegresardeTablaRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_RegresardeTablaRegistroMouseClicked
+        jd_MBL.dispose();
+        jd_Registros.setVisible(true);
+    }//GEN-LAST:event_jb_RegresardeTablaRegistroMouseClicked
     private void CrearRegistro() {
         Object[] insertarray = new Object[currentFile.getListaCampo().size()];
         for (int i = 0; i < currentFile.getListaCampo().size(); i++) {
