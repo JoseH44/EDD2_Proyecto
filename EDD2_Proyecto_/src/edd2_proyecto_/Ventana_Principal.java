@@ -2238,6 +2238,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_BorrarRegistrosMouseClicked
 
     private void jb_ListarRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ListarRegistrosMouseClicked
+        BuildTable(0);
+        
         try {
             InsertarRegistroTabla(raFile);
         } catch (IOException ex) {
@@ -2468,20 +2470,21 @@ public class Ventana_Principal extends javax.swing.JFrame {
         
     }
     
-    /*public void BuildTable(Metadata metadata, int funcion) {
+    public void BuildTable(int funcion) {
         if (funcion == 0) { //Instruction 0 lets the Table Builder know it should only change headers.
-            Object[] campos = metadata.getCampos().toArray();
+            Object[] campos = currentFile.getListaCampo().toArray();
             DefaultTableModel tabla = new DefaultTableModel();
             tabla.setColumnCount(campos.length);
 
             tabla.setColumnIdentifiers(campos);
-            Table.setModel(tabla);
+            
+            jt_Registros.setModel(tabla);
             //Table.updateUI();
         } else if (funcion == 1) { //Instruction 1 lets the Table Builder clean all models loaded.
-            Table.setModel(cleanTable);
+           jt_Registros.setModel(modeloLimpio);
         }
 
-    }*/
+    }
     
     
     
@@ -2664,4 +2667,5 @@ public class Ventana_Principal extends javax.swing.JFrame {
     Excel excel;
     JTable Tabla;
     RandomAccessFile raFile;
+    TableModel modeloLimpio;
 }
