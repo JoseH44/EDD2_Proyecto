@@ -61,8 +61,7 @@ public class Campo implements Serializable{
 
     @Override
     public String toString() {
-        return "Nombre del Campo: " + nombre + "\n Tipo de Dato: " + tipo + "\n Es Llave Primaria del Archivo[s/n]: " + llave_primaria +
-                "\n Longitud del Campo: " + longitud;
+        return  nombre;
     }
 
     
