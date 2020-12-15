@@ -2357,7 +2357,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 model.removeRow(rowRemoval);
                 jt_Registros.setModel(modelo);
             } catch (Exception e) {
-                System.out.println("Problem deleting file");
+                System.out.println("Problema borrando el registro");
             }
 
         }
