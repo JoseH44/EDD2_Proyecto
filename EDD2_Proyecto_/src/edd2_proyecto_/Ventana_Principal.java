@@ -2297,6 +2297,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "No hay informacion cargada");
             } else {
                 String name = JOptionPane.showInputDialog(null, "Ingrese el nombre del exporte: ");
+                //mandar tabla de registros
                 excel.ExportToExcel(currentFile, name, Tabla);
             }
 
