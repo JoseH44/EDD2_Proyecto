@@ -2238,6 +2238,13 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_BorrarRegistrosMouseClicked
 
     private void jb_ListarRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ListarRegistrosMouseClicked
+        try {
+            InsertarRegistroTabla(raFile);
+        } catch (IOException ex) {
+            Logger.getLogger(Ventana_Principal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Ventana_Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         jd_Registros.setVisible(false);
         jb_modificarRegistro.setVisible(false);
         jb_eliminarRegistro.setVisible(false);
@@ -2656,4 +2663,5 @@ public class Ventana_Principal extends javax.swing.JFrame {
     File file;
     Excel excel;
     JTable Tabla;
+    RandomAccessFile raFile;
 }
