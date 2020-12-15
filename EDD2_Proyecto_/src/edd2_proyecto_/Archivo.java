@@ -48,6 +48,15 @@ public class Archivo {
     public void setNumregistros(int numregistros) {
         this.numregistros = numregistros;
     }
+    
+    public void addnumregistros() {
+        System.out.println("ADDING ON METADATA!");
+        this.numregistros++;
+    }
+    public void subtractnumregistros(){
+        System.out.println("SUBTRACTING ON METADAT.");
+        this.numregistros--;
+    }
 
     public ArrayList<Campo> getListaCampo() {
         return listaCampo;
@@ -414,9 +423,8 @@ public class Archivo {
         }
         return pos;
     }
-    public void addnumregistros() {
-        System.out.println("ADDING ON METADATA!");
-        this.numregistros++;
-    }
+    
 }
+
+
 
