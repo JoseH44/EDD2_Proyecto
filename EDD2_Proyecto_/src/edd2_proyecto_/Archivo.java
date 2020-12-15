@@ -264,7 +264,7 @@ public class Archivo {
         try {//Este metodo quedara available cuando Se habilite la fncion Load File
             System.out.println("=========================================");
             System.out.println("Cargando Registros a la Table");
-
+            
             RAfile = new RandomAccessFile(archivo, "rw");
             RAfile.seek(0);
             int tamaño = RAfile.readInt();
