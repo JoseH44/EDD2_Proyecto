@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.TableModel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -578,6 +579,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         jb_ExportarExcel.setBackground(new java.awt.Color(204, 255, 255));
         jb_ExportarExcel.setText("Exportar Excel");
+        jb_ExportarExcel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_ExportarExcelMouseClicked(evt);
+            }
+        });
 
         jb_ExportarlXMLconSch.setBackground(new java.awt.Color(204, 255, 255));
         jb_ExportarlXMLconSch.setText("Exportar XML con Schema");
@@ -2283,6 +2289,22 @@ public class Ventana_Principal extends javax.swing.JFrame {
             System.out.println("Could not export successfully");
         }
     }//GEN-LAST:event_jb_CrearArchivoXMLMouseClicked
+
+    private void jb_ExportarExcelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ExportarExcelMouseClicked
+        // TODO add your handling code here:
+        try {
+            if (file == null || currentFile == null || currentFile.getListaCampo() == null || currentFile.getNumregistros() == 0) {
+                JOptionPane.showMessageDialog(null, "No hay informacion cargada");
+            } else {
+                String name = JOptionPane.showInputDialog(null, "Ingrese el nombre del exporte: ");
+                excel.ExportToExcel(currentFile, name, Tabla);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error Fatal.");
+        }
+        
+    }//GEN-LAST:event_jb_ExportarExcelMouseClicked
     private void CrearRegistro() {
         Object[] insertarray = new Object[currentFile.getListaCampo().size()];
         for (int i = 0; i < currentFile.getListaCampo().size(); i++) {
@@ -2630,4 +2652,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     Archivo currentFile;
     Btree arbol_keys;
     AVL AvailList = new AVL();
+    File file;
+    Excel excel;
+    JTable Tabla;
 }
