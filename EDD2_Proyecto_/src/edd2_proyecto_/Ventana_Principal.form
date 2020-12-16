@@ -2321,7 +2321,7 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_RegistrosActionPerformed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jb_RegistrosMouseClicked"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jb_Estandarizacion">

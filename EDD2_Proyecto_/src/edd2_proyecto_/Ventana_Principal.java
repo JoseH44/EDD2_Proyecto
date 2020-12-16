@@ -1618,9 +1618,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jb_Registros.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jb_Registros.setText("Registros");
         jb_Registros.setEnabled(false);
-        jb_Registros.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_RegistrosActionPerformed(evt);
+        jb_Registros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_RegistrosMouseClicked(evt);
             }
         });
 
@@ -2183,20 +2183,6 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jd_ModificarCampo.setVisible(true);
     }//GEN-LAST:event_jb_InfoAceptarCambiosDatosMouseClicked
 
-    private void jb_RegistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_RegistrosActionPerformed
-        /*if(currentFile.getNumregistros() <= 0){
-            jb_BuscarRegistros.setEnabled(false);
-            jb_ListarRegistros.setEnabled(false);
-            jb_ModificarRegistros.setEnabled(false);
-            jb_BorrarRegistros.setEnabled(false);
-        }*/
-        this.setVisible(false);
-        jd_Registros.pack();
-        jd_Registros.setModal(true);
-        jd_Registros.setLocationRelativeTo(this);
-        jd_Registros.setVisible(true);
-    }//GEN-LAST:event_jb_RegistrosActionPerformed
-
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
         jd_indices.dispose();
@@ -2476,6 +2462,20 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         
     }//GEN-LAST:event_bt_cruzarMouseClicked
+
+    private void jb_RegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_RegistrosMouseClicked
+        if(currentFile.getNumregistros() <= 0){
+            jb_BuscarRegistros.setEnabled(false);
+            jb_ListarRegistros.setEnabled(false);
+            jb_ModificarRegistros.setEnabled(false);
+            jb_BorrarRegistros.setEnabled(false);
+        }
+        this.setVisible(false);
+        jd_Registros.pack();
+        jd_Registros.setModal(true);
+        jd_Registros.setLocationRelativeTo(this);
+        jd_Registros.setVisible(true);
+    }//GEN-LAST:event_jb_RegistrosMouseClicked
     private void CrearRegistro() {
         Object[] insertarray = new Object[currentFile.getListaCampo().size()];
         for (int i = 0; i < currentFile.getListaCampo().size(); i++) {
