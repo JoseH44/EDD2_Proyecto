@@ -36,7 +36,7 @@ public class XMLMaker {
         documento = constructor.newDocument();
     }
     
-    public void Operate(JTable table, Archivo metadata,String nuevo){
+    public void Operate(JTable table, Metadata metadata,String nuevo){
         
         try {
             XMLMaker creador = new XMLMaker();
@@ -86,17 +86,17 @@ public class XMLMaker {
         transformer.transform(source, result);
     }
     
-    public void crearDocumento(JTable table, Archivo metadata,String nuevo) {
+    public void crearDocumento(JTable table, Metadata metadata,String nuevo) {
         
         
         // Creamos el elemento principal
         ArrayList supertemporal = new ArrayList();
         try{
-            for (int i = 0; i < metadata.getListaCampo().size(); i++) {
+            for (int i = 0; i < metadata.getCampos().size(); i++) {
             String concat = "";
-            concat += metadata.getListaCampo().get(i).toString();
+            concat += metadata.getCampos().get(i).toString();
             concat += "(";
-            concat += metadata.getListaCampo().get(i).getTipo();
+            concat += metadata.getTipos().get(i).toString();
             concat += ")";
             supertemporal.add(concat);
         }
@@ -150,5 +150,6 @@ public class XMLMaker {
         entrada.appendChild(fecha);*/
     }
 }
+
 
 
