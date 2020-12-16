@@ -2184,7 +2184,12 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_InfoAceptarCambiosDatosMouseClicked
 
     private void jb_RegistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_RegistrosActionPerformed
-        // TODO add your handling code here:
+        /*if(currentFile.getNumregistros() <= 0){
+            jb_BuscarRegistros.setEnabled(false);
+            jb_ListarRegistros.setEnabled(false);
+            jb_ModificarRegistros.setEnabled(false);
+            jb_BorrarRegistros.setEnabled(false);
+        }*/
         this.setVisible(false);
         jd_Registros.pack();
         jd_Registros.setModal(true);
@@ -2227,6 +2232,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         }else{
             JOptionPane.showInputDialog("No hay Campos creados");
         }
+        
     }//GEN-LAST:event_jb_IntroducirRegistrosMouseClicked
 
     private void jb_ModificarRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ModificarRegistrosMouseClicked
@@ -2341,24 +2347,24 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_RegresardeTablaRegistroMouseClicked
 
     private void jb_eliminarRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_eliminarRegistroMouseClicked
-        if (mode == -1) {
-            JOptionPane.showMessageDialog(null, "Seleccione un Registro para borrar.");
+        if (jt_Registros.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(jd_MBL, "Seleccione un Registro de la Tabla para Borrar");
         } else {
             try {
-                System.out.println("Se eliminara el registro: " + rowRemoval);
-                ArrayList ExportTrima3 = new ArrayList();
+                //System.out.println("Se eliminara el registro: " + rowRemoval);
+                ArrayList datos_elim = new ArrayList();
                 for (int i = 0; i < currentFile.getListaCampo().size(); i++) {
-                    ExportTrima3.add(jt_Registros.getValueAt(rowRemoval, i));
+                    datos_elim.add(jt_Registros.getValueAt(jt_Registros.getSelectedRow(), i));
                 }
-                mode = -1;
+                //mode = -1;
                 //Exportar a Trima Aqui.
-                currentFile.EliminarDatoArchivo(ExportTrima3, AvailList, arbol_keys, raFile);
+                currentFile.EliminarDatoArchivo(datos_elim, AvailList, arbol_keys, raFile);
                 System.out.println(currentFile.getNumregistros());
                 currentFile.subtractnumregistros();
                 System.out.println("Metadata Registry after deleting: " + currentFile.getNumregistros());
-                TableModel modelo = jt_Registros.getModel();
-                DefaultTableModel model = (DefaultTableModel) modelo;
-                model.removeRow(rowRemoval);
+                DefaultTableModel modelo =(DefaultTableModel) jt_Registros.getModel();
+                //DefaultTableModel model = (DefaultTableModel) modelo;
+                modelo.removeRow(jt_Registros.getSelectedRow());
                 jt_Registros.setModel(modelo);
             } catch (Exception e) {
                 System.out.println("Problema borrando el registro");
