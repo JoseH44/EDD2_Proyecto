@@ -3146,7 +3146,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JTextField tf_nombreArchivo;
     // End of variables declaration//GEN-END:variables
     ArrayList<Campo> campos = new ArrayList();
-    Archivo currentFile;
+    Metadata currentFile;
     
     AVL AvailList = new AVL();
     File file;

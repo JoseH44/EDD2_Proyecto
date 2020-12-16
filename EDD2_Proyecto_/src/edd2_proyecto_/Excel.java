@@ -27,7 +27,7 @@ public class Excel {
     }
     
 
-    public void ExportToExcel(Archivo metadata, String name, JTable table) {
+    public void ExportToExcel(Metadata metadata, String name, JTable table) {
         //Blank workbook
         XSSFWorkbook workbook = new XSSFWorkbook();
 
@@ -36,10 +36,10 @@ public class Excel {
         int registros = table.getModel().getRowCount();
         //This data needs to be written (Object[])
         Map<String, Object[]> data = new TreeMap<String, Object[]>();
-        data.put("1", metadata.getListaCampo().toArray());
+        data.put("1", metadata.getCampos().toArray());
         for (int i = 0; i < registros; i++) {
             ArrayList Registro = new ArrayList();
-            for (int j = 0; j < metadata.getListaCampo().size(); j++) {
+            for (int j = 0; j < metadata.getCampos().size(); j++) {
                 Registro.add(table.getValueAt(i, j));
             }
             data.put(Integer.toString(i + 2), Registro.toArray());

@@ -5,18 +5,19 @@
  */
 package edd2_proyecto_;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Workstation DSY
  */
-public class Metadata {
+public class Metadata implements Serializable{
     private String nombre;
     private ArrayList campos;
     private ArrayList tipos;
     private int numregistros = 0;
-    //private boolean estado; // True significa que hay informacion en la metadata.
+
     private long Campos_en_Archivo;
     Btree ArbolB;
     private int sizeMeta;
@@ -51,10 +52,6 @@ public class Metadata {
         this.tipos = tipos;
 
     }
-
-    
-
- 
 
     public int getNumregistros() {
         return numregistros;
@@ -107,13 +104,5 @@ public class Metadata {
     public String toString() {
         return "Metadata{" + "nombre=" + nombre + '}';
     }
-
-
-
-
-
-
-
-
 
 }
