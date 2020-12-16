@@ -2105,8 +2105,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
         {
             String nombre = tf_nombreArchivo.getText();
             try {
-                currentFile = new Archivo("./" + nombre + ".aajs");
+                currentFile = new Metadata("./" + nombre + ".aajs");
             } catch (IOException ex) {
+                
             }
             bt_Cerrar.setEnabled(true);
             bt_Salvar.setEnabled(true);
@@ -2129,12 +2130,14 @@ public class Ventana_Principal extends javax.swing.JFrame {
         
         if(seleccion == JFileChooser.APPROVE_OPTION)
         {
-            File file = fc.getSelectedFile();
-            currentFile = new Archivo(file);
+            currentFile = new Metadata();
+            BuildTable(currentFile, 1);
             try {
-                currentFile.cargarArchivo();
-            } catch (IOException ex) {
-                Logger.getLogger(Ventana_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                CargarMetadatos();
+                BuildTable(currentFile, 0);
+                LeerDatosRegistro();
+            } catch (ClassNotFoundException ex) {
+                // Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
             }
             campos = currentFile.getCampos();
             bt_Cerrar.setEnabled(true);
@@ -2240,8 +2243,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                     
                         if (currentFile.getNumregistros() < 1) {
                             try {
-                                currentFile.getArchivo().delete();
-                                currentFile.getArchivo().createNewFile();
+                                file.delete();
+                                file.createNewFile();
                                 System.out.println("Forcing deletion and recreation of the file.");
                             } catch (Exception sdj) {
                                 System.out.println("Error en borrar.");
