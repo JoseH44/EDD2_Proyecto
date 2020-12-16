@@ -21,6 +21,7 @@ public class Archivo {
     private ArrayList <Campo> listaCampo = new ArrayList();
     private File archivo = null;
     private int numregistros = 0;
+    Btree arbol_keys;
 
     public Archivo(String path) throws IOException {
         archivo = new File(path);
@@ -77,6 +78,8 @@ public class Archivo {
     {
        this.listaCampo.add(p);
     }
+    
+    
 
     @Override
     public String toString() {
@@ -127,13 +130,13 @@ public class Archivo {
         }
     }
     
-    public void ModificarDatoArchivo(ArrayList<Object> arrayList, AVL avl, Btree arbol,RandomAccessFile RAfile) {
+    public void ModificarDatoArchivo(ArrayList<Object> arrayList, AVL avl,RandomAccessFile RAfile) {
         try {
             Registro temporal = new Registro(Integer.parseInt(arrayList.get(0).toString()));
-            if (BuscarDatoArchivo(temporal,arbol,RAfile) != null) {
+            if (BuscarDatoArchivo(temporal,RAfile) != null) {
                 System.out.println("===========================================================");
                 System.out.println("MODIFICANDO NODO...");
-                Data temp = BuscarDatoArchivo(temporal,arbol,RAfile);
+                Data temp = BuscarDatoArchivo(temporal,RAfile);
                 temporal.setByteOffset(temp.ubicacion);
                 RAfile.seek(temp.ubicacion);
                 int size_act = RAfile.readInt();//Este es el tamaño actual
@@ -181,14 +184,15 @@ public class Archivo {
                     RAfile.writeInt(dat.length);
                     RAfile.write(dat);
 
-                    Bnode tmp = arbol.search(temporal);
+                    Bnode tmp = arbol_keys.search(temporal);
                     int ubicacion = searchEnNodo(tmp, temp.getKey());
                     tmp.key[ubicacion].byteOffset = byteOffset;
 
-                    System.out.println("LLamar metodo del AvailList...");                    avl.BestFit(size_act, temporal.byteOffset);
+                    System.out.println("LLamar metodo del AvailList...");
+                    avl.BestFit(size_act, temporal.byteOffset);
                     avl.PrintList(avl.head);
-                    System.out.println("Antes de Borrar el Registro...." + arbol.search(temporal));
-                    System.out.println("Despues de Borrar el Registro...." + arbol.search(temporal));
+                    System.out.println("Antes de Borrar el Registro...." + arbol_keys.search(temporal));
+                    System.out.println("Despues de Borrar el Registro...." + arbol_keys.search(temporal));
                     System.out.println("");
 
                     System.out.println("Key: " + tmp.key[ubicacion].key + " ------------------ ByteOfsset" + tmp.key[ubicacion].byteOffset);
@@ -203,19 +207,19 @@ public class Archivo {
         }
     }
     
-    public void EliminarDatoArchivo(ArrayList<Object> arrayList, AVL avl, Btree arbol,RandomAccessFile RAfile) {
+    public void EliminarDatoArchivo(ArrayList<Object> arrayList, AVL avl,RandomAccessFile RAfile) {
 
         try {
             Registro temporal = new Registro(Integer.parseInt(arrayList.get(0).toString()));
-            if (BuscarDatoArchivo(temporal,arbol,RAfile) != null) {
+            if (BuscarDatoArchivo(temporal,RAfile) != null) {
                 System.out.println("===========================================================");
                 System.out.println("ELIMANDO NODO...");
-                Data temp = BuscarDatoArchivo(temporal,arbol,RAfile);
+                Data temp = BuscarDatoArchivo(temporal,RAfile);
                 RAfile.seek(temp.ubicacion);
                 int size_act = RAfile.readInt();//Este es el tamaño actual
                 temp.setMarcado("*"); //Pone un aterisco que marca ese registro o dato como eliminado
                 temp.marcado = "*";
-                Bnode b = arbol.search(temporal);
+                Bnode b = arbol_keys.search(temporal);
                 int pos = searchEnNodo(b, temporal.key);
                 long ubicacion = b.key[pos].getByteOffset();
                 temp.ubicacion = ubicacion;
@@ -234,9 +238,9 @@ public class Archivo {
                 System.out.println("LLamar metodo del AvailList...");
                 avl.BestFit(size_act, temp.ubicacion);
                 avl.PrintList(avl.head);
-                System.out.println("Antes de Borrar el Registro...." +arbol.search(temporal));
-                arbol.remove(temporal);
-                System.out.println("Despues de Borrar el Registro...." + arbol.search(temporal));
+                System.out.println("Antes de Borrar el Registro...." +arbol_keys.search(temporal));
+                arbol_keys.remove(temporal);
+                System.out.println("Despues de Borrar el Registro...." + arbol_keys.search(temporal));
                 System.out.println("===========================================================");
                 //Avai
 
@@ -247,9 +251,9 @@ public class Archivo {
     }
     
     
-    public Data BuscarDatoArchivo(Registro r, Btree arbol,RandomAccessFile RAfile) throws IOException, ClassNotFoundException{//Metodo para Buscar El Registro en el Archivo
-        if (arbol.search(r) != null) {//Solo uso la key del Arbol y lo pido de forma constante al Randomaccesfile
-            Bnode contenido = arbol.search(r);
+    public Data BuscarDatoArchivo(Registro r,RandomAccessFile RAfile) throws IOException, ClassNotFoundException{//Metodo para Buscar El Registro en el Archivo
+        if (arbol_keys.search(r) != null) {//Solo uso la key del Arbol y lo pido de forma constante al Randomaccesfile
+            Bnode contenido = arbol_keys.search(r);
             int pos = searchEnNodo(contenido, r.getKey());
             long byteOffset = contenido.key[pos].byteOffset;
             RAfile.seek(byteOffset);
@@ -269,7 +273,7 @@ public class Archivo {
 
     }
     
-    public void LeerDatosRegistro(RandomAccessFile RAfile,AVL avl, Btree arbol) throws ClassNotFoundException {
+    public void LeerDatosRegistro(RandomAccessFile RAfile,AVL avl) throws ClassNotFoundException {
         try {//Este metodo quedara available cuando Se habilite la fncion Load File
             System.out.println("=========================================");
             System.out.println("Cargando Registros a la Table");
@@ -299,7 +303,7 @@ public class Archivo {
                     //KennethExport2 = new ArrayList<>();
                     Registro temporal = new Registro(d.getKey());
                     temporal.setByteOffset(d.getUbicacion());
-                    arbol.insert(temporal);
+                    arbol_keys.insert(temporal);
                     System.out.println("SE VA A METER A: " + d.getDatos().get(1) + " Ubicacion: " + d.getUbicacion());
                     for (int i = 0; i < d.getDatos().size(); i++) {
                         //KennethExport2.add(d.getDatos().get(i));
@@ -313,15 +317,15 @@ public class Archivo {
                 }
 
             }
-            arbol.traverse();
-            arbol.PrintLevels();
+            arbol_keys.traverse();
+            arbol_keys.PrintLevels();
         } catch (IOException ex) {
             //ex.printStackTrace();
             //System.out.println("ERrrrrrrrrrrrrrrrrrrrrrrrrrrrrrroooooooooooooooooorr");
         }
     }
     
-    public void EscribirDatosRegistro(ArrayList<Object> arrayList, AVL avl, Btree arbol,RandomAccessFile RAfile) {
+    public void EscribirDatosRegistro(ArrayList<Object> arrayList, AVL avl,RandomAccessFile RAfile) {
 
         try {
             System.out.println("=========================================");
@@ -331,7 +335,7 @@ public class Archivo {
                 Registro temporal = new Registro(Integer.parseInt(arrayList.get(0).toString()));
                 long byteOffset = RAfile.length();
                 System.out.println("ByteOffset:: " + byteOffset);
-                Bnode d = arbol.search(temporal);
+                Bnode d = arbol_keys.search(temporal);
                 int x = searchEnNodo(d, temporal.getKey());
 
                 d.key[x].setByteOffset(byteOffset);
@@ -383,7 +387,7 @@ public class Archivo {
                 Registro temporal = new Registro(Integer.parseInt(arrayList.get(0).toString()));
                 long byteOffset = RAfile.length();
                 System.out.println("ByteOffset:: " + byteOffset);
-                Bnode d = arbol.search(temporal);
+                Bnode d = arbol_keys.search(temporal);
                 int x = searchEnNodo(d, temporal.getKey());
 
                 d.key[x].setByteOffset(byteOffset);

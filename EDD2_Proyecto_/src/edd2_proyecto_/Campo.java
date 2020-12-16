@@ -13,6 +13,7 @@ public class Campo implements Serializable{
     String nombre;
     String tipo;
     boolean llave_primaria;
+    boolean llave_candidata;
     int longitud;
 
      private static final long SerialVersionUID=777L;
@@ -20,10 +21,11 @@ public class Campo implements Serializable{
     public Campo() {
     }
 
-    public Campo(String nombre, String tipo, boolean llave_primaria, int longitud) {
+    public Campo(String nombre, String tipo, boolean llave_primaria, int longitud,boolean Pllave_candidata) {
         this.nombre = nombre;
         this.tipo = tipo;
         this.llave_primaria = llave_primaria;
+        this.llave_candidata = Pllave_candidata;
         this.longitud = longitud;
     }
 
@@ -58,6 +60,16 @@ public class Campo implements Serializable{
     public void setLongitud(int longitud) {
         this.longitud = longitud;
     }
+
+    public boolean isLlave_candidata() {
+        return llave_candidata;
+    }
+
+    public void setLlave_candidata(boolean llave_candidata) {
+        this.llave_candidata = llave_candidata;
+    }
+    
+    
 
     @Override
     public String toString() {
