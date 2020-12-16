@@ -7,11 +7,14 @@ import javax.swing.table.DefaultTableModel;
 
 import  java.io.BufferedWriter ;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import  java.io.File ;
 import  java.io.FileNotFoundException ;
+import java.io.FileOutputStream;
 import  java.io.FileWriter ;
 import  java.io.IOException ;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.RandomAccessFile;
 import  java.text.ParseException ;
 import java.util.Collections;
@@ -2224,13 +2227,53 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     private void jb_IntroducirRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_IntroducirRegistrosMouseClicked
         
-        if (currentFile != null) {
+      /*  if (currentFile != null) {
             if (currentFile.getListaCampo().size() > 0) {
                 CrearRegistro();
             }
         }else{
             JOptionPane.showInputDialog("No hay Campos creados");
-        }
+        }*/
+        //System.out.println("NUM REGISTROS: " + metadata.getNumregistros());
+            if (currentFile.getListaCampo() != null) {
+                if (currentFile.getListaCampo().size() > 0) {
+                    
+                        if (currentFile.getNumregistros() < 1) {
+                            try {
+                                currentFile.getArchivo().delete();
+                                currentFile.getArchivo().createNewFile();
+                                System.out.println("Forcing deletion and recreation of the file.");
+                            } catch (Exception sdj) {
+                                System.out.println("Error en borrar.");
+                            }
+
+                            //try {
+                                //EscribirMetadatos();
+                            //} catch (IOException ex) {
+                                //ex.printStackTrace();
+                            //}
+                            currentFile.addnumregistros();
+                            CrearRegistro();
+                            try {
+                                EscribirMetadatos();
+                            } catch (IOException ex) {
+                                Logger.getLogger(Ventana_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        } else {
+                            currentFile.addnumregistros();
+                            CrearRegistro();
+                        }
+
+                    
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "No hay campos creados! XTT 428");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay campos creados! XTT 431");
+            }
+            
+        
         
     }//GEN-LAST:event_jb_IntroducirRegistrosMouseClicked
 
@@ -2484,6 +2527,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
             jb_ListarRegistros.setEnabled(false);
             jb_ModificarRegistros.setEnabled(false);
             jb_BorrarRegistros.setEnabled(false);
+        }else{
+            jb_BuscarRegistros.setEnabled(true);
+            jb_ListarRegistros.setEnabled(true);
+            jb_ModificarRegistros.setEnabled(true);
+            jb_BorrarRegistros.setEnabled(true);
         }
         this.setVisible(false);
         jd_Registros.pack();
@@ -2628,7 +2676,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
         }
         jd_Registros.setVisible(true);
         ArrayList Nuevo_Registro = new ArrayList();
-
+        try {
+            raFile = new RandomAccessFile(currentFile.getArchivo(),"rw");
+        } catch (FileNotFoundException ex) {
+            
+        }
         for (int i = 0; i < insertarray.length; i++) {
             Nuevo_Registro.add(insertarray[i]);
         }
@@ -2641,8 +2693,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 System.out.println(temporal);
                 currentFile.addnumregistros();
                 try {
-                  //  currentFile.EscribirDatosRegistro(Nuevo_Registro);//Send Array to Trima
-                    //currentFile.BuscarDatoArchivo(temporal);
+                  currentFile.EscribirDatosRegistro(Nuevo_Registro, AvailList, raFile);//Send Array to Trima
+                  currentFile.BuscarDatoArchivo(temporal, raFile);
                 } catch (Exception ex) {
                     //Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                     // System.out.println(ex);
@@ -2834,6 +2886,89 @@ public class Ventana_Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Operation aborted!");
         }
     }
+    private void CreateFile() {
+        //Borro lo que tengo en la metadata
+        //metadata = new Metadata();
+        //Le digo a la tabla que se borre.
+        //BuildTable(metadata, 1);
+        //OUTPUT TESTS ----- IGNORE
+
+        // Output Tests ------ IGNORE.
+        FileSuccess = 0;
+        String direction;
+        //Creo un nuevo JFileChooser para que eliga donde guardar.
+        //Le digo que aparezca en el home del proyecto .. Crea un problema que la Metadata se puede guardar en cualquier sitio.
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File("./"));
+        FileNameExtensionFilter data = new FileNameExtensionFilter("DAT FILE", "dat");
+        fileChooser.setFileFilter(data);
+        int seleccion = fileChooser.showSaveDialog(this);
+        if (seleccion == JFileChooser.APPROVE_OPTION) { //Cuando le da guardar
+            //System.out.println(fileChooser.getCurrentDirectory().toString());
+            File file = null;
+            FileOutputStream fos = null;
+            ObjectOutputStream ous = null;
+            try {
+                if (fileChooser.getFileFilter().getDescription().equals("DAT FILE")) { //Chequea si lo que quiere guardar es DAT FILE
+                    direction = fileChooser.getSelectedFile().getPath().toString() + ".dat";
+                    System.out.println(direction);
+                    direction = direction.replace(".dat", "");
+                    System.out.println(direction);
+                    direction += ".dat";
+                    System.out.println(direction);
+                    file = new File(direction);
+                    if (file.length() == 0) { //Revisa que este vacio.                    
+                        this.file = new File(direction);
+                        JOptionPane.showMessageDialog(this, "Success!\n All unsaved progress was Lost!");
+
+                    } else if (file.exists()) { //Si ya existe entonces lo vuelve a crear. PERO VACIO.
+                        file.delete();
+                        file.createNewFile();
+                        this.file = new File(direction);
+                        JOptionPane.showMessageDialog(this, "File OverWritten, New Length: " + file.length());
+                    }
+                    FileSuccess = 1;
+                } else {
+                    JOptionPane.showMessageDialog(this, "Unable to save. Use DAT FILE.");
+                }
+                fos = new FileOutputStream(file);
+                ous = new ObjectOutputStream(fos);
+                ous.flush(); //Lo oficializo
+
+                System.out.println("FILE LENGTH: " + (file.length() - 4)); //SIZE MENOS BUFFER.
+
+                // RAfile=new RandomAccessFile(file,"rw");
+            } catch (Exception e) {
+                //e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Something Went Wrong! Contact System Administrator.");
+            }
+            try {
+                ous.close();
+                fos.close();
+            } catch (Exception e) {
+                //e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Fatal error closing files.");
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Operation aborted!");
+        }
+        //End of FileChooserIf 
+    }
+    public void EscribirMetadatos() throws IOException {
+        raFile = new RandomAccessFile(currentFile.getArchivo(), "rw");
+        ByteArrayOutputStream obArray = new ByteArrayOutputStream();
+        ObjectOutputStream objeto = new ObjectOutputStream(obArray);
+        //objeto.writeObject(currentFile.getListaCampo());
+        byte[] datos = obArray.toByteArray();//makes an array of bytes from the object
+        raFile.seek(0);//Place pointe at the beggining of the file
+        raFile.writeInt(datos.length);
+        raFile.write(datos);
+        //RAfile.setLength(7500);
+        currentFile.setSizeMeta((int) raFile.length());
+        System.out.println("ESTE ES EL SIZE DE LOS METADATOS..." + datos.length);
+
+    }
 
     /**
      * @param args the command line arguments
@@ -3022,7 +3157,6 @@ public class Ventana_Principal extends javax.swing.JFrame {
     int currentRow;
     int currentColumn;
     boolean ExisteLlavePrim;
-
     int FileSuccess;
 
 }

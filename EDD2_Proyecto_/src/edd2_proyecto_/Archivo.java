@@ -22,6 +22,7 @@ public class Archivo {
     private File archivo = null;
     private int numregistros = 0;
     Btree arbol_keys;
+    private int sizeMeta;
 
     public Archivo(String path) throws IOException {
         archivo = new File(path);
@@ -36,6 +37,7 @@ public class Archivo {
         }
         bw.close();
         fw.close();
+        arbol_keys = new Btree();
     }
 
     public Archivo(File file) {
@@ -439,6 +441,9 @@ public class Archivo {
             // System.out.println("PORQUE ESSS NULLLLLL?????????????????????????????");
         }
         return pos;
+    }
+    public void setSizeMeta(int sizeMeta) {
+        this.sizeMeta = sizeMeta;
     }
     
 }
