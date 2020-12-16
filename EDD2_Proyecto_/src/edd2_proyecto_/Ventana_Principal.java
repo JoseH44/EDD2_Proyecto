@@ -1745,7 +1745,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_EstandarizacionActionPerformed
 
     private void jb_CrearCampoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_CrearCampoMouseClicked
-        boolean ExisteLlavePrim = false;
+        ExisteLlavePrim = false;
         if(!campos.isEmpty()){
             for (int i = 0; i < campos.size(); i++) {
                 if(campos.get(i).isLlave_primaria()){
@@ -1795,22 +1795,29 @@ public class Ventana_Principal extends javax.swing.JFrame {
        String nombre = tf_NombredelCampo.getText();
        int longitud;
        //newLongitud = (int) js_InfoLongitudCampo.getValue();
-       boolean key;
        
-       if(rb_key_no.isSelected()){
-           key = false;
-       }else{
-           key = true;
-       }
+       
+       
+       
+       
        
        longitud = (int) sp_LongitudCampo.getValue();
-          
-       if(rb_tip_integer.isSelected()){
-           campos.add(new Campo(nombre, "int", key, longitud));
-           
-       }else{
-           campos.add(new Campo(nombre, "String", key, longitud));
-       }
+       
+       
+        if (ExisteLlavePrim) {
+            if(rb_tip_integer.isSelected() && rb_cand_si.isSelected())
+                campos.add(new Campo(nombre, "int", false, longitud,true));
+            else
+                campos.add(new Campo(nombre, "String", false, longitud,false));
+        }else{
+            if(rb_tip_integer.isSelected() && rb_key_si.isSelected())
+                campos.add(new Campo(nombre, "int", true, longitud,false));
+            else
+                campos.add(new Campo(nombre, "String", false, longitud,false));
+        }
+       
+       
+       
        
        tf_NombredelCampo.setText("");
        sp_LongitudCampo.setValue(0);
@@ -2346,7 +2353,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 }
                 //mode = -1;
                 //Exportar a Trima Aqui.
-                currentFile.EliminarDatoArchivo(datos_elim, AvailList, arbol_keys, raFile);
+                currentFile.EliminarDatoArchivo(datos_elim, AvailList,raFile);
                 System.out.println(currentFile.getNumregistros());
                 currentFile.subtractnumregistros();
                 System.out.println("Metadata Registry after deleting: " + currentFile.getNumregistros());
@@ -2536,7 +2543,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                                         JOptionPane.showMessageDialog(null, " No se puede modificar la primary key");
                                         jt_Registros.setValueAt(oldcellvalue, currentRow, currentColumn);
                                     } else {
-                                        currentFile.ModificarDatoArchivo(TrimaExport, AvailList, arbol_keys, raFile);//Exportando A Metodo Trima
+                                        currentFile.ModificarDatoArchivo(TrimaExport, AvailList,raFile);//Exportando A Metodo Trima
                                     }
 
                                 } catch (Exception exc) { //If it fails to convert then replace new value with old value.
@@ -2622,9 +2629,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
         //Export to Trima in this line.
         Registro temporal = new Registro(Integer.parseInt(insertarray[0].toString()));
 
-        if (arbol_keys.search(temporal) == null) {
+        if (currentFile.arbol_keys.search(temporal) == null) {
            
-                arbol_keys.insert(temporal);
+                currentFile.arbol_keys.insert(temporal);
                 System.out.println(temporal);
                 currentFile.addnumregistros();
                 try {
@@ -2931,7 +2938,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     ArrayList<Campo> campos = new ArrayList();
     Archivo currentFile;
-    Btree arbol_keys;
+    
     AVL AvailList = new AVL();
     File file;
     Excel excel;
@@ -2944,4 +2951,5 @@ public class Ventana_Principal extends javax.swing.JFrame {
     Object oldcellvalue; // Old cell value that is being modified live on table. Might be null.
     int currentRow;
     int currentColumn;
+    boolean ExisteLlavePrim;
 }
