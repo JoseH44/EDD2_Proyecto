@@ -2079,8 +2079,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     private void bt_SalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_SalvarMouseClicked
         // TODO add your handling code here:
-        currentFile.setlistaCampo(campos);
-        currentFile.escribirArchivo();
+        currentFile.setCampos(campos);
+        
         JOptionPane.showMessageDialog(this, "El archivo se guardo exitosamente!");
     }//GEN-LAST:event_bt_SalvarMouseClicked
 
@@ -2136,7 +2136,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(Ventana_Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
-            campos = currentFile.getListaCampo();
+            campos = currentFile.getCampos();
             bt_Cerrar.setEnabled(true);
             bt_Salvar.setEnabled(true);
             bt_Nuevo.setEnabled(false);
@@ -2228,15 +2228,15 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private void jb_IntroducirRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_IntroducirRegistrosMouseClicked
         
       /*  if (currentFile != null) {
-            if (currentFile.getListaCampo().size() > 0) {
+            if (currentFile.getCampos().size() > 0) {
                 CrearRegistro();
             }
         }else{
             JOptionPane.showInputDialog("No hay Campos creados");
         }*/
         //System.out.println("NUM REGISTROS: " + metadata.getNumregistros());
-            if (currentFile.getListaCampo() != null) {
-                if (currentFile.getListaCampo().size() > 0) {
+            if (currentFile.getCampos() != null) {
+                if (currentFile.getCampos().size() > 0) {
                     
                         if (currentFile.getNumregistros() < 1) {
                             try {
@@ -2337,7 +2337,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             if(jt_NombreXML.getText() != null){
                 String name = jt_NombreXML.getText();
                 
-                if (currentFile == null || currentFile.getListaCampo().isEmpty() || currentFile.getNumregistros() == 0) {
+                if (currentFile == null || currentFile.getCampos().isEmpty() || currentFile.getNumregistros() == 0) {
                     JOptionPane.showMessageDialog(null, "No hay informacion cargada");
                 } else {
                     ArrayList registrost = new ArrayList();//van los registros
@@ -2350,7 +2350,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                         registrost.add(row);
                     }
                     */
-                    exportXML(currentFile.getListaCampo(), registrost, name);
+                    exportXML(currentFile.getCampos(), registrost, name);
                     System.out.println("SE EXPORTO CON EXITO");//tirarlo con un joptionpane?
                     jt_NombreXML.setText("");
                     
@@ -2372,7 +2372,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)jt_Registros.getModel();
         Tabla.setModel(model);
         try {
-            if (currentFile == null || currentFile.getListaCampo() == null || currentFile.getNumregistros() == 0) {
+            if (currentFile == null || currentFile.getCampos() == null || currentFile.getNumregistros() == 0) {
                 JOptionPane.showMessageDialog(null, "No hay informacion cargada");
             } else {
                 String name = JOptionPane.showInputDialog(null, "Ingrese el nombre del exporte: ");
@@ -2398,12 +2398,12 @@ public class Ventana_Principal extends javax.swing.JFrame {
             try {
                 //System.out.println("Se eliminara el registro: " + rowRemoval);
                 ArrayList datos_elim = new ArrayList();
-                for (int i = 0; i < currentFile.getListaCampo().size(); i++) {
+                for (int i = 0; i < currentFile.getCampos().size(); i++) {
                     datos_elim.add(jt_Registros.getValueAt(jt_Registros.getSelectedRow(), i));
                 }
                 //mode = -1;
                 //Exportar a Trima Aqui.
-                currentFile.EliminarDatoArchivo(datos_elim, AvailList,raFile);
+                EliminarDatoArchivo(datos_elim, AvailList,raFile);
                 System.out.println(currentFile.getNumregistros());
                 currentFile.subtractnumregistros();
                 System.out.println("Metadata Registry after deleting: " + currentFile.getNumregistros());
@@ -2426,11 +2426,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
         if (currentFile == null) {
             JOptionPane.showMessageDialog(null, "No hay ningun file cargado");
         } else {
-            if (currentFile.getListaCampo() == null) {
+            if (currentFile.getCampos() == null) {
                 JOptionPane.showMessageDialog(null, "No hay informacion definida.");
             } else {
                 JTable tablavieja = (JTable) Tabla;
-                Archivo vieja = (Archivo) currentFile;
+                Metadata vieja = (Metadata) currentFile;
 
                 AvailList = new AVL();
                 raFile= null;
@@ -2439,23 +2439,23 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 LoadFile();
                 if (FileSuccess == 1) {
 
-                        Archivo metadata = new Archivo();
+                        Metadata metadata = new Metadata();
                     BuildTable(1);
                     try {
                         CargarMetadatos();
                         BuildTable(0);
-                        currentFile.LeerDatosRegistro(raFile, AvailList);
+                        LeerDatosRegistro(raFile, AvailList);
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(Ventana_Principal.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
                     // Comparar ahora los campos de ambas metadatas.
-                    if (currentFile.getListaCampo().size() == vieja.getListaCampo().size()) {
+                    if (currentFile.getCampos().size() == vieja.getCampos().size()) {
                         boolean compatible = true;
-                        int camposmax = currentFile.getListaCampo().size();
+                        int camposmax = currentFile.getCampos().size();
                         for (int i = 0; i < camposmax; i++) {
-                            int value1 = Integer.parseInt(currentFile.getListaCampo().get(i).getTipo());
-                            int value2 = Integer.parseInt(vieja.getListaCampo().get(i).getTipo());
+                            int value1 = Integer.parseInt(currentFile.getTipos().get(i).toString());
+                            int value2 = Integer.parseInt(vieja.getTipos().get(i).toString());
                             if (value1 == value2) {
 
                             } else {
@@ -2476,11 +2476,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
                                 int superes = Integer.parseInt(Tabla.getValueAt(i, 0).toString());
                                 System.out.println("nUM ACTUAk" + numactualr + "Ps" + superes);
                                 Registro trabajando = new Registro(numactualr);
-                                if (metadata.getArbol_keys().search(trabajando) == null) {
+                                if (metadata.getArbolB().search(trabajando) == null) {
                                     if (numactualr > 9999 && numactualr < 100000) {
-                                        metadata.getArbol_keys().insert(trabajando);
+                                        metadata.getArbolB().insert(trabajando);
                                         ArrayList superrow = new ArrayList();
-                                        for (int j = 0; j < vieja.getListaCampo().size(); j++) {
+                                        for (int j = 0; j < vieja.getCampos().size(); j++) {
                                             superrow.add(tablavieja.getValueAt(i, j));
                                         }
 
@@ -2488,15 +2488,15 @@ public class Ventana_Principal extends javax.swing.JFrame {
                                         System.out.println(trabajando);
                                         metadata.addnumregistros();
                                         try {
-                                            currentFile.EscribirDatosRegistro(superrow, AvailList, raFile);
-                                            currentFile.BuscarDatoArchivo(trabajando, raFile);
+                                            EscribirDatosRegistro(superrow, AvailList, raFile);
+                                            BuscarDatoArchivo(trabajando, raFile);
                                         } catch (Exception ex) {
                                             //Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                                             System.out.println(ex);
                                             ex.printStackTrace();
                                         }
                                         Tabla.setModel(modelo);
-                                        System.out.println(metadata.getArbol_keys().search(trabajando));
+                                        System.out.println(metadata.getArbolB().search(trabajando));
                                     } else {
                                         JOptionPane.showMessageDialog(null, "Dato Incompatible pertenece a primary key " + numactualr);
 
@@ -2570,7 +2570,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                                 System.out.println("Different Cell Value Detected:" + temp);
                                 System.out.println("Column: " + currentColumn);
                                 //DefaultTableModel temasdasd = Table.getModel();
-                                int type = Integer.parseInt(currentFile.getListaCampo().get(currentColumn).getTipo()); //Extract the type of the value from metadata that it should have.
+                                int type = Integer.parseInt(currentFile.getCampos().get(currentColumn).getTipo()); //Extract the type of the value from metadata that it should have.
                                 try { // Attempt to convert it to see if it is workable.
 
                                     Object assignation = null; //Basicamente solo es para que ocurra la exception validadora pero no hace nada.
@@ -2584,7 +2584,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                                         assignation = temp.toString().charAt(0);
                                     }
                                     ArrayList TrimaExport = new ArrayList(); //ArrayList que se le manda a Trimarchi cuando se detecta un cambio en el registro.
-                                    for (int i = 0; i < currentFile.getListaCampo().size(); i++) {
+                                    for (int i = 0; i < currentFile.getCampos().size(); i++) {
                                         if (i == currentColumn) {
                                             TrimaExport.add(assignation);
                                         } else {
@@ -2647,9 +2647,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
         }*/
     }//GEN-LAST:event_jt_RegistrosPropertyChange
     private void CrearRegistro() {
-        Object[] insertarray = new Object[currentFile.getListaCampo().size()];
-        for (int i = 0; i < currentFile.getListaCampo().size(); i++) {
-            if (currentFile.getListaCampo().get(i).getTipo().equals("int")) {
+        Object[] insertarray = new Object[currentFile.getCampos().size()];
+        for (int i = 0; i < currentFile.getCampos().size(); i++) {
+            if (currentFile.getCampos().get(i).getTipo().equals("int")) {
                 String formato = "";
                 for (int j = 0; j < campos.get(i).getLongitud(); j++) {
                     formato+="#";
@@ -2808,11 +2808,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
     public void BuildTable(int funcion) {
         if (funcion == 0) { //Instruction 0 lets the Table Builder know it should only change headers.
             
-            for (int i = 0; i < currentFile.getListaCampo().size(); i++) {
-                if(currentFile.getListaCampo().get(i).isLlave_primaria() && i != 0)
-                    Collections.swap(currentFile.getListaCampo(), 0, i);
+            for (int i = 0; i < currentFile.getCampos().size(); i++) {
+                if(currentFile.getCampos().get(i).isLlave_primaria() && i != 0)
+                    Collections.swap(currentFile.getCampos(), 0, i);
             }
-            Object[] campos = currentFile.getListaCampo().toArray();
+            Object[] campos = currentFile.getCampos().toArray();
             DefaultTableModel tabla = new DefaultTableModel();
             tabla.setColumnCount(campos.length);
             
@@ -2963,7 +2963,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         raFile = new RandomAccessFile(currentFile.getArchivo(), "rw");
         ByteArrayOutputStream obArray = new ByteArrayOutputStream();
         ObjectOutputStream objeto = new ObjectOutputStream(obArray);
-        //objeto.writeObject(currentFile.getListaCampo());
+        //objeto.writeObject(currentFile.getCampos());
         byte[] datos = obArray.toByteArray();//makes an array of bytes from the object
         raFile.seek(0);//Place pointe at the beggining of the file
         raFile.writeInt(datos.length);
