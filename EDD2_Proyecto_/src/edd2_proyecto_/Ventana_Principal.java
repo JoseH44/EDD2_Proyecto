@@ -2321,6 +2321,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     private void jb_ExportarExcelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ExportarExcelMouseClicked
         // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)jt_Registros.getModel();
+        Tabla.setModel(model);
         try {
             if (currentFile == null || currentFile.getListaCampo() == null || currentFile.getNumregistros() == 0) {
                 JOptionPane.showMessageDialog(null, "No hay informacion cargada");
