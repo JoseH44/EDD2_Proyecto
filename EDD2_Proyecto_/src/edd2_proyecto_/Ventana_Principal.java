@@ -2522,22 +2522,26 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_cruzarMouseClicked
 
     private void jb_RegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_RegistrosMouseClicked
-        if(currentFile.getNumregistros() <= 0){
-            jb_BuscarRegistros.setEnabled(false);
-            jb_ListarRegistros.setEnabled(false);
-            jb_ModificarRegistros.setEnabled(false);
-            jb_BorrarRegistros.setEnabled(false);
-        }else{
-            jb_BuscarRegistros.setEnabled(true);
-            jb_ListarRegistros.setEnabled(true);
-            jb_ModificarRegistros.setEnabled(true);
-            jb_BorrarRegistros.setEnabled(true);
+        if(jb_Registros.isEnabled())
+        {
+            this.setVisible(false);
+            jd_Registros.pack();
+            jd_Registros.setModal(true);
+            jd_Registros.setLocationRelativeTo(this);
+            jd_Registros.setVisible(true);
+
+            if(currentFile.getNumregistros() <= 0){
+                jb_BuscarRegistros.setEnabled(false);
+                jb_ListarRegistros.setEnabled(false);
+                jb_ModificarRegistros.setEnabled(false);
+                jb_BorrarRegistros.setEnabled(false);
+            }else{
+                jb_BuscarRegistros.setEnabled(true);
+                jb_ListarRegistros.setEnabled(true);
+                jb_ModificarRegistros.setEnabled(true);
+                jb_BorrarRegistros.setEnabled(true);
+            }
         }
-        this.setVisible(false);
-        jd_Registros.pack();
-        jd_Registros.setModal(true);
-        jd_Registros.setLocationRelativeTo(this);
-        jd_Registros.setVisible(true);
     }//GEN-LAST:event_jb_RegistrosMouseClicked
 
     private void jt_RegistrosPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jt_RegistrosPropertyChange
