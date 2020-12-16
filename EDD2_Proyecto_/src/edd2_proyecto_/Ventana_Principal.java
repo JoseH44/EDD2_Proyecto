@@ -2234,7 +2234,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         }else{
             JOptionPane.showInputDialog("No hay Campos creados");
         }*/
-        //System.out.println("NUM REGISTROS: " + metadata.getNumregistros());
+        //System.out.println("NUM REGISTROS: " + currentFile.getNumregistros());
             if (currentFile.getCampos() != null) {
                 if (currentFile.getCampos().size() > 0) {
                     
@@ -2435,11 +2435,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 AvailList = new AVL();
                 raFile= null;
                 //Metadata temporal = new Metadata();
-                //temporal = metadata;
+                //temporal = currentFile;
                 LoadFile();
                 if (FileSuccess == 1) {
 
-                        Metadata metadata = new Metadata();
+                        Metadata currentFile = new Metadata();
                     BuildTable(1);
                     try {
                         CargarMetadatos();
@@ -2449,7 +2449,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                         Logger.getLogger(Ventana_Principal.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
-                    // Comparar ahora los campos de ambas metadatas.
+                    // Comparar ahora los campos de ambas currentFiles.
                     if (currentFile.getCampos().size() == vieja.getCampos().size()) {
                         boolean compatible = true;
                         int camposmax = currentFile.getCampos().size();
@@ -2465,7 +2465,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
                         }
                         if (compatible) {
-                            System.out.println(metadata);
+                            System.out.println(currentFile);
                             System.out.println(vieja);
                             TableModel modelviejo = tablavieja.getModel();
                             DefaultTableModel modeloviejo = (DefaultTableModel) modelviejo;
@@ -2476,9 +2476,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
                                 int superes = Integer.parseInt(Tabla.getValueAt(i, 0).toString());
                                 System.out.println("nUM ACTUAk" + numactualr + "Ps" + superes);
                                 Registro trabajando = new Registro(numactualr);
-                                if (metadata.getArbolB().search(trabajando) == null) {
+                                if (currentFile.getArbolB().search(trabajando) == null) {
                                     if (numactualr > 9999 && numactualr < 100000) {
-                                        metadata.getArbolB().insert(trabajando);
+                                        currentFile.getArbolB().insert(trabajando);
                                         ArrayList superrow = new ArrayList();
                                         for (int j = 0; j < vieja.getCampos().size(); j++) {
                                             superrow.add(tablavieja.getValueAt(i, j));
@@ -2486,7 +2486,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
                                         modelo.addRow(superrow.toArray());
                                         System.out.println(trabajando);
-                                        metadata.addnumregistros();
+                                        currentFile.addnumregistros();
                                         try {
                                             EscribirDatosRegistro(superrow, AvailList, raFile);
                                             BuscarDatoArchivo(trabajando, raFile);
@@ -2496,7 +2496,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                                             ex.printStackTrace();
                                         }
                                         Tabla.setModel(modelo);
-                                        System.out.println(metadata.getArbolB().search(trabajando));
+                                        System.out.println(currentFile.getArbolB().search(trabajando));
                                     } else {
                                         JOptionPane.showMessageDialog(null, "Dato Incompatible pertenece a primary key " + numactualr);
 
@@ -2873,7 +2873,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 //  ous = new ObjectOutputStream(fos);
                 //  ous.flush(); //Lo oficializo
 
-                // RAfile=new RandomAccessFile(file,"rw");
+                // raFile=new RandomAccessFile(file,"rw");
             } catch (Exception e) {
                 //e.printStackTrace();
                 JOptionPane.showMessageDialog(this, "Something Went Wrong! Contact System Administrator.");
@@ -2941,7 +2941,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
                 System.out.println("FILE LENGTH: " + (file.length() - 4)); //SIZE MENOS BUFFER.
 
-                // RAfile=new RandomAccessFile(file,"rw");
+                // raFile=new RandomAccessFile(file,"rw");
             } catch (Exception e) {
                 //e.printStackTrace();
                 JOptionPane.showMessageDialog(this, "Something Went Wrong! Contact System Administrator.");
@@ -2968,7 +2968,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         raFile.seek(0);//Place pointe at the beggining of the file
         raFile.writeInt(datos.length);
         raFile.write(datos);
-        //RAfile.setLength(7500);
+        //raFile.setLength(7500);
         currentFile.setSizeMeta((int) raFile.length());
         System.out.println("ESTE ES EL SIZE DE LOS METADATOS..." + datos.length);
 
@@ -2982,9 +2982,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 System.out.println("EL AVAILIST TIENE DATOS!!! VER SI ENCUENTRA CUPO....");
                 Data datos = new Data();
                 Registro temporal = new Registro(Integer.parseInt(info_registro.get(0).toString()));
-                long byteOffset = RAfile.length();
+                long byteOffset = raFile.length();
                 System.out.println("ByteOffset:: " + byteOffset);
-                Bnode d = metadata.getArbolB().search(temporal);
+                Bnode d = currentFile.getArbolB().search(temporal);
                 int x = searchEnNodo(d, temporal.getKey());
 
                 d.key[x].setByteOffset(byteOffset);
@@ -2997,12 +2997,12 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
                 byte[] dat = obArray.toByteArray();
                 int required_size = dat.length;
-                DLL.Node espacio = AvailList.SearchSpace(required_size);
+                AVL.Node espacio = AvailList.SearchSpace(required_size);
                 if (espacio == null) {
                     System.out.println("NO ENCONTRO ESPACIO, NO CABE");
-                    RAfile.seek(byteOffset);//Place pointe at the beggining of the file
-                    RAfile.writeInt(dat.length);
-                    RAfile.write(dat);
+                    raFile.seek(byteOffset);//Place pointe at the beggining of the file
+                    raFile.writeInt(dat.length);
+                    raFile.write(dat);
                 } else {
                     System.out.println("SI ENCONTROO ESPACIO!!! ENTRO");
                     //System.out.println("Esta es la POSICION: " + espacio.posicion);
@@ -3023,18 +3023,18 @@ public class Ventana_Principal extends javax.swing.JFrame {
                     System.out.println("Espacio Size: " + espacio.data + "--- New Size: " + dat.length);
                     System.out.println("    Esta es la Ubicacion..... " + datos.ubicacion);
 
-                    RAfile.seek(datos.ubicacion);
-                    RAfile.writeInt(dat.length);
-                    RAfile.write(dat);
+                    raFile.seek(datos.ubicacion);
+                    raFile.writeInt(dat.length);
+                    raFile.write(dat);
                     AvailList.deleteNode(AvailList.head, espacio);
                 }
             } else {
                 System.out.println("EL AVAILLIST ESTA VACIO ENTONCES INGRESA NORMAL");
                 Data datos = new Data();
                 Registro temporal = new Registro(Integer.parseInt(info_registro.get(0).toString()));
-                long byteOffset = RAfile.length();
+                long byteOffset = raFile.length();
                 System.out.println("ByteOffset:: " + byteOffset);
-                Bnode d = metadata.getArbolB().search(temporal);
+                Bnode d = currentFile.getArbolB().search(temporal);
                 int x = searchEnNodo(d, temporal.getKey());
 
                 d.key[x].setByteOffset(byteOffset);
@@ -3045,9 +3045,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 ObjectOutputStream objeto = new ObjectOutputStream(obArray);
                 objeto.writeObject(datos);
                 byte[] dat = obArray.toByteArray();//makes an array of bytes from the object
-                RAfile.seek(byteOffset);//Place pointe at the beggining of the file
-                RAfile.writeInt(dat.length);
-                RAfile.write(dat);
+                raFile.seek(byteOffset);//Place pointe at the beggining of the file
+                raFile.writeInt(dat.length);
+                raFile.write(dat);
                 System.out.println("ESTE ES EL SIZE DEL REGISTRO..." + dat.length);
             }
 
@@ -3063,19 +3063,19 @@ public class Ventana_Principal extends javax.swing.JFrame {
             System.out.println("=========================================");
             System.out.println("Cargando Registros a la Table");
 
-            RAfile = new RandomAccessFile(file, "rw");
-            RAfile.seek(0);
-            int tamaño = RAfile.readInt();
-            RAfile.seek(tamaño + 4);
+            raFile = new RandomAccessFile(file, "rw");
+            raFile.seek(0);
+            int tamaño = raFile.readInt();
+            raFile.seek(tamaño + 4);
             //System.out.println(tamaño);
             boolean eliminado = false;//boolen que marca que el registro leido esta eliminado
-            while (RAfile.getFilePointer() < RAfile.length()) {
+            while (raFile.getFilePointer() < raFile.length()) {
                 System.out.println("----------------------------------------------");
                 eliminado = false;
-                tamaño = RAfile.readInt();
+                tamaño = raFile.readInt();
                 System.out.println("New Tamaño: " + tamaño);
                 byte[] data = new byte[tamaño];
-                RAfile.read(data);
+                raFile.read(data);
                 ByteArrayInputStream in = new ByteArrayInputStream(data);
                 ObjectInputStream read = new ObjectInputStream(in);
                 Data d = (Data) read.readObject();//guardo el array de bytes en una variable temporal
@@ -3088,7 +3088,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                     KennethExport2 = new ArrayList<>();
                     Registro temporal = new Registro(d.getKey());
                     temporal.setByteOffset(d.getUbicacion());
-                    metadata.getArbolB().insert(temporal);
+                    currentFile.getArbolB().insert(temporal);
                     System.out.println("SE VA A METER A: " + d.getDatos().get(1) + " Ubicacion: " + d.getUbicacion());
                     for (int i = 0; i < d.getDatos().size(); i++) {
                         KennethExport2.add(d.getDatos().get(i));
@@ -3102,8 +3102,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 }
 
             }
-            metadata.ArbolB.traverse();
-            metadata.ArbolB.PrintLevels();
+            currentFile.ArbolB.traverse();
+            currentFile.ArbolB.PrintLevels();
         } catch (IOException ex) {
             //ex.printStackTrace();
             //System.out.println("ERrrrrrrrrrrrrrrrrrrrrrrrrrrrrrroooooooooooooooooorr");
@@ -3111,14 +3111,14 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }
     
      public Data BuscarDatoArchivo(Registro r) throws IOException, ClassNotFoundException {//Metodo para Buscar El Registro en el Archivo
-        if (metadata.getArbolB().search(r) != null) {//Solo uso la key del Arbol y lo pido de forma constante al Randomaccesfile
-            Bnode contenido = metadata.getArbolB().search(r);
+        if (currentFile.getArbolB().search(r) != null) {//Solo uso la key del Arbol y lo pido de forma constante al Randomaccesfile
+            Bnode contenido = currentFile.getArbolB().search(r);
             int pos = searchEnNodo(contenido, r.getKey());
             long byteOffset = contenido.key[pos].byteOffset;
-            RAfile.seek(byteOffset);
-            int tamaño = RAfile.readInt();
+            raFile.seek(byteOffset);
+            int tamaño = raFile.readInt();
             byte[] data = new byte[tamaño];
-            RAfile.read(data);
+            raFile.read(data);
             ByteArrayInputStream in = new ByteArrayInputStream(data);
             ObjectInputStream read = new ObjectInputStream(in);
             Data d = (Data) read.readObject();//guardo el array de bytes en una variable temporal
@@ -3140,11 +3140,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 System.out.println("===========================================================");
                 System.out.println("ELIMANDO NODO...");
                 Data temp = BuscarDatoArchivo(temporal);
-                RAfile.seek(temp.ubicacion);
-                int size_act = RAfile.readInt();//Este es el tamaño actual
+                raFile.seek(temp.ubicacion);
+                int size_act = raFile.readInt();//Este es el tamaño actual
                 temp.setSize_alter("*"); //Pone un aterisco que marca ese registro o dato como eliminado
                 temp.size_alter = "*";
-                Bnode b = metadata.ArbolB.search(temporal);
+                Bnode b = currentFile.ArbolB.search(temporal);
                 int pos = searchEnNodo(b, temporal.key);
                 long ubicacion = b.key[pos].getByteOffset();
                 temp.ubicacion = ubicacion;
@@ -3158,14 +3158,14 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
                 byte[] dat2 = obArray.toByteArray();
                 System.out.println(temp.size_alter + " ----------------------------" + temp.ubicacion);
-                RAfile.write(dat2);
+                raFile.write(dat2);
 
                 System.out.println("LLamar metodo del AvailList...");
                 AvailList.BestFit(size_act, temp.ubicacion);
                 AvailList.ImprimeListaEnlazada(AvailList.head);
-                System.out.println("Antes de Borrar el Registro...." + metadata.ArbolB.search(temporal));
-                metadata.ArbolB.remove(temporal);
-                System.out.println("Despues de Borrar el Registro...." + metadata.ArbolB.search(temporal));
+                System.out.println("Antes de Borrar el Registro...." + currentFile.ArbolB.search(temporal));
+                currentFile.ArbolB.remove(temporal);
+                System.out.println("Despues de Borrar el Registro...." + currentFile.ArbolB.search(temporal));
                 System.out.println("===========================================================");
                 //Avai
 
@@ -3183,8 +3183,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 System.out.println("MODIFICANDO NODO...");
                 Data temp = BuscarDatoArchivo(temporal);
                 temporal.setByteOffset(temp.ubicacion);
-                RAfile.seek(temp.ubicacion);
-                int size_act = RAfile.readInt();//Este es el tamaño actual
+                raFile.seek(temp.ubicacion);
+                int size_act = raFile.readInt();//Este es el tamaño actual
 
                 Data new_size = new Data();
                 new_size.setKey((int) TrimaExport.get(0));
@@ -3205,7 +3205,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                     objeto = new ObjectOutputStream(obArray);
                     objeto.writeObject(new_size);
                     dat = obArray.toByteArray();//Actulizando 
-                    RAfile.write(dat);
+                    raFile.write(dat);
                     System.out.println("NEW SIZE" + dat.length + " ---- " + "SIZE ORIGINAL:" + size_act);
                 } else {
                     System.out.println("EL NUEVO REGISTRO ES MUY GRANDE IRA AL FINAL DEL ARCHIVO");
@@ -3214,10 +3214,10 @@ public class Ventana_Principal extends javax.swing.JFrame {
                     objeto = new ObjectOutputStream(obArray);
                     objeto.writeObject(temp);
                     byte[] dat2 = obArray.toByteArray();
-                    RAfile.write(dat2);
+                    raFile.write(dat2);
 
                     //ESPACIO RESERVADO PARA EL AVAILlIST
-                    long byteOffset = RAfile.length();
+                    long byteOffset = raFile.length();
 
                     new_size.setUbicacion(byteOffset);
                     obArray = new ByteArrayOutputStream();
@@ -3225,19 +3225,19 @@ public class Ventana_Principal extends javax.swing.JFrame {
                     objeto.writeObject(new_size);
                     dat = obArray.toByteArray();
 
-                    RAfile.seek(byteOffset);//ahora nos vamos al final de archivo a poner el El registro ya que es muy grande
-                    RAfile.writeInt(dat.length);
-                    RAfile.write(dat);
+                    raFile.seek(byteOffset);//ahora nos vamos al final de archivo a poner el El registro ya que es muy grande
+                    raFile.writeInt(dat.length);
+                    raFile.write(dat);
 
-                    Bnode tmp = metadata.getArbolB().search(temporal);
+                    Bnode tmp = currentFile.getArbolB().search(temporal);
                     int ubicacion = searchEnNodo(tmp, temp.getKey());
                     tmp.key[ubicacion].byteOffset = byteOffset;
 
                     System.out.println("LLamar metodo del AvailList...");
                     AvailList.BestFit(size_act, temporal.byteOffset);
                     AvailList.ImprimeListaEnlazada(AvailList.head);
-                    System.out.println("Antes de Borrar el Registro...." + metadata.ArbolB.search(temporal));
-                    System.out.println("Despues de Borrar el Registro...." + metadata.ArbolB.search(temporal));
+                    System.out.println("Antes de Borrar el Registro...." + currentFile.ArbolB.search(temporal));
+                    System.out.println("Despues de Borrar el Registro...." + currentFile.ArbolB.search(temporal));
                     System.out.println("");
 
                     System.out.println("Key: " + tmp.key[ubicacion].key + " ------------------ ByteOfsset" + tmp.key[ubicacion].byteOffset);
