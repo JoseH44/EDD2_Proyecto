@@ -77,6 +77,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jb_BorrarRegistros = new javax.swing.JButton();
         jb_ListarRegistros = new javax.swing.JButton();
         jb_SalirDeRegistros = new javax.swing.JButton();
+        bt_cruzar = new javax.swing.JButton();
         jd_indices = new javax.swing.JDialog();
         jPanel9 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -447,6 +448,13 @@ public class Ventana_Principal extends javax.swing.JFrame {
             }
         });
 
+        bt_cruzar.setText("Cruzar Archivo");
+        bt_cruzar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_cruzarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -455,23 +463,23 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(54, 54, 54)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jb_IntroducirRegistros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jb_BuscarRegistros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jb_ListarRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(84, 84, 84)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(jb_ListarRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jb_SalirDeRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jb_IntroducirRegistros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jb_BuscarRegistros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(84, 84, 84)
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jb_ModificarRegistros)
-                                    .addComponent(jb_BorrarRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jb_ModificarRegistros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jb_BorrarRegistros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bt_cruzar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(148, 148, 148)
-                        .addComponent(jLabel4)))
-                .addGap(30, 61, Short.MAX_VALUE))
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(186, 186, 186)
+                        .addComponent(jb_SalirDeRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 75, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -486,11 +494,13 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_BorrarRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jb_BuscarRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jb_SalirDeRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jb_ListarRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(bt_cruzar, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(jb_ListarRegistros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(jb_SalirDeRegistros)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jd_RegistrosLayout = new javax.swing.GroupLayout(jd_Registros.getContentPane());
@@ -501,9 +511,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         );
         jd_RegistrosLayout.setVerticalGroup(
             jd_RegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jd_RegistrosLayout.createSequentialGroup()
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jd_indices.setUndecorated(true);
@@ -1315,11 +1323,6 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jt_Registros.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jt_RegistrosMouseClicked(evt);
-            }
-        });
         jScrollPane4.setViewportView(jt_Registros);
 
         jb_RegresardeTablaRegistro.setText("Regresar");
@@ -1345,22 +1348,23 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel18)
                 .addGap(240, 240, 240))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jb_RegresardeTablaRegistro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jb_eliminarRegistro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jb_modificarRegistro)
-                .addGap(33, 33, 33))
+                .addGap(37, 37, 37)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jb_RegresardeTablaRegistro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jb_eliminarRegistro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jb_modificarRegistro)
+                        .addGap(33, 33, 33))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(31, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2363,12 +2367,109 @@ public class Ventana_Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jb_eliminarRegistroMouseClicked
 
-    private void jt_RegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_RegistrosMouseClicked
-        System.out.println("TOUCHING AUFHAKJDFA;KDHFA;DHFKAJHSDFKAHDFKJAHDFAJDFH");
-        rowRemoval = jt_Registros.getSelectedRow();
-        mode = 0;
-        System.out.println("Removal on:" + rowRemoval);
-    }//GEN-LAST:event_jt_RegistrosMouseClicked
+    private void bt_cruzarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_cruzarMouseClicked
+        // TODO add your handling code here:
+        
+        /*
+        // TODO add your handling code here:
+        if (file == null || metadata == null) {
+            JOptionPane.showMessageDialog(null, "No hay ningun file cargado");
+        } else {
+            if (metadata.getCampos() == null) {
+                JOptionPane.showMessageDialog(null, "No hay informacion definida.");
+            } else {
+                JTable tablavieja = (JTable) Table;
+                Metadata vieja = (Metadata) metadata;
+
+                AvailList = new DLL();
+                RAfile = null;
+                //Metadata temporal = new Metadata();
+                //temporal = metadata;
+                LoadFile();
+                if (FileSuccess == 1) {
+
+                    metadata = new Metadata();
+                    BuildTable(metadata, 1);
+                    try {
+                        CargarMetadatos();
+                        BuildTable(metadata, 0);
+                        LeerDatosRegistro();
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    // Comparar ahora los campos de ambas metadatas.
+                    if (metadata.getCampos().size() == vieja.getCampos().size()) {
+                        boolean compatible = true;
+                        int camposmax = metadata.getCampos().size();
+                        for (int i = 0; i < camposmax; i++) {
+                            int value1 = Integer.parseInt(metadata.getTipos().get(i).toString());
+                            int value2 = Integer.parseInt(vieja.getTipos().get(i).toString());
+                            if (value1 == value2) {
+
+                            } else {
+                                System.out.println("Valor Incompatible i:" + value1 + "Valor Incompatible2:" + value2);
+                                compatible = false;
+                            }
+
+                        }
+                        if (compatible) {
+                            System.out.println(metadata);
+                            System.out.println(vieja);
+                            TableModel modelviejo = tablavieja.getModel();
+                            DefaultTableModel modeloviejo = (DefaultTableModel) modelviejo;
+                            TableModel model = Table.getModel();
+                            DefaultTableModel modelo = (DefaultTableModel) model;
+                            for (int i = 0; i < tablavieja.getRowCount(); i++) {
+                                int numactualr = Integer.parseInt(modeloviejo.getValueAt(i, 0).toString());
+                                int superes = Integer.parseInt(Table.getValueAt(i, 0).toString());
+                                System.out.println("nUM ACTUAk" + numactualr + "Ps" + superes);
+                                Registro trabajando = new Registro(numactualr);
+                                if (metadata.getArbolB().search(trabajando) == null) {
+                                    if (numactualr > 9999 && numactualr < 100000) {
+                                        metadata.getArbolB().insert(trabajando);
+                                        ArrayList superrow = new ArrayList();
+                                        for (int j = 0; j < vieja.getCampos().size(); j++) {
+                                            superrow.add(tablavieja.getValueAt(i, j));
+                                        }
+
+                                        modelo.addRow(superrow.toArray());
+                                        System.out.println(trabajando);
+                                        metadata.addnumregistros();
+                                        try {
+                                            EscribirDatosRegistro(superrow);//Send Array to Trima
+                                            BuscarDatoArchivo(trabajando);
+                                        } catch (Exception ex) {
+                                            //Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                                            System.out.println(ex);
+                                            ex.printStackTrace();
+                                        }
+                                        Table.setModel(modelo);
+                                        System.out.println(metadata.getArbolB().search(trabajando));
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Dato Incompatible pertenece a primary key " + numactualr);
+
+                                    }
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Dato Ya existe!");
+                                    // System.out.println(metadata.getArbolB().search(trabajando));
+                                }
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Metadatas no compatibles por tipo");
+
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Metadatas no compatibles por tamaño de campos");
+                        JOptionPane.showMessageDialog(null, "Se cargara el segundo archivo seleccionado.");
+                    }
+                }
+            }
+        }
+         */
+
+        
+    }//GEN-LAST:event_bt_cruzarMouseClicked
     private void CrearRegistro() {
         Object[] insertarray = new Object[currentFile.getListaCampo().size()];
         for (int i = 0; i < currentFile.getListaCampo().size(); i++) {
@@ -2586,6 +2687,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_Cerrar;
     private javax.swing.JButton bt_Nuevo;
     private javax.swing.JButton bt_Salvar;
+    private javax.swing.JButton bt_cruzar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
