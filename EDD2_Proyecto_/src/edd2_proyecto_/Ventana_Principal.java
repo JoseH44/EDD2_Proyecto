@@ -22,8 +22,13 @@ import javax.swing.CellEditor;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import javax.swing.event.CellEditorListener;
 import javax.swing.event.ChangeEvent;
+
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import javax.swing.table.TableModel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -2373,41 +2378,41 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private void bt_cruzarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_cruzarMouseClicked
         // TODO add your handling code here:
         
-        /*
+        
         // TODO add your handling code here:
-        if (file == null || metadata == null) {
+        if (currentFile == null) {
             JOptionPane.showMessageDialog(null, "No hay ningun file cargado");
         } else {
-            if (metadata.getCampos() == null) {
+            if (currentFile.getListaCampo() == null) {
                 JOptionPane.showMessageDialog(null, "No hay informacion definida.");
             } else {
-                JTable tablavieja = (JTable) Table;
-                Metadata vieja = (Metadata) metadata;
+                JTable tablavieja = (JTable) Tabla;
+                Archivo vieja = (Archivo) currentFile;
 
-                AvailList = new DLL();
-                RAfile = null;
+                AvailList = new AVL();
+                raFile= null;
                 //Metadata temporal = new Metadata();
                 //temporal = metadata;
                 LoadFile();
                 if (FileSuccess == 1) {
 
-                    metadata = new Metadata();
-                    BuildTable(metadata, 1);
+                        Archivo metadata = new Archivo();
+                    BuildTable(1);
                     try {
                         CargarMetadatos();
-                        BuildTable(metadata, 0);
-                        LeerDatosRegistro();
+                        BuildTable(0);
+                        currentFile.LeerDatosRegistro(raFile, AvailList);
                     } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(Ventana_Principal.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
                     // Comparar ahora los campos de ambas metadatas.
-                    if (metadata.getCampos().size() == vieja.getCampos().size()) {
+                    if (currentFile.getListaCampo().size() == vieja.getListaCampo().size()) {
                         boolean compatible = true;
-                        int camposmax = metadata.getCampos().size();
+                        int camposmax = currentFile.getListaCampo().size();
                         for (int i = 0; i < camposmax; i++) {
-                            int value1 = Integer.parseInt(metadata.getTipos().get(i).toString());
-                            int value2 = Integer.parseInt(vieja.getTipos().get(i).toString());
+                            int value1 = Integer.parseInt(currentFile.getListaCampo().get(i).getTipo());
+                            int value2 = Integer.parseInt(vieja.getListaCampo().get(i).getTipo());
                             if (value1 == value2) {
 
                             } else {
@@ -2421,18 +2426,18 @@ public class Ventana_Principal extends javax.swing.JFrame {
                             System.out.println(vieja);
                             TableModel modelviejo = tablavieja.getModel();
                             DefaultTableModel modeloviejo = (DefaultTableModel) modelviejo;
-                            TableModel model = Table.getModel();
+                            TableModel model = Tabla.getModel();
                             DefaultTableModel modelo = (DefaultTableModel) model;
                             for (int i = 0; i < tablavieja.getRowCount(); i++) {
                                 int numactualr = Integer.parseInt(modeloviejo.getValueAt(i, 0).toString());
-                                int superes = Integer.parseInt(Table.getValueAt(i, 0).toString());
+                                int superes = Integer.parseInt(Tabla.getValueAt(i, 0).toString());
                                 System.out.println("nUM ACTUAk" + numactualr + "Ps" + superes);
                                 Registro trabajando = new Registro(numactualr);
-                                if (metadata.getArbolB().search(trabajando) == null) {
+                                if (metadata.getArbol_keys().search(trabajando) == null) {
                                     if (numactualr > 9999 && numactualr < 100000) {
-                                        metadata.getArbolB().insert(trabajando);
+                                        metadata.getArbol_keys().insert(trabajando);
                                         ArrayList superrow = new ArrayList();
-                                        for (int j = 0; j < vieja.getCampos().size(); j++) {
+                                        for (int j = 0; j < vieja.getListaCampo().size(); j++) {
                                             superrow.add(tablavieja.getValueAt(i, j));
                                         }
 
@@ -2440,15 +2445,15 @@ public class Ventana_Principal extends javax.swing.JFrame {
                                         System.out.println(trabajando);
                                         metadata.addnumregistros();
                                         try {
-                                            EscribirDatosRegistro(superrow);//Send Array to Trima
-                                            BuscarDatoArchivo(trabajando);
+                                            currentFile.EscribirDatosRegistro(superrow, AvailList, raFile);
+                                            currentFile.BuscarDatoArchivo(trabajando, raFile);
                                         } catch (Exception ex) {
                                             //Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                                             System.out.println(ex);
                                             ex.printStackTrace();
                                         }
-                                        Table.setModel(modelo);
-                                        System.out.println(metadata.getArbolB().search(trabajando));
+                                        Tabla.setModel(modelo);
+                                        System.out.println(metadata.getArbol_keys().search(trabajando));
                                     } else {
                                         JOptionPane.showMessageDialog(null, "Dato Incompatible pertenece a primary key " + numactualr);
 
@@ -2469,9 +2474,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 }
             }
         }
-         */
-
-        
+         
+   
     }//GEN-LAST:event_bt_cruzarMouseClicked
 
     private void jb_RegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_RegistrosMouseClicked
@@ -2765,8 +2769,72 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     }
     
+    public void CargarMetadatos() throws ClassNotFoundException {
+        try {
+            // System.out.println("????????????????");
+            raFile = new RandomAccessFile(file, "rw");
+            int tamaño = raFile.readInt();
+            //System.out.println(tamaño + " SIZEEEEEEEE");
+            byte[] data = new byte[tamaño];
+            raFile.read(data);
+            ByteArrayInputStream in = new ByteArrayInputStream(data);
+            ObjectInputStream read = new ObjectInputStream(in);
+            currentFile = (Archivo) read.readObject();//read the byte array
+            //currentFile.setSizeMeta(tamaño);
+        } catch (IOException ex) {
+            // Logger.getLogger(Trima.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
-    
+    public void LoadFile() {
+        FileSuccess = 0;
+        String direction;
+
+        //Creo un nuevo JFileChooser para que eliga donde guardar.
+        //Le digo que aparezca en el home del proyecto .. Crea un problema que la Metadata se puede guardar en cualquier sitio.
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File("./"));
+        FileNameExtensionFilter data = new FileNameExtensionFilter("DAT FILE", "dat");
+        fileChooser.setFileFilter(data);
+        int seleccion = fileChooser.showOpenDialog(this);
+        if (seleccion == JFileChooser.APPROVE_OPTION) { //Cuando le da guardar
+            //System.out.println(fileChooser.getCurrentDirectory().toString());
+            File file = null;
+            // FileOutputStream fos = null;
+            // ObjectOutputStream ous = null;
+            try {
+                if (fileChooser.getFileFilter().getDescription().equals("DAT FILE")) { //Chequea si lo que quiere guardar es DAT FILE
+                    direction = fileChooser.getSelectedFile().getPath() + ".dat";
+                    file = fileChooser.getSelectedFile();
+                    currentFile.setArchivo(file);
+                    JOptionPane.showMessageDialog(null, "Sucess!");
+                    System.out.println("Length of Loaded File: " + (file.length() - 4)); //SIZE MENOS BUFFER.
+                    FileSuccess = 1;
+                } else {
+                    JOptionPane.showMessageDialog(this, "Unable to Load. Use DAT FILE.");
+                }
+                // fos = new FileOutputStream(file);
+                //  ous = new ObjectOutputStream(fos);
+                //  ous.flush(); //Lo oficializo
+
+                // RAfile=new RandomAccessFile(file,"rw");
+            } catch (Exception e) {
+                //e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Something Went Wrong! Contact System Administrator.");
+            }
+            try {
+                //ous.close();
+                // fos.close();
+            } catch (Exception e) {
+                //e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Fatal error closing files.");
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Operation aborted!");
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -2954,4 +3022,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     int currentRow;
     int currentColumn;
     boolean ExisteLlavePrim;
+
+    int FileSuccess;
+
 }

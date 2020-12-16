@@ -42,6 +42,11 @@ public class Archivo {
         archivo = file;
     }
     
+    public Archivo()
+    {
+        arbol_keys = new Btree();
+    }
+    
     public int getNumregistros() {
         return numregistros;
     }
@@ -77,6 +82,14 @@ public class Archivo {
     public void setCampo(Campo p)
     {
        this.listaCampo.add(p);
+    }
+
+    public Btree getArbol_keys() {
+        return arbol_keys;
+    }
+
+    public void setArbol_keys(Btree arbol_keys) {
+        this.arbol_keys = arbol_keys;
     }
     
     
