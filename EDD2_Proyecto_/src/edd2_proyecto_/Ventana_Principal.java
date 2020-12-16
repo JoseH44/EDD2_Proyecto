@@ -14,6 +14,7 @@ import  java.io.IOException ;
 import java.io.ObjectInputStream;
 import java.io.RandomAccessFile;
 import  java.text.ParseException ;
+import java.util.Collections;
 import  java.util.Scanner ;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -2633,12 +2634,16 @@ public class Ventana_Principal extends javax.swing.JFrame {
     
     public void BuildTable(int funcion) {
         if (funcion == 0) { //Instruction 0 lets the Table Builder know it should only change headers.
+            
+            for (int i = 0; i < currentFile.getListaCampo().size(); i++) {
+                if(currentFile.getListaCampo().get(i).isLlave_primaria() && i != 0)
+                    Collections.swap(currentFile.getListaCampo(), 0, i);
+            }
             Object[] campos = currentFile.getListaCampo().toArray();
             DefaultTableModel tabla = new DefaultTableModel();
             tabla.setColumnCount(campos.length);
-
-            tabla.setColumnIdentifiers(campos);
             
+            tabla.setColumnIdentifiers(campos);
             jt_Registros.setModel(tabla);
             //Table.updateUI();
         } else if (funcion == 1) { //Instruction 1 lets the Table Builder clean all models loaded.
