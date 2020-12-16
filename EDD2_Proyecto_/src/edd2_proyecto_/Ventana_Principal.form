@@ -1774,20 +1774,15 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jb_RegresardeTablaRegistro" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="476" max="-2" attributes="0"/>
                               <Component id="jb_eliminarRegistro" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jb_modificarRegistro" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jScrollPane4" min="-2" pref="622" max="-2" attributes="0"/>
-                              <EmptySpace pref="31" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="jScrollPane4" min="-2" pref="622" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace pref="31" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1802,7 +1797,6 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jb_RegresardeTablaRegistro" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jb_eliminarRegistro" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jb_modificarRegistro" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   </Group>
@@ -1828,6 +1822,9 @@
                       </Table>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="jt_RegistrosPropertyChange"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1845,11 +1842,6 @@
                   <Font name="Tahoma" size="18" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Registros en el archivo"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="jb_modificarRegistro">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Modificar"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jb_eliminarRegistro">

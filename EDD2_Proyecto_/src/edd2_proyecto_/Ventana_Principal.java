@@ -18,9 +18,12 @@ import java.util.Collections;
 import  java.util.Scanner ;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.CellEditor;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.event.CellEditorListener;
+import javax.swing.event.ChangeEvent;
 import javax.swing.table.TableModel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -162,7 +165,6 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jt_Registros = new javax.swing.JTable();
         jb_RegresardeTablaRegistro = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
-        jb_modificarRegistro = new javax.swing.JButton();
         jb_eliminarRegistro = new javax.swing.JButton();
         jd_BuscarRegistros = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
@@ -1324,6 +1326,11 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jt_Registros.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jt_RegistrosPropertyChange(evt);
+            }
+        });
         jScrollPane4.setViewportView(jt_Registros);
 
         jb_RegresardeTablaRegistro.setText("Regresar");
@@ -1335,8 +1342,6 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel18.setText("Registros en el archivo");
-
-        jb_modificarRegistro.setText("Modificar");
 
         jb_eliminarRegistro.setText("Eliminar");
         jb_eliminarRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1355,17 +1360,13 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addGap(240, 240, 240))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jb_RegresardeTablaRegistro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jb_eliminarRegistro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jb_modificarRegistro)
-                        .addGap(33, 33, 33))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(31, Short.MAX_VALUE))))
+                        .addGap(476, 476, 476)
+                        .addComponent(jb_eliminarRegistro))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1377,8 +1378,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_RegresardeTablaRegistro)
-                    .addComponent(jb_eliminarRegistro)
-                    .addComponent(jb_modificarRegistro))
+                    .addComponent(jb_eliminarRegistro))
                 .addGap(41, 41, 41))
         );
 
@@ -2224,7 +2224,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     private void jb_ModificarRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ModificarRegistrosMouseClicked
         jd_Registros.setVisible(false);
-        jb_modificarRegistro.setVisible(true);
+        
         jb_eliminarRegistro.setVisible(false);
         jd_MBL.pack();
         jd_MBL.setModal(true);
@@ -2241,7 +2241,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     private void jb_BorrarRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_BorrarRegistrosMouseClicked
         jd_Registros.setVisible(false);
-        jb_modificarRegistro.setVisible(false);
+        
         jb_eliminarRegistro.setVisible(true);
         jd_MBL.pack();
         jd_MBL.setModal(true);
@@ -2259,8 +2259,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Ventana_Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         jd_Registros.setVisible(false);
-        jb_modificarRegistro.setVisible(false);
+        
         jb_eliminarRegistro.setVisible(false);
         jd_MBL.pack();
         jd_MBL.setModal(true);
@@ -2477,6 +2478,109 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jd_Registros.setLocationRelativeTo(this);
         jd_Registros.setVisible(true);
     }//GEN-LAST:event_jb_RegistrosMouseClicked
+
+    private void jt_RegistrosPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jt_RegistrosPropertyChange
+        try {
+            if (jt_Registros.isEditing() && tablemodification == 0) {
+                mode = -1;
+                tablemodification = 1;
+                System.out.println("Cell value being edited.");
+
+                CellEditor x = jt_Registros.getCellEditor();
+                oldcellvalue = jt_Registros.getValueAt(jt_Registros.getSelectedRow(), jt_Registros.getSelectedColumn());
+                currentRow = jt_Registros.getSelectedRow();
+                currentColumn = jt_Registros.getSelectedColumn();
+                System.out.println("Valor Original:" + oldcellvalue);
+                x.addCellEditorListener(new CellEditorListener() {
+                    @Override
+                    public void editingStopped(ChangeEvent e) { //When editing stops compare original value and type to the new value and type.
+                        Object temp = x.getCellEditorValue(); //Extract new value.
+                        mode = -1;
+                        if (tablemodification == 1) { //Simple bandera.
+                            tablemodification = 0; //Making sure bandera resets
+                            if (oldcellvalue.toString().equals(temp.toString())) { //If the same value is detected
+                                System.out.println("Same Cell Value detected: " + oldcellvalue); // Dont change anything
+                                System.out.println("No export Requiered.");
+                            } else { // If new value is detected: 
+                                System.out.println("Different Cell Value Detected:" + temp);
+                                System.out.println("Column: " + currentColumn);
+                                //DefaultTableModel temasdasd = Table.getModel();
+                                int type = Integer.parseInt(currentFile.getListaCampo().get(currentColumn).getTipo()); //Extract the type of the value from metadata that it should have.
+                                try { // Attempt to convert it to see if it is workable.
+
+                                    Object assignation = null; //Basicamente solo es para que ocurra la exception validadora pero no hace nada.
+                                    if (type == 1) {
+                                        assignation = Integer.parseInt(temp.toString());
+                                    } else if (type == 2) {
+                                        assignation = Long.parseLong(temp.toString());
+                                    } else if (type == 3) {
+                                        assignation = temp.toString();
+                                    } else if (type == 4) {
+                                        assignation = temp.toString().charAt(0);
+                                    }
+                                    ArrayList TrimaExport = new ArrayList(); //ArrayList que se le manda a Trimarchi cuando se detecta un cambio en el registro.
+                                    for (int i = 0; i < currentFile.getListaCampo().size(); i++) {
+                                        if (i == currentColumn) {
+                                            TrimaExport.add(assignation);
+                                        } else {
+                                            TrimaExport.add(jt_Registros.getValueAt(currentRow, i));
+
+                                        }
+
+                                    }
+                                    System.out.println("########################################################");
+                                    System.out.println("Exportar a Trima valores: " + TrimaExport);
+                                    //Apartir de aqui se exporta el nuevo valor del registro. AKA TrimaExport.
+                                    //Export to Trima Here.
+                                    if (currentColumn == 0) {
+                                        JOptionPane.showMessageDialog(null, " No se puede modificar la primary key");
+                                        jt_Registros.setValueAt(oldcellvalue, currentRow, currentColumn);
+                                    } else {
+                                        currentFile.ModificarDatoArchivo(TrimaExport, AvailList, arbol_keys, raFile);//Exportando A Metodo Trima
+                                    }
+
+                                } catch (Exception exc) { //If it fails to convert then replace new value with old value.
+                                    jt_Registros.setValueAt(oldcellvalue, currentRow, currentColumn);
+                                    JOptionPane.showMessageDialog(null, "Incompatible data type. Original value was set.");
+                                }
+
+                            }
+
+                        } //End if of modification bandera.
+
+                    }
+
+                    @Override
+                    public void editingCanceled(ChangeEvent e) {
+
+                    }
+                });
+
+                x.removeCellEditorListener(jt_Registros);
+
+                /*tablemodification = 1;
+            currentRow = Table.getEditingRow();
+            currentColumn = Table.getEditingColumn();
+            oldcellvalue = Table.getValueAt(currentRow, currentColumn).toString();
+            System.out.println("Original Value: " + oldcellvalue);*/
+            }
+        } catch (Exception e) {
+            System.out.println("FATAL ERROR. Expect Table Failures");
+        }
+
+        /*else if (tablemodification == 1) {
+            tablemodification = 0;
+            if (currentRow == Table.getSelectedRow() && currentColumn == Table.getSelectedColumn()) {
+                if (oldcellvalue != Table.getValueAt(currentRow, currentColumn).toString()) {
+                    System.out.println("Different Cell value detected.");
+                } else {
+                    System.out.println("Same Cell value detected.");
+                }
+                System.out.println("Cell value finished editing.");
+            }
+
+        }*/
+    }//GEN-LAST:event_jt_RegistrosPropertyChange
     private void CrearRegistro() {
         Object[] insertarray = new Object[currentFile.getListaCampo().size()];
         for (int i = 0; i < currentFile.getListaCampo().size(); i++) {
@@ -2778,7 +2882,6 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private javax.swing.JButton jb_SalirdeCampos;
     private javax.swing.JButton jb_TerminarCreacionCampo;
     private javax.swing.JButton jb_eliminarRegistro;
-    private javax.swing.JButton jb_modificarRegistro;
     private javax.swing.JDialog jd_Archivo;
     private javax.swing.JDialog jd_BuscarRegistros;
     private javax.swing.JDialog jd_Campos;
@@ -2837,4 +2940,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
     TableModel modeloLimpio;
     int mode = -1;
     int rowRemoval;
+    int tablemodification = 0; //Int bandera , Table awareness for modification.
+    Object oldcellvalue; // Old cell value that is being modified live on table. Might be null.
+    int currentRow;
+    int currentColumn;
 }
