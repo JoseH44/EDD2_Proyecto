@@ -2071,6 +2071,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                                      
     private void bt_NuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_NuevoMouseClicked
         // TODO add your handling code here:
+        NewFile();
+        
         jd_nombre.pack();
         jd_nombre.setModal(true);
         jd_nombre.setLocationRelativeTo(this);
@@ -2105,7 +2107,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         {
             String nombre = tf_nombreArchivo.getText();
             currentFile = new Metadata();
-            file = new File("./" + nombre + ".aajs");
+            file = new File("./" + nombre + ".DAT");
             bt_Cerrar.setEnabled(true);
             bt_Salvar.setEnabled(true);
             bt_Nuevo.setEnabled(false);
@@ -2120,14 +2122,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void bt_CargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_CargarMouseClicked
-        // TODO add your handling code here:
-        JFileChooser fc = new JFileChooser();
-        fc.setCurrentDirectory(new File("./"));
-        file = fc.getCurrentDirectory();
-        System.out.println(file.getName());
-        int seleccion = fc.showOpenDialog(this);
+        LoadFile();
         
-        if(seleccion == JFileChooser.APPROVE_OPTION)
+        if(FileSuccess == 1)
         {
             currentFile = new Metadata();
             BuildTable(1);
@@ -2816,7 +2813,32 @@ public class Ventana_Principal extends javax.swing.JFrame {
             // Logger.getLogger(Trima.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    private void NewFile() {
+        // Protocolo de creacion de Metadata. 
+        // SE LE ADVIERTE AL USUARIO QUE INFORMACION ACTUAL SERA BORRADA.
+        // 1. Se le pide el nombre de la metadata al usuario.
+        // 2. Se crea Metadata.
+        String direction; // Nombre del archivo .dat que se creara/
+        int option = JOptionPane.showConfirmDialog(this, "Do you want to save your current progress?");
+        if (option == JOptionPane.NO_OPTION) { //Si no quiere guardar lo que hizo.
+            CreateFile(); //Como no quiere guardar solo lo creo.
+            if (FileSuccess == 1) {
+                currentFile = new Metadata();
+                BuildTable(1);
+            }
+
+        } else if (option == JOptionPane.YES_OPTION) {
+            SaveFile();
+            //una vez se guarda la info se crea el archivo.
+            //CreateFile();
+
+        } else {
+            System.out.println("Operation cancelled");
+        }
+    }
+    public void SaveFile() {
+        JOptionPane.showMessageDialog(null, "Su file se ha guardado exitosamente! ...Always On Saving!");
+    }
     public void LoadFile() {
         FileSuccess = 0;
         String direction;
@@ -2938,7 +2960,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         raFile = new RandomAccessFile(file, "rw");
         ByteArrayOutputStream obArray = new ByteArrayOutputStream();
         ObjectOutputStream objeto = new ObjectOutputStream(obArray);
-        //objeto.writeObject(currentFile.getCampos());
+        objeto.writeObject(currentFile);
         byte[] datos = obArray.toByteArray();//makes an array of bytes from the object
         raFile.seek(0);//Place pointe at the beggining of the file
         raFile.writeInt(datos.length);
