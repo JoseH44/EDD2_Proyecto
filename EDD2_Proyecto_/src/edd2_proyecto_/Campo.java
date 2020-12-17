@@ -16,7 +16,6 @@ public class Campo implements Serializable{
     boolean llave_candidata;
     int longitud;
 
-     private static final long SerialVersionUID=777L;
     
     public Campo() {
     }

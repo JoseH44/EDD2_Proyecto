@@ -7,7 +7,7 @@ import java.util.ArrayList;
  *
  * @author Dell
  */
-public class Registro {
+public class Registro implements Serializable{
     int key;
     long byteOffset;
    

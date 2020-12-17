@@ -2304,7 +2304,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_BorrarRegistrosMouseClicked
 
     private void jb_ListarRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ListarRegistrosMouseClicked
-        BuildTable(0);
+        //BuildTable(0);
         
         /*try {
             InsertarRegistroTabla();
@@ -2313,6 +2313,15 @@ public class Ventana_Principal extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Ventana_Principal.class.getName()).log(Level.SEVERE, null, ex);
         }*/
+        
+         BuildTable(1);
+            try {
+                CargarMetadatos();
+               BuildTable(0);
+                LeerDatosRegistro();
+            } catch (ClassNotFoundException ex) {
+                // Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
         
         jd_Registros.setVisible(false);
         
@@ -3052,7 +3061,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             // System.out.println("Tiene errrrrrrrroooooooooooooooor");
             //ex.printStackTrace();
         }
-
+        
     }
     
     public void LeerDatosRegistro() throws ClassNotFoundException {
@@ -3066,11 +3075,15 @@ public class Ventana_Principal extends javax.swing.JFrame {
             raFile.seek(tamaño + 4);
             //System.out.println(tamaño);
             boolean eliminado = false;//boolen que marca que el registro leido esta eliminado
-            while (raFile.getFilePointer() < raFile.length()) {
+            System.out.println(raFile.getFilePointer());
+            System.out.println(raFile.length());
+            while (raFile.getFilePointer() <= raFile.length()) {
                 System.out.println("----------------------------------------------");
                 eliminado = false;
-                tamaño = raFile.readInt();
+                //tamaño = raFile.readInt();
+                //System.out.println("aqui");
                 System.out.println("New Tamaño: " + tamaño);
+                //System.out.println("alla");
                 byte[] data = new byte[tamaño];
                 raFile.read(data);
                 ByteArrayInputStream in = new ByteArrayInputStream(data);

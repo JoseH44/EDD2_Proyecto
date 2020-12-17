@@ -21,6 +21,8 @@ public class Metadata implements Serializable{
     private long Campos_en_Archivo;
     Btree ArbolB;
     private int sizeMeta;
+    
+    private static final long SerialVersionUID=777L;
 
     public Btree getArbolB() {
         return ArbolB;
