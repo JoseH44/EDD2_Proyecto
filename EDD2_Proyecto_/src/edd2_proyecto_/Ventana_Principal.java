@@ -2573,7 +2573,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                                 System.out.println("Different Cell Value Detected:" + temp);
                                 System.out.println("Column: " + currentColumn);
                                 //DefaultTableModel temasdasd = Table.getModel();
-                                int type = Integer.parseInt(currentFile.getCampos().get(currentColumn).getTipo()); //Extract the type of the value from metadata that it should have.
+                                int type = Integer.parseInt(((Campo)currentFile.getCampos().get(currentColumn)).getTipo()); //Extract the type of the value from metadata that it should have.
                                 try { // Attempt to convert it to see if it is workable.
 
                                     Object assignation = null; //Basicamente solo es para que ocurra la exception validadora pero no hace nada.
@@ -2604,7 +2604,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                                         JOptionPane.showMessageDialog(null, " No se puede modificar la primary key");
                                         jt_Registros.setValueAt(oldcellvalue, currentRow, currentColumn);
                                     } else {
-                                        currentFile.ModificarDatoArchivo(TrimaExport, AvailList,raFile);//Exportando A Metodo Trima
+                                        ModificarDatoArchivo(TrimaExport, AvailList,raFile);//Exportando A Metodo Trima
                                     }
 
                                 } catch (Exception exc) { //If it fails to convert then replace new value with old value.
@@ -2652,7 +2652,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private void CrearRegistro() {
         Object[] insertarray = new Object[currentFile.getCampos().size()];
         for (int i = 0; i < currentFile.getCampos().size(); i++) {
-            if (currentFile.getCampos().get(i).getTipo().equals("int")) {
+            if (((Campo)currentFile.getCampos().get(i)).getTipo().equals("int")) {
                 String formato = "";
                 for (int j = 0; j < campos.get(i).getLongitud(); j++) {
                     formato+="#";
@@ -2684,7 +2684,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         jd_Registros.setVisible(true);
         ArrayList Nuevo_Registro = new ArrayList();
         try {
-            raFile = new RandomAccessFile(currentFile.getArchivo(),"rw");
+            raFile = new RandomAccessFile(file,"rw");
         } catch (FileNotFoundException ex) {
             
         }
@@ -2694,14 +2694,14 @@ public class Ventana_Principal extends javax.swing.JFrame {
         //Export to Trima in this line.
         Registro temporal = new Registro(Integer.parseInt(insertarray[0].toString()));
 
-        if (currentFile.arbol_keys.search(temporal) == null) {
+        if (currentFile.ArbolB.search(temporal) == null) {
            
-                currentFile.arbol_keys.insert(temporal);
+                currentFile.ArbolB.insert(temporal);
                 System.out.println(temporal);
                 currentFile.addnumregistros();
                 try {
-                  currentFile.EscribirDatosRegistro(Nuevo_Registro, AvailList, raFile);//Send Array to Trima
-                  currentFile.BuscarDatoArchivo(temporal, raFile);
+                  EscribirDatosRegistro(Nuevo_Registro, AvailList, raFile);//Send Array to Trima
+                  BuscarDatoArchivo(temporal, raFile);
                 } catch (Exception ex) {
                     //Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                     // System.out.println(ex);
@@ -2784,7 +2784,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         if (funcion == 0) { //Instruction 0 lets the Table Builder know it should only change headers.
             
             for (int i = 0; i < currentFile.getCampos().size(); i++) {
-                if(currentFile.getCampos().get(i).isLlave_primaria() && i != 0)
+                if(((Campo)currentFile.getCampos().get(i)).isLlave_primaria() && i != 0)
                     Collections.swap(currentFile.getCampos(), 0, i);
             }
             Object[] campos = currentFile.getCampos().toArray();
@@ -2810,8 +2810,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
             raFile.read(data);
             ByteArrayInputStream in = new ByteArrayInputStream(data);
             ObjectInputStream read = new ObjectInputStream(in);
-            currentFile = (Archivo) read.readObject();//read the byte array
-            //currentFile.setSizeMeta(tamaño);
+            currentFile = (Metadata) read.readObject();//read the byte array
+            currentFile.setSizeMeta(tamaño);
         } catch (IOException ex) {
             // Logger.getLogger(Trima.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -2935,7 +2935,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         //End of FileChooserIf 
     }
     public void EscribirMetadatos() throws IOException {
-        raFile = new RandomAccessFile(currentFile.getArchivo(), "rw");
+        raFile = new RandomAccessFile(file, "rw");
         ByteArrayOutputStream obArray = new ByteArrayOutputStream();
         ObjectOutputStream objeto = new ObjectOutputStream(obArray);
         //objeto.writeObject(currentFile.getCampos());
