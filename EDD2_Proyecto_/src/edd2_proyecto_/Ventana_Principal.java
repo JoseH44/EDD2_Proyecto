@@ -1754,9 +1754,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     private void jb_CrearCampoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_CrearCampoMouseClicked
         ExisteLlavePrim = false;
-        if(!campos.isEmpty()){
-            for (int i = 0; i < campos.size(); i++) {
-                if(campos.get(i).isLlave_primaria()){
+        if(!currentFile.getCampos().isEmpty()){
+            for (int i = 0; i < currentFile.getCampos().size(); i++) {
+                if(currentFile.getCampos().get(i).isLlave_primaria()){
                     ExisteLlavePrim = true;
                     break;
                 }
@@ -2104,7 +2104,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
         else
         {
             String nombre = tf_nombreArchivo.getText();
-            currentFile = new Metadata("./" + nombre + ".aajs");
+            currentFile = new Metadata();
+            file = new File("./" + nombre + ".aajs");
             bt_Cerrar.setEnabled(true);
             bt_Salvar.setEnabled(true);
             bt_Nuevo.setEnabled(false);
@@ -2122,6 +2123,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         JFileChooser fc = new JFileChooser();
         fc.setCurrentDirectory(new File("./"));
+        file = fc.getCurrentDirectory();
+        System.out.println(file.getName());
         int seleccion = fc.showOpenDialog(this);
         
         if(seleccion == JFileChooser.APPROVE_OPTION)
@@ -2130,7 +2133,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             BuildTable(1);
             try {
                 CargarMetadatos();
-                BuildTable(0);
+               BuildTable(0);
                 LeerDatosRegistro();
             } catch (ClassNotFoundException ex) {
                 // Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -2766,19 +2769,20 @@ public class Ventana_Principal extends javax.swing.JFrame {
         modelo.addRow(insertArray);
 
         Table.setModel(model);*/
+        
         DefaultTableModel model = (DefaultTableModel)jt_Registros.getModel();
         currentFile.addnumregistros();
         
         Object row[] = recordInsert.toArray();
         model.addRow(row);
         jt_Registros.setModel(model);
-            
+        System.out.println("Entro");
         
     }
     
     public void BuildTable(int funcion) {
         if (funcion == 0) { //Instruction 0 lets the Table Builder know it should only change headers.
-            
+            System.out.println(currentFile.getCampos().size());
             for (int i = 0; i < currentFile.getCampos().size(); i++) {
                 if(((Campo)currentFile.getCampos().get(i)).isLlave_primaria() && i != 0)
                     Collections.swap(currentFile.getCampos(), 0, i);
@@ -3421,7 +3425,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     Excel excel;
     JTable Tabla;
     RandomAccessFile raFile;
-    TableModel modeloLimpio;
+    TableModel modeloLimpio = new DefaultTableModel();
     int mode = -1;
     int rowRemoval;
     int tablemodification = 0; //Int bandera , Table awareness for modification.

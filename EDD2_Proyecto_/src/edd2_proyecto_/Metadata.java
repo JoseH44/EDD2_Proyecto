@@ -14,8 +14,8 @@ import java.util.ArrayList;
  */
 public class Metadata implements Serializable{
     private String nombre;
-    private ArrayList campos;
-    private ArrayList tipos;
+    private ArrayList <Campo>campos = new ArrayList();
+    private ArrayList tipos = new ArrayList();
     private int numregistros = 0;
 
     private long Campos_en_Archivo;
@@ -70,7 +70,7 @@ public class Metadata implements Serializable{
         this.numregistros--;
     }
 
-    public ArrayList getCampos() {
+    public ArrayList<Campo> getCampos() {
         return campos;
     }
 
