@@ -1754,9 +1754,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
     private void jb_CrearCampoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_CrearCampoMouseClicked
         ExisteLlavePrim = false;
-        if(!campos.isEmpty()){
-            for (int i = 0; i < campos.size(); i++) {
-                if(campos.get(i).isLlave_primaria()){
+        if(!currentFile.getCampos().isEmpty()){
+            for (int i = 0; i < currentFile.getCampos().size(); i++) {
+                if(currentFile.getCampos().get(i).isLlave_primaria()){
                     ExisteLlavePrim = true;
                     break;
                 }
@@ -2104,11 +2104,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
         else
         {
             String nombre = tf_nombreArchivo.getText();
-            try {
-                currentFile = new Metadata("./" + nombre + ".aajs");
-            } catch (IOException ex) {
-                
-            }
+            currentFile = new Metadata();
+            file = new File("./" + nombre + ".aajs");
             bt_Cerrar.setEnabled(true);
             bt_Salvar.setEnabled(true);
             bt_Nuevo.setEnabled(false);
@@ -2126,6 +2123,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         JFileChooser fc = new JFileChooser();
         fc.setCurrentDirectory(new File("./"));
+        file = fc.getCurrentDirectory();
+        System.out.println(file.getName());
         int seleccion = fc.showOpenDialog(this);
         
         if(seleccion == JFileChooser.APPROVE_OPTION)
@@ -2134,7 +2133,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
             BuildTable(1);
             try {
                 CargarMetadatos();
-                BuildTable(0);
+               BuildTable(0);
                 LeerDatosRegistro();
             } catch (ClassNotFoundException ex) {
                 // Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -2310,13 +2309,13 @@ public class Ventana_Principal extends javax.swing.JFrame {
     private void jb_ListarRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_ListarRegistrosMouseClicked
         BuildTable(0);
         
-        try {
+        /*try {
             InsertarRegistroTabla();
         } catch (IOException ex) {
             Logger.getLogger(Ventana_Principal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Ventana_Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
         
         jd_Registros.setVisible(false);
         
@@ -2770,19 +2769,20 @@ public class Ventana_Principal extends javax.swing.JFrame {
         modelo.addRow(insertArray);
 
         Table.setModel(model);*/
+        
         DefaultTableModel model = (DefaultTableModel)jt_Registros.getModel();
         currentFile.addnumregistros();
         
         Object row[] = recordInsert.toArray();
         model.addRow(row);
         jt_Registros.setModel(model);
-            
+        System.out.println("Entro");
         
     }
     
     public void BuildTable(int funcion) {
         if (funcion == 0) { //Instruction 0 lets the Table Builder know it should only change headers.
-            
+            System.out.println(currentFile.getCampos().size());
             for (int i = 0; i < currentFile.getCampos().size(); i++) {
                 if(((Campo)currentFile.getCampos().get(i)).isLlave_primaria() && i != 0)
                     Collections.swap(currentFile.getCampos(), 0, i);
@@ -2830,14 +2830,14 @@ public class Ventana_Principal extends javax.swing.JFrame {
         int seleccion = fileChooser.showOpenDialog(this);
         if (seleccion == JFileChooser.APPROVE_OPTION) { //Cuando le da guardar
             //System.out.println(fileChooser.getCurrentDirectory().toString());
-            File file = null;
+            file = null;
             // FileOutputStream fos = null;
             // ObjectOutputStream ous = null;
             try {
                 if (fileChooser.getFileFilter().getDescription().equals("DAT FILE")) { //Chequea si lo que quiere guardar es DAT FILE
                     direction = fileChooser.getSelectedFile().getPath() + ".dat";
                     file = fileChooser.getSelectedFile();
-                    currentFile.setArchivo(file);
+                    
                     JOptionPane.showMessageDialog(null, "Sucess!");
                     System.out.println("Length of Loaded File: " + (file.length() - 4)); //SIZE MENOS BUFFER.
                     FileSuccess = 1;
@@ -2972,7 +2972,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
                 byte[] dat = obArray.toByteArray();
                 int required_size = dat.length;
-                AVL.Node espacio = AvailList.SearchSpace(required_size);
+                Node espacio = AvailList.BuscarEspacio(required_size);
                 if (espacio == null) {
                     System.out.println("NO ENCONTRO ESPACIO, NO CABE");
                     raFile.seek(byteOffset);//Place pointe at the beggining of the file
@@ -2982,10 +2982,10 @@ public class Ventana_Principal extends javax.swing.JFrame {
                     System.out.println("SI ENCONTROO ESPACIO!!! ENTRO");
                     //System.out.println("Esta es la POSICION: " + espacio.posicion);
                     datos.setUbicacion(espacio.posicion);
-                    System.out.println("Espacio encontrado: " + espacio.data + " ----- Tamaño del Registro a Insertar: " + dat.length);
+                    System.out.println("Espacio encontrado: " + espacio.size_byte + " ----- Tamaño del Registro a Insertar: " + dat.length);
                     int j = 0;
-                    for (int i = 0; i < (espacio.data - dat.length); i++) {//El for lo que hace es meter caracteres para igualar los size de ambos
-                        datos.setSize_alter(datos.getSize_alter() + "|");
+                    for (int i = 0; i < (espacio.size_byte - dat.length); i++) {//El for lo que hace es meter caracteres para igualar los size de ambos
+                        datos.setMarcado(datos.getMarcado() + "|");
                         //System.out.print("ENTRO Cuantas Veces??");
                         j++;
                     }
@@ -2995,13 +2995,13 @@ public class Ventana_Principal extends javax.swing.JFrame {
                     objeto.writeObject(datos);
                     dat = obArray.toByteArray();
                     d.key[x].setByteOffset(datos.ubicacion);
-                    System.out.println("Espacio Size: " + espacio.data + "--- New Size: " + dat.length);
+                    System.out.println("Espacio Size: " + espacio.size_byte + "--- New Size: " + dat.length);
                     System.out.println("    Esta es la Ubicacion..... " + datos.ubicacion);
 
                     raFile.seek(datos.ubicacion);
                     raFile.writeInt(dat.length);
                     raFile.write(dat);
-                    AvailList.deleteNode(AvailList.head, espacio);
+                    AvailList.eliminarNodo(AvailList.head, espacio);
                 }
             } else {
                 System.out.println("EL AVAILLIST ESTA VACIO ENTONCES INGRESA NORMAL");
@@ -3425,7 +3425,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
     Excel excel;
     JTable Tabla;
     RandomAccessFile raFile;
-    TableModel modeloLimpio;
+    TableModel modeloLimpio = new DefaultTableModel();
     int mode = -1;
     int rowRemoval;
     int tablemodification = 0; //Int bandera , Table awareness for modification.
