@@ -3069,7 +3069,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                         record.add(d.getDatos().get(i));
 
                     }
-                    TableInsertRegistro();//Inserto en la tabla
+                    
+                    InsertarRegistroTabla(record);
                     
 
 //Agrego un registro con el mismo formato que me fue enviado para implementarlo en la table
