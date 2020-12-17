@@ -2131,10 +2131,10 @@ public class Ventana_Principal extends javax.swing.JFrame {
         if(seleccion == JFileChooser.APPROVE_OPTION)
         {
             currentFile = new Metadata();
-            BuildTable(currentFile, 1);
+            BuildTable(1);
             try {
                 CargarMetadatos();
-                BuildTable(currentFile, 0);
+                BuildTable(0);
                 LeerDatosRegistro();
             } catch (ClassNotFoundException ex) {
                 // Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -2311,7 +2311,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         BuildTable(0);
         
         try {
-            InsertarRegistroTabla(raFile);
+            InsertarRegistroTabla();
         } catch (IOException ex) {
             Logger.getLogger(Ventana_Principal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -2406,7 +2406,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 }
                 //mode = -1;
                 //Exportar a Trima Aqui.
-                EliminarDatoArchivo(datos_elim, AvailList,raFile);
+                EliminarDatoArchivo(datos_elim);
                 System.out.println(currentFile.getNumregistros());
                 currentFile.subtractnumregistros();
                 System.out.println("Metadata Registry after deleting: " + currentFile.getNumregistros());
@@ -2447,7 +2447,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                     try {
                         CargarMetadatos();
                         BuildTable(0);
-                        LeerDatosRegistro(raFile, AvailList);
+                        LeerDatosRegistro();
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(Ventana_Principal.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -2491,8 +2491,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                                         System.out.println(trabajando);
                                         currentFile.addnumregistros();
                                         try {
-                                            EscribirDatosRegistro(superrow, AvailList, raFile);
-                                            BuscarDatoArchivo(trabajando, raFile);
+                                            EscribirDatosRegistro(superrow);
+                                            BuscarDatoArchivo(trabajando);
                                         } catch (Exception ex) {
                                             //Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                                             System.out.println(ex);
@@ -2604,7 +2604,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                                         JOptionPane.showMessageDialog(null, " No se puede modificar la primary key");
                                         jt_Registros.setValueAt(oldcellvalue, currentRow, currentColumn);
                                     } else {
-                                        ModificarDatoArchivo(TrimaExport, AvailList,raFile);//Exportando A Metodo Trima
+                                        ModificarDatoArchivo(TrimaExport);//Exportando A Metodo Trima
                                     }
 
                                 } catch (Exception exc) { //If it fails to convert then replace new value with old value.
@@ -2700,8 +2700,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 System.out.println(temporal);
                 currentFile.addnumregistros();
                 try {
-                  EscribirDatosRegistro(Nuevo_Registro, AvailList, raFile);//Send Array to Trima
-                  BuscarDatoArchivo(temporal, raFile);
+                  EscribirDatosRegistro(Nuevo_Registro);//Send Array to Trima
+                  BuscarDatoArchivo(temporal);
                 } catch (Exception ex) {
                     //Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                     // System.out.println(ex);
