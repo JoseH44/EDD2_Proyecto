@@ -2105,8 +2105,9 @@ public class Ventana_Principal extends javax.swing.JFrame {
         {
             String nombre = tf_nombreArchivo.getText();
             try {
-                currentFile = new Archivo("./" + nombre + ".aajs");
+                currentFile = new Metadata("./" + nombre + ".aajs");
             } catch (IOException ex) {
+                
             }
             bt_Cerrar.setEnabled(true);
             bt_Salvar.setEnabled(true);
@@ -2129,12 +2130,14 @@ public class Ventana_Principal extends javax.swing.JFrame {
         
         if(seleccion == JFileChooser.APPROVE_OPTION)
         {
-            File file = fc.getSelectedFile();
-            currentFile = new Archivo(file);
+            currentFile = new Metadata();
+            BuildTable(currentFile, 1);
             try {
-                currentFile.cargarArchivo();
-            } catch (IOException ex) {
-                Logger.getLogger(Ventana_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                CargarMetadatos();
+                BuildTable(currentFile, 0);
+                LeerDatosRegistro();
+            } catch (ClassNotFoundException ex) {
+                // Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
             }
             campos = currentFile.getCampos();
             bt_Cerrar.setEnabled(true);
@@ -2240,8 +2243,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                     
                         if (currentFile.getNumregistros() < 1) {
                             try {
-                                currentFile.getArchivo().delete();
-                                currentFile.getArchivo().createNewFile();
+                                file.delete();
+                                file.createNewFile();
                                 System.out.println("Forcing deletion and recreation of the file.");
                             } catch (Exception sdj) {
                                 System.out.println("Error en borrar.");
@@ -2757,7 +2760,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
         }
     }
     
-    public void InsertarRegistroTabla(RandomAccessFile RAFile) throws IOException, ClassNotFoundException {
+    public void InsertarRegistroTabla(ArrayList<Object> recordInsert) throws IOException, ClassNotFoundException {
         /*TableModel model = Table.getModel();
         DefaultTableModel modelo = (DefaultTableModel) model;
         metadata.addnumregistros();
@@ -2767,40 +2770,12 @@ public class Ventana_Principal extends javax.swing.JFrame {
         modelo.addRow(insertArray);
 
         Table.setModel(model);*/
-        ArrayList<Object> objects = new ArrayList();
-        DefaultTableModel modelT = (DefaultTableModel)jt_Registros.getModel();
-        RAFile = new RandomAccessFile(currentFile.getArchivo(), "rw");
-        RAFile.seek(0);
-        int tamaño = RAFile.readInt();
-        RAFile.seek(tamaño + 4);
-        boolean eliminado = false;//boolen que marca que el registro leido esta eliminado
-        while (RAFile.getFilePointer() < RAFile.length()) {
-            System.out.println("----------------------------------------------");
-            eliminado = false;
-            tamaño = RAFile.readInt();
-            System.out.println("New Tamaño: " + tamaño);
-            byte[] data = new byte[tamaño];
-            RAFile.read(data);
-            ByteArrayInputStream in = new ByteArrayInputStream(data);
-            ObjectInputStream read = new ObjectInputStream(in);
-            Data d = (Data) read.readObject();//guardo el array de bytes en una variable temporal
-            if (d.getMarcado().contains("*")) {//If que verifica que si el registro esta eliminado
-                    //registro eliminado
-
-            } else {//entra al else cuando NO ESTA ELIMINADO
-                    
-                    
-                for (int i = 0; i < d.getDatos().size(); i++) {
-                        objects.add(d.getDatos().get(i));
-
-                }
-
-            }
-            Object row[] = objects.toArray();
-            modelT.addRow(row);
-
-        }
-        jt_Registros.setModel(modelT);
+        DefaultTableModel model = (DefaultTableModel)jt_Registros.getModel();
+        currentFile.addnumregistros();
+        
+        Object row[] = recordInsert.toArray();
+        model.addRow(row);
+        jt_Registros.setModel(model);
             
         
     }
@@ -3079,22 +3054,23 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 ByteArrayInputStream in = new ByteArrayInputStream(data);
                 ObjectInputStream read = new ObjectInputStream(in);
                 Data d = (Data) read.readObject();//guardo el array de bytes en una variable temporal
-                if (d.getSize_alter().contains("*")) {//If que verifica que si el registro esta eliminado
+                if (d.getMarcado().contains("*")) {//If que verifica que si el registro esta eliminado
                     eliminado = true;//si entra significa que si
                     System.out.println("ENCONTRO EL REGISTRO BORRADO... " + d.getDatos().get(1) + " Ubicacion...." + d.getUbicacion());
                     AvailList.BestFit(tamaño, d.ubicacion);
 
                 } else {//entra al else cuando NO ETSA ELIMINADO
-                    KennethExport2 = new ArrayList<>();
+                    ArrayList<Object>record = new ArrayList<>();
                     Registro temporal = new Registro(d.getKey());
                     temporal.setByteOffset(d.getUbicacion());
                     currentFile.getArbolB().insert(temporal);
                     System.out.println("SE VA A METER A: " + d.getDatos().get(1) + " Ubicacion: " + d.getUbicacion());
                     for (int i = 0; i < d.getDatos().size(); i++) {
-                        KennethExport2.add(d.getDatos().get(i));
+                        record.add(d.getDatos().get(i));
 
                     }
                     TableInsertRegistro();//Inserto en la tabla
+                    
 
 //Agrego un registro con el mismo formato que me fue enviado para implementarlo en la table
                     //Arraylist Lista para agarrar Registros
@@ -3142,8 +3118,8 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 Data temp = BuscarDatoArchivo(temporal);
                 raFile.seek(temp.ubicacion);
                 int size_act = raFile.readInt();//Este es el tamaño actual
-                temp.setSize_alter("*"); //Pone un aterisco que marca ese registro o dato como eliminado
-                temp.size_alter = "*";
+                temp.setMarcado("*"); //Pone un aterisco que marca ese registro o dato como eliminado
+                temp.marcado = "*";
                 Bnode b = currentFile.ArbolB.search(temporal);
                 int pos = searchEnNodo(b, temporal.key);
                 long ubicacion = b.key[pos].getByteOffset();
@@ -3157,12 +3133,12 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 objeto.writeObject(temp);
 
                 byte[] dat2 = obArray.toByteArray();
-                System.out.println(temp.size_alter + " ----------------------------" + temp.ubicacion);
+                System.out.println(temp.marcado + " ----------------------------" + temp.ubicacion);
                 raFile.write(dat2);
 
                 System.out.println("LLamar metodo del AvailList...");
                 AvailList.BestFit(size_act, temp.ubicacion);
-                AvailList.ImprimeListaEnlazada(AvailList.head);
+                AvailList.PrintList(AvailList.head);
                 System.out.println("Antes de Borrar el Registro...." + currentFile.ArbolB.search(temporal));
                 currentFile.ArbolB.remove(temporal);
                 System.out.println("Despues de Borrar el Registro...." + currentFile.ArbolB.search(temporal));
@@ -3199,7 +3175,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                 if (dat.length <= size_act) {//Este if permite entrar si es mas peqeño
                     System.out.println("EL NUEVO REGISTRO ES MAS PEQUEÑO O IGUAL, SE ADAPATARA PARA QUE SEAN DEL MISMO TAMAÑO SI ES NECESARIO");
                     for (int i = 0; i < (size_act - dat.length); i++) {//El for lo que hace es meter caracteres para igualar los size de ambos
-                        new_size.setSize_alter(new_size.getSize_alter() + "|");
+                        new_size.setMarcado(new_size.getMarcado() + "|");
                     }//Igualo los size para solo pegar el nuevo dato sobre el viejo y asi no generar errores
                     obArray = new ByteArrayOutputStream();
                     objeto = new ObjectOutputStream(obArray);
@@ -3209,7 +3185,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
                     System.out.println("NEW SIZE" + dat.length + " ---- " + "SIZE ORIGINAL:" + size_act);
                 } else {
                     System.out.println("EL NUEVO REGISTRO ES MUY GRANDE IRA AL FINAL DEL ARCHIVO");
-                    temp.setSize_alter("*"); //Pone un aterisco que marca ese registro o dato como eliminado
+                    temp.setMarcado("*"); //Pone un aterisco que marca ese registro o dato como eliminado
                     obArray = new ByteArrayOutputStream();
                     objeto = new ObjectOutputStream(obArray);
                     objeto.writeObject(temp);
@@ -3235,7 +3211,7 @@ public class Ventana_Principal extends javax.swing.JFrame {
 
                     System.out.println("LLamar metodo del AvailList...");
                     AvailList.BestFit(size_act, temporal.byteOffset);
-                    AvailList.ImprimeListaEnlazada(AvailList.head);
+                    AvailList.PrintList(AvailList.head);
                     System.out.println("Antes de Borrar el Registro...." + currentFile.ArbolB.search(temporal));
                     System.out.println("Despues de Borrar el Registro...." + currentFile.ArbolB.search(temporal));
                     System.out.println("");
